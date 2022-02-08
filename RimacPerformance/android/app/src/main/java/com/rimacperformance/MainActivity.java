@@ -12,4 +12,9 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "RimacPerformance";
   }
+  //Used for bottom tab navigation
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(null);
+  }
 }

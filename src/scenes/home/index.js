@@ -1,6 +1,6 @@
 const HomeScreen = () => {
-  return (
-      <div>hello world</div>
+    return (
+        <div>Home</div>
     )
 }
 

@@ -1,0 +1,7 @@
+const CarsScreen = () => {
+    return (
+        <div>Cars</div>
+    )
+}
+
+export default CarsScreen

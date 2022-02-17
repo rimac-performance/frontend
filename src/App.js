@@ -6,6 +6,10 @@ import {
 } from "react-router-dom";
 import HomeScreen from "./scenes/home";
 import Nav from "./navigations/Nav";
+import CarsScreen from "./scenes/cars";
+import AnalysisScreen from "./scenes/analysis";
+import CommunityScreen from "./scenes/community";
+import SettingsScreen from "./scenes/settings";
 
 function Todo() {
   return (<div>Todo</div>);
@@ -19,6 +23,10 @@ function App() {
           <Route path="/" element={<Nav />}>
             <Route index element={<HomeScreen />} />
             <Route path='yeet' element={<Todo />} />
+            <Route path='cars' element={<CarsScreen />} />
+            <Route path='analysis' element={<AnalysisScreen />} />
+            <Route path='community' element={<CommunityScreen />} />
+            <Route path='settings' element={<SettingsScreen />} />
           </Route>
         </Routes>
       </BrowserRouter>

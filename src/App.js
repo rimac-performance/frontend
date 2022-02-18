@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Nav />}>
             <Route index element={<HomeScreen />} />
-            <Route path='yeet' element={<Todo />} />
+            {/*<Route path='yeet' element={<Todo />} />*/}
             <Route path='cars' element={<CarsScreen />} />
             <Route path='analysis' element={<AnalysisScreen />} />
             <Route path='community' element={<CommunityScreen />} />

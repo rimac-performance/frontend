@@ -1,3 +1,5 @@
+import "./cars.css"
+
 const CarsScreen = () => {
     return (
         <div>Cars</div>

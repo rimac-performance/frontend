@@ -1,0 +1,8 @@
+.navigation {
+    margin: 100px;
+}
+
+.navigation__nav-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}

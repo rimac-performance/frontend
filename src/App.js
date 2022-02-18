@@ -11,18 +11,12 @@ import AnalysisScreen from "./scenes/analysis";
 import CommunityScreen from "./scenes/community";
 import SettingsScreen from "./scenes/settings";
 
-function Todo() {
-  return (<div>Todo</div>);
-}
-
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Nav />}>
-            <Route index element={<HomeScreen />} />
-            <Route path='yeet' element={<Todo />} />
             <Route path='cars' element={<CarsScreen />} />
             <Route path='analysis' element={<AnalysisScreen />} />
             <Route path='community' element={<CommunityScreen />} />

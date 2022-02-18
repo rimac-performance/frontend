@@ -1,44 +1,39 @@
-import {Link, Outlet} from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faCar, faChartBar, faUsers, faGear } from '@fortawesome/free-solid-svg-icons'
+import {Link, Outlet, useLocation} from "react-router-dom";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCar, faChartBar, faGear, faUsers} from '@fortawesome/free-solid-svg-icons'
 import "./nav.css"
 // import { useNavigate } from "react-router-dom";
 
 const Nav = () => {
     // const navigate = useNavigate();
     //Step 1. Another way to link somewhere
+    const location = useLocation()
+    // console.log(location.pathname)
+
+    function active(path) {
+        return location.pathname === path ? "active" : "icon"
+    }
 
   return (
     <div className="navigation">
-        Navigation
+        <Outlet />
         <div className="navigation__nav-bar">
-            <Link to={'/'}>
-                <div>Home</div>
-                <FontAwesomeIcon icon={faHouse} />
-            </Link>
             <Link to={'/cars'}>
-                <div>Cars</div>
-                <FontAwesomeIcon icon={faCar} />
+                <FontAwesomeIcon className={active('/cars')} icon={faCar} />
             </Link>
             <Link to={'/analysis'}>
-                <div>Analysis</div>
-                <FontAwesomeIcon icon={faChartBar} />
+                <FontAwesomeIcon className={active('/analysis')} icon={faChartBar} />
             </Link>
             <Link to={'/community'}>
-                <div>Community</div>
-                <FontAwesomeIcon icon={faUsers} />
+                <FontAwesomeIcon className={active('/community')} icon={faUsers} />
             </Link>
             <Link to={'/settings'}>
-                <div>Settings</div>
-                <FontAwesomeIcon icon={faGear} />
+                <FontAwesomeIcon className={active('/settings')} icon={faGear} />
             </Link>
         </div>
-
-
         {/*<div onClick={() => navigate('/')}>noice</div>*/}
         {/*Step 2. Another way to link somewhere*/}
 
-    <Outlet />
     </div>
   )
 }

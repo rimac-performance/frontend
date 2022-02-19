@@ -1,0 +1,15 @@
+.textField{
+    font-size: 16px;
+    font-weight: 400;
+    height: 52px;
+    border-width: 2px;
+    margin: 5px;
+}
+.errorTextField{
+    border-color: red;
+    font-size: 16px;
+    font-weight: 400;
+    height: 52px;
+    border-width: 2px;
+    margin: 5px;
+}

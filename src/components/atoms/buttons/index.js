@@ -1,3 +1,5 @@
+import "./buttons.css";
+
 export const PrimaryButton = ({ text }) => {
   const onClick = () => {
     return;

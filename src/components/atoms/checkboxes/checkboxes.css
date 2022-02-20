@@ -1,0 +1,24 @@
+.checkbox {
+  width: 85%;
+  margin: 8px auto;
+  display: flex;
+  flex-direction: row;
+}
+.checkbox > p {
+  flex: 2;
+  margin: 0;
+  display: inline;
+  vertical-align: middle;
+}
+.checkbox > label {
+  flex: 1;
+  display: flex;
+}
+.checkbox__default {
+  height: 24px;
+  width: 24px;
+  margin: 0;
+}
+.checkbox__spacer {
+  flex: 1;
+}

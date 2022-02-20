@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import "./arrows.css";
 
 export const BackArrow = () => {
   const onClick = () => {
@@ -20,7 +21,7 @@ export const FilterArrow = ({ text }) => {
   };
 
   return (
-    <div className="arrow__back">
+    <div className="arrow__filter">
       <FontAwesomeIcon icon={faCaretDown} />
       <label>Filter</label>
     </div>

@@ -1,0 +1,24 @@
+.chip {
+  display: flex;
+  text-align: center;
+}
+.chip__active {
+  flex: 5;
+  background-color: #c4c4c4;
+  border-radius: 25px;
+  padding: 8px;
+  margin: 8px 0;
+}
+.chip__inactive {
+  flex: 5;
+  background-color: rgba(196, 196, 196, 0.2);
+  border-radius: 25px;
+  padding: 8px;
+  margin: 8px 0;
+}
+.chip__spacer {
+  flex: 2;
+}
+.chip__spacer__center {
+  flex: 1;
+}

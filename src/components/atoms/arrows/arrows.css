@@ -1,0 +1,20 @@
+.arrow__back {
+  margin: 8px;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+}
+.arrow__back > svg,
+.arrow__filter > svg {
+  margin: 0 8px 0 0;
+}
+.arrow__back > label,
+.arrow__filter > label {
+  vertical-align: top;
+}
+
+.arrow__filter {
+  display: inline-block;
+  margin: 8px;
+  width: fit-content;
+}

@@ -1,48 +1,32 @@
 import "./buttons.css";
 
-export const PrimaryButton = ({ text }) => {
-  const onClick = () => {
-    return;
-  };
-
+export const PrimaryButton = ({ text, onClick }) => {
   return (
-    <div className="button__primary">
+    <div className="button__primary" onClick={onClick}>
       <label>{text}</label>
     </div>
   );
 };
 
-export const SecondaryButton = ({ text }) => {
-  const onClick = () => {
-    return;
-  };
-
+export const SecondaryButton = ({ text, onClick }) => {
   return (
-    <div className="button__secondary">
+    <div className="button__secondary" onClick={onClick}>
       <label>{text}</label>
     </div>
   );
 };
 
-export const RunButton = ({ text }) => {
-  const onClick = () => {
-    return;
-  };
-
+export const RunButton = ({ text, onClick }) => {
   return (
-    <div className="button__run">
+    <div className="button__run" onClick={onClick}>
       <label>{text}</label>
     </div>
   );
 };
 
-export const ImageButton = ({ text, img }) => {
-  const onClick = () => {
-    return;
-  };
-
+export const ImageButton = ({ text, img, onClick }) => {
   return (
-    <div className="button__image">
+    <div className="button__image" onClick={onClick}>
       <img src={img} alt="" />
       <label>{text}</label>
     </div>

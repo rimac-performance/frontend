@@ -20,3 +20,6 @@ img{
     height: 100%;
 
 }
+.hiddenTag{
+    visibility: hidden;
+}

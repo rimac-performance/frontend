@@ -11,7 +11,7 @@ const AutomobileInfo = (props) => {
                 <h3>AUTOMOBILE</h3>
                 <p>Model: {props.model} </p>
                 <p>VIN: {props.vin}</p>
-                <p>Co-Owner: {props.coOwner}</p>
+                <p className= {props.show ? "showTag" : "hiddenTag"}>Owner: </p>
 
             </div>
 

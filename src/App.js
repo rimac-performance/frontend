@@ -1,9 +1,5 @@
-import './App.css';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from "react-router-dom";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./scenes/home";
 import Nav from "./navigations/Nav";
 import CarsScreen from "./scenes/cars";
@@ -17,10 +13,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Nav />}>
-            <Route path='cars' element={<CarsScreen />} />
-            <Route path='analysis' element={<AnalysisScreen />} />
-            <Route path='community' element={<CommunityScreen />} />
-            <Route path='settings' element={<SettingsScreen />} />
+            <Route path="cars" element={<CarsScreen />} />
+            <Route path="analysis" element={<AnalysisScreen />} />
+            <Route path="community" element={<CommunityScreen />} />
+            <Route path="settings" element={<SettingsScreen />} />
           </Route>
         </Routes>
       </BrowserRouter>

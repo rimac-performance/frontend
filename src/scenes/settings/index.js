@@ -1,7 +1,5 @@
 const SettingsScreen = () => {
-    return (
-        <div>Settings</div>
-    )
-}
+  return <div>Settings</div>;
+};
 
-export default SettingsScreen
+export default SettingsScreen;

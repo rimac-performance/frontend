@@ -2,12 +2,9 @@ import "./cars.css"
 import Timer from "../../components/atoms/timer";
 
 const CarsScreen = () => {
-    return (
-        <div>
-            <Timer />
-            Cars
-        </div>
-    )
-}
+  return (<div>
+      <Timer />
+  </div>);
+};
 
-export default CarsScreen
+export default CarsScreen;

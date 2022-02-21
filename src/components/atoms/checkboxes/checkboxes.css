@@ -1,5 +1,6 @@
 .checkbox {
   width: 85%;
+  max-width: 400px;
   margin: 8px auto;
   display: flex;
   flex-direction: row;

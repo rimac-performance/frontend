@@ -1,7 +1,5 @@
 const AnalysisScreen = () => {
-    return (
-        <div>Analysis</div>
-    )
-}
+  return <div>Analysis</div>;
+};
 
-export default AnalysisScreen
+export default AnalysisScreen;

@@ -1,7 +1,5 @@
 const CommunityScreen = () => {
-    return (
-        <div>Community</div>
-    )
-}
+  return <div>Community</div>;
+};
 
-export default CommunityScreen
+export default CommunityScreen;

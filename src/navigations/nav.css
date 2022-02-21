@@ -1,27 +1,27 @@
 .navigation {
-    display: flex;
-    min-height:100vh;
-    flex-direction:column;
-    justify-content:flex-end;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .navigation__nav-bar {
-    background-color: black;
-    padding: 30px 10px;
-    justify-content: space-evenly;
-    justify-items: center;
-    align-content: space-evenly;
-    align-items: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  background-color: black;
+  padding: 30px 10px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .icon {
-    color: white;
-    font-size: 24px;
+  color: white;
+  font-size: 24px;
 }
 
 .active {
-    color: #E9591C;
-    font-size: 24px;
+  color: #e9591c;
+  font-size: 24px;
 }

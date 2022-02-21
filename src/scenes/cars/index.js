@@ -2,7 +2,7 @@ import "./cars.css"
 
 const CarsScreen = () => {
     return (
-        <div>Cars</div>
+        <div className="test">Cars</div>
     )
 }
 

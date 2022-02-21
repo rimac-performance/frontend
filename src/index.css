@@ -1,3 +1,66 @@
+/*
+  Global colors to use throughout the project css files
+  ex. color: var(--primary-color);
+ */
+
+:root {
+  --primary-color: #000;
+  --header-color: rgba(0, 0, 0, 0.8);
+  --primary-bg-color: #FFF;
+  --secondary-active-color: #E9591C;
+  --lg-button-color: rgba(196, 196, 196, 0.4);
+  --active-chip-color: #C4C4C4;
+  --chip-color: rgba(196, 196, 196, 0.2);
+  --share-bg-button: #F8F8F8;
+}
+
+/*
+  Add these styles to a tag when:
+  You want bold text
+  You want regular text
+  You want light text
+*/
+
+.black {
+  font-weight: 900;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.light {
+  font-weight: 100;
+}
+
+/*
+  Styles for specific tags
+ */
+
+h1 {
+  font-size: 24px;
+  color: var(--header-color);
+  letter-spacing: -0.33px;
+}
+
+h2 {
+  font-size: 18px;
+  color: var(--primary-color);
+  letter-spacing: -0.33px;
+}
+
+p {
+  font-size: 18px;
+}
+
+/*
+  Font styles
+ */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

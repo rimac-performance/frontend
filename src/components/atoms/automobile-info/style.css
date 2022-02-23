@@ -1,0 +1,25 @@
+.container{
+    display: flex;
+    padding: auto;
+    margin: 5px;
+}
+.image{
+    flex:1;
+    background-color: red;
+    width: auto;
+    height: auto;
+    margin: 5px;
+    justify-content: center;
+}
+.infoName{
+    flex:1;
+    height: auto;
+}
+img{
+    width: 100%;
+    height: 100%;
+
+}
+.hiddenTag{
+    visibility: hidden;
+}

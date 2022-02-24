@@ -11,6 +11,8 @@
 .arrow__back > label,
 .arrow__filter > label {
   vertical-align: top;
+  margin: 0;
+  display: inline;
 }
 
 .arrow__filter {

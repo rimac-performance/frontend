@@ -1,11 +1,12 @@
 import "./runs.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
-import {FilterArrow} from "../../components/atoms/arrows/"
+import {BackArrow, FilterArrow} from "../../components/atoms/arrows/"
 import {PrimaryButton, RunButton} from "../../components/atoms/buttons"
 
 const RunsListScreen = () => {
     return ( 
     <div className="screen">
+        <BackArrow />
         <div className="header__runs">
           <img src={Logo} alt="logo" className="logo"/>
           <p className="title__runs">Car Name</p>

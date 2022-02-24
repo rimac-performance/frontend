@@ -1,0 +1,24 @@
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.header__cars {
+    width: 50%;
+    max-width: 300px;
+    margin: 16px auto
+}
+.title__cars {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+}
+.list__cars {
+    margin: auto;
+    height: 50vh;
+    overflow: scroll;
+}
+.list__cars > div {
+    margin-bottom: 5vh;
+}

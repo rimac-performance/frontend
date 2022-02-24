@@ -14,7 +14,8 @@
 }
 
 .arrow__filter {
-  display: inline-block;
+  flex: 1;
   margin: 8px;
   width: fit-content;
+  text-align: right;
 }

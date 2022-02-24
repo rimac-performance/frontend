@@ -26,8 +26,8 @@ const Nav = () => {
         <Link to={"/cars"}>
           <FontAwesomeIcon className={active("/cars")} icon={faCar} />
         </Link>
-        <Link to={"/analysis"}>
-          <FontAwesomeIcon className={active("/analysis")} icon={faChartBar} />
+        <Link to={"/runs"}>
+          <FontAwesomeIcon className={active("/runs")} icon={faChartBar} />
         </Link>
         <Link to={"/community"}>
           <FontAwesomeIcon className={active("/community")} icon={faUsers} />

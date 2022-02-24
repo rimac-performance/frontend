@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomeScreen from "./scenes/home";
 import Nav from "./navigations/Nav";
 import CarsScreen from "./scenes/cars";
-import AnalysisScreen from "./scenes/analysis";
+import RunsScreen from "./scenes/runs";
+import RunsListScreen from "./scenes/runs/runsList";
 import CommunityScreen from "./scenes/community";
 import SettingsScreen from "./scenes/settings";
 
@@ -14,7 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Nav />}>
             <Route path="cars" element={<CarsScreen />} />
-            <Route path="analysis" element={<AnalysisScreen />} />
+            <Route path="runs" element={<RunsScreen />} />
+            <Route path="runsList" element={<RunsListScreen />} />
             <Route path="community" element={<CommunityScreen />} />
             <Route path="settings" element={<SettingsScreen />} />
           </Route>

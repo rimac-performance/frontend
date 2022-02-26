@@ -1,0 +1,12 @@
+.logo {
+  display: block;
+  margin: auto;
+  text-align: center;
+  margin-top: 25vh;
+}
+.bottom {
+  position: fixed;
+  width: 100vw;
+  bottom: 10px;
+  text-align: center;
+}

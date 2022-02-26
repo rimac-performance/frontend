@@ -1,6 +1,6 @@
 import "./runs.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
-import {FilterArrow} from "../../components/atoms/arrows/"
+import {BackArrow, FilterArrow} from "../../components/atoms/arrows/"
 import {PrimaryButton, RunButton} from "../../components/atoms/buttons"
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -37,6 +37,7 @@ const RunsListScreen = ({car, token}) => {
 
     return ( 
     <div className="screen__runs">
+        <BackArrow />
         <div className="header__runs">
           <img src={Logo} alt="logo" className="logo"/>
           <p className="title__runs">Car Name</p>

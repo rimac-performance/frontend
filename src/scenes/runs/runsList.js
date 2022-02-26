@@ -2,10 +2,41 @@ import "./runs.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import {FilterArrow} from "../../components/atoms/arrows/"
 import {PrimaryButton, RunButton} from "../../components/atoms/buttons"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const RunsListScreen = () => {
+const RunsListScreen = ({car, token}) => {
+  //const [cars, setCars] = useState({});
+  const [runs, setRuns] = useState([
+    {
+      "run_id": "f6e94195-d71d-4301-b21f-6bbc613653fd",
+      "name": "Run 1"
+    },
+    {
+      "run_id": "f6e94195-4301-d71d-b21f-6bbc613653fd",
+      "name": "Run 2"
+    }
+  ]);
+
+  const navigate = useNavigate();
+
+  const runsList = runs.map((run) => <RunButton onClick={() => console.log("analyzing " + run.name)/*navigate({pathname: '/analysis'})*/} key={run.run_id} text={run.name} />)
+
+  const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
+  
+  useEffect(() => {
+    const reqUrl = apiUrl + "?" + car.car_id;
+    /* fetch(reqUrl, 
+      {method: 'GET', headers: {'Authorization': 'Bearer ' + token}})
+      .then((response) => response.json())
+      .then((runList) => {
+        console.log(runList);
+        //setCars(runList);
+      }) */
+  }, [])
+
     return ( 
-    <div className="screen">
+    <div className="screen__runs">
         <div className="header__runs">
           <img src={Logo} alt="logo" className="logo"/>
           <p className="title__runs">Car Name</p>
@@ -18,8 +49,7 @@ const RunsListScreen = () => {
           <FilterArrow className="filter__runs" text={"Newest"} />
         </div>
         <div className="list__runs">
-          <RunButton text={"Run 1"} onClick={() => console.log("click!")} />
-          <RunButton text={"Run 2"} onClick={() => console.log("click!")} />
+          {runsList}
         </div>
         <PrimaryButton text={"NEW RUN"} onClick={() => console.log("click!")} />
     </div>

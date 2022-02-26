@@ -1,12 +1,14 @@
-.screen {
+.screen__runs {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
+    height: 90%;
+    overflow: scroll;
 }
 .header__runs {
     width: 50%;
-    max-width: 300px;
+    max-width: 250px;
     margin: 0 auto 16px auto
 }
 .title__runs {
@@ -14,19 +16,15 @@
     font-size: x-large;
     font-weight: bold;
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 .list__runs__cars {
     margin: auto;
     height: 50vh;
     overflow: scroll;
 }
-.selection__runs {
-    color: black;
-}
-.selection__runs > div {
+.list__runs__cars > div {
     margin-bottom: 5vh;
-    color: black;
 }
 .img__model {
     width: 75%;

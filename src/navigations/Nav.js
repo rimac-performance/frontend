@@ -15,8 +15,15 @@ const Nav = () => {
   const location = useLocation();
   // console.log(location.pathname)
 
-  function active(path) {
-    return location.pathname === path ? "active" : "icon";
+  function active(paths) {
+    let flag = false;
+    for (let index = 0; index < paths.length; index++) {
+      const path = paths[index];
+        location.pathname === path ? flag = true : flag = false;
+        console.log(path + ": " + flag);
+        if (flag) return "active";
+    }
+    return "icon";
   }
 
   return (
@@ -24,16 +31,16 @@ const Nav = () => {
       <Outlet />
       <div className="navigation__nav-bar">
         <Link to={"/cars"}>
-          <FontAwesomeIcon className={active("/cars")} icon={faCar} />
+          <FontAwesomeIcon className={active(["/cars"])} icon={faCar} />
         </Link>
         <Link to={"/runs"}>
-          <FontAwesomeIcon className={active("/runs")} icon={faChartBar} />
+          <FontAwesomeIcon className={active(["/runs", "/runsList"])} icon={faChartBar} />
         </Link>
         <Link to={"/community"}>
-          <FontAwesomeIcon className={active("/community")} icon={faUsers} />
+          <FontAwesomeIcon className={active(["/community"])} icon={faUsers} />
         </Link>
         <Link to={"/settings"}>
-          <FontAwesomeIcon className={active("/settings")} icon={faGear} />
+          <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
         </Link>
       </div>
       {/*<div onClick={() => navigate('/')}>noice</div>*/}

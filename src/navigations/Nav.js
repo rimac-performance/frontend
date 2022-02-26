@@ -20,7 +20,6 @@ const Nav = () => {
     for (let index = 0; index < paths.length; index++) {
       const path = paths[index];
         location.pathname === path ? flag = true : flag = false;
-        console.log(path + ": " + flag);
         if (flag) return "active";
     }
     return "icon";

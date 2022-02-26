@@ -2,7 +2,7 @@ import "./runs.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import AutomobileInfo from "../../components/atoms/automobile-info/automobile-info"
 import { useState, useEffect } from "react";
-import { useNavigate, Redirect } from "react-router-dom";
+import { useNavigate, Redirect, Route } from "react-router-dom";
 import RunsListScreen from "./runsList";
 
 const RunsScreen = ({user_id, token}) => {
@@ -25,9 +25,9 @@ const RunsScreen = ({user_id, token}) => {
   ]);
   const [selection, makeSelection] = useState(null);
 
-  //const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const carsList = cars.map((car) => <AutomobileInfo onClick={() => makeSelection({car})/*navigate({pathname: '/runsList',  })*/} key={car.car_id} model={car.model} vin={car.vin} />)
+  const carsList = cars.map((car) => <AutomobileInfo onClick={() => /*makeSelection({car})*/navigate({pathname: '/runsList:car:token'})} key={car.car_id} model={car.model} vin={car.vin} />)
 
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
 
@@ -41,11 +41,13 @@ const RunsScreen = ({user_id, token}) => {
         console.log(carList);
         //setCars(carList);
       }) */
-  }, [selection])
+  }, [])
 
-  if (selection) {
-    return <RunsListScreen car={selection} token={token} />
-  }
+  /*if (selection) {
+    let runsListScreen = <RunsListScreen car={selection} token={token} />;
+    let route = <Route path="runsList" element={runsListScreen} />;
+    navigate(route);
+  }*/
 
   return (
     <div className="screen__runs">

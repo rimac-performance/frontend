@@ -16,6 +16,7 @@ function App() {
           <Route path="/" element={<Nav />}>
             <Route path="cars" element={<CarsScreen />} />
             <Route path="runs" element={<RunsScreen />} />
+            <Route path="runsList:car:token" element={<RunsListScreen />} />
             <Route path="community" element={<CommunityScreen />} />
             <Route path="settings" element={<SettingsScreen />} />
           </Route>

@@ -3,9 +3,11 @@ import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import {BackArrow, FilterArrow} from "../../components/atoms/arrows/"
 import {PrimaryButton, RunButton} from "../../components/atoms/buttons"
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-const RunsListScreen = ({car, token}) => {
+const RunsListScreen = () => {
+  let params = useParams();
+
   //const [cars, setCars] = useState({});
   const [runs, setRuns] = useState([
     {
@@ -25,9 +27,9 @@ const RunsListScreen = ({car, token}) => {
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
   
   useEffect(() => {
-    const reqUrl = apiUrl + "?" + car.car_id;
+    const reqUrl = apiUrl + "?" + params.car.car_id;
     /* fetch(reqUrl, 
-      {method: 'GET', headers: {'Authorization': 'Bearer ' + token}})
+      {method: 'GET', headers: {'Authorization': 'Bearer ' + params.token}})
       .then((response) => response.json())
       .then((runList) => {
         console.log(runList);

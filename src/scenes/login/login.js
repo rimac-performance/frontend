@@ -1,0 +1,78 @@
+import Logo from "../../assets/image/Logo.png";
+import { SecondaryButton } from "../../components/atoms/buttons/index";
+import { useState } from "react";
+import TextField from "../../components/atoms/text-fields/text-field";
+import { BackArrow } from "../../components/atoms/arrows";
+import "./style.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Nav from "../../navigations/Nav";
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailInput = (e) => {
+    const { value } = e.currentTarget;
+    setEmail({
+      value,
+    });
+  };
+
+  const handlePasswordInput = (e) => {
+    const { value } = e.currentTarget;
+    setPassword({
+      value,
+    });
+  };
+
+  function login() {
+    fetch("https://revperformance-dev.ryacom.org/api/user", {
+      method: "POST",
+      headers: {
+        Accept: "*/*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email.value,
+        pswd: password.value,
+      }),
+    }).then((value) => {
+      // console.log(value);
+      // let status = value.status;
+      // switch (status) {
+      //   case 200:
+      //     break;
+      //   case 400:
+      //     break;
+      //   case 404:
+      //     break;
+      //   default:
+      //   //pop up error message
+      // }
+    });
+  }
+
+  return (
+    <>
+      <BackArrow></BackArrow>
+      <div className="logo">
+        <img src={Logo}></img>
+      </div>
+      <div className="container">
+        <form onSubmit={login}>
+          <TextField
+            onChange={handleEmailInput}
+            placeholder={"Email"}
+          ></TextField>
+          <TextField
+            onChange={handlePasswordInput}
+            type={"password"}
+            placeholder={"Password"}
+          ></TextField>
+          <SecondaryButton text={"LOG IN "} onClick={login}></SecondaryButton>
+        </form>
+        <a href={"../changePassword"}>Forgot Your Password?</a>
+      </div>
+    </>
+  );
+};
+export default Login;

@@ -1,10 +1,16 @@
-.screen__runs {
+.screen__runs, .screen__runs__list {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 90%;
     overflow: scroll;
+}
+.screen__runs__list > .button__primary {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
 }
 .header__runs {
     width: 50%;
@@ -34,6 +40,7 @@
     display: flex;
     width: 80%;
     margin: auto;
+    max-width: 400px;
 }
 .label__runs > p {
     flex: 1;
@@ -43,4 +50,7 @@
     margin: auto;
     height: 33vh;
     overflow: scroll;
+}
+.upload__runs {
+    padding-top: 16px;
 }

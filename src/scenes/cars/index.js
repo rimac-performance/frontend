@@ -3,6 +3,7 @@ import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import AutomobileInfo from "../../components/atoms/automobile-info/automobile-info"
 import {PrimaryButton} from "../../components/atoms/buttons"
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CarsScreen = ({user_id, token}) => {
   //const [cars, setCars] = useState({});
@@ -22,6 +23,8 @@ const CarsScreen = ({user_id, token}) => {
       "color": "blue"
     }
   ]);
+
+  const navigate = useNavigate();
 
   const carsList = cars.map((car) => <AutomobileInfo key={car.car_id} model={car.model} vin={car.vin} />)
 
@@ -47,7 +50,7 @@ const CarsScreen = ({user_id, token}) => {
       <div className="list__cars">
         {carsList}
       </div>
-      <PrimaryButton text={"New Car"} onClick={() => console.log("adding car!")} />
+      <PrimaryButton text={"New Car"} onClick={() => navigate({pathname: "/carsRegister/"+user_id+"&"+token})} />
     </div>
   );
 };

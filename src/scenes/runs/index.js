@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, Redirect, Route } from "react-router-dom";
 import RunsListScreen from "./runsList";
 
-const RunsScreen = ({user_id, token}) => {
+const RunsScreen = ({user_id/*, token*/}) => {
+  let token = "TOKEN"
+
   //const [cars, setCars] = useState({});
   const [cars, setCars] = useState([
     {
@@ -27,11 +29,10 @@ const RunsScreen = ({user_id, token}) => {
 
   const navigate = useNavigate();
 
-  const carsList = cars.map((car) => <AutomobileInfo onClick={() => /*makeSelection({car})*/navigate({pathname: '/runsList:car:token'})} key={car.car_id} model={car.model} vin={car.vin} />)
+  const carsList = cars.map((car) => <AutomobileInfo onClick={() => /*makeSelection({car})*/navigate({pathname: "/runsList/"+car+"&"+token})} key={car.car_id} model={car.model} vin={car.vin} />)
 
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
 
-  
   useEffect(() => {
     const reqUrl = apiUrl + "?" + user_id;
     /* fetch(reqUrl, 

@@ -38,7 +38,7 @@ const RunsListScreen = () => {
   }, [])
 
     return ( 
-    <div className="screen__runs">
+    <div className="screen__runs__list">
         <BackArrow />
         <div className="header__runs">
           <img src={Logo} alt="logo" className="logo"/>
@@ -54,7 +54,7 @@ const RunsListScreen = () => {
         <div className="list__runs">
           {runsList}
         </div>
-        <PrimaryButton text={"NEW RUN"} onClick={() => console.log("click!")} />
+        <PrimaryButton text={"NEW RUN"} onClick={() => navigate({pathname: '/runsUpload/'+params.car+'&'+params.token})} />
     </div>
      );
   };

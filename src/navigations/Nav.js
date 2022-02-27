@@ -19,7 +19,7 @@ const Nav = () => {
     let flag = false;
     for (let index = 0; index < paths.length; index++) {
       const path = paths[index];
-        location.pathname === path ? flag = true : flag = false;
+        location.pathname.includes(path) ? flag = true : flag = false;
         if (flag) return "active";
     }
     return "icon";
@@ -30,10 +30,10 @@ const Nav = () => {
       <Outlet />
       <div className="navigation__nav-bar">
         <Link to={"/cars"}>
-          <FontAwesomeIcon className={active(["/cars"])} icon={faCar} />
+          <FontAwesomeIcon className={active(["/cars", "/carsRegister"])} icon={faCar} />
         </Link>
         <Link to={"/runs"}>
-          <FontAwesomeIcon className={active(["/runs", "/runsList"])} icon={faChartBar} />
+          <FontAwesomeIcon className={active(["/runs", "/runsList", "/runsUpload"])} icon={faChartBar} />
         </Link>
         <Link to={"/community"}>
           <FontAwesomeIcon className={active(["/community"])} icon={faUsers} />

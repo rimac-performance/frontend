@@ -6,6 +6,12 @@
     height: 90%;
     overflow: scroll;
 }
+.screen__cars > .button__primary {
+    position: absolute;
+    bottom: 16px;
+    left: 0;
+    right: 0;
+}
 .header__cars {
     width: 50%;
     max-width: 250px;
@@ -25,4 +31,31 @@
 }
 .list__cars > div {
     margin-bottom: 5vh;
+}
+.register__cars {
+    width: 85%;
+    margin: auto;
+    max-width: 400px;
+}
+.register__cars > label {
+    display: block;
+    font-weight: bold;
+    font-size: larger;
+    margin: 1em 0 .5em 0;
+}
+.register__cars > input {
+    margin: 0;
+    padding-right: 0;
+    margin-left: -3px
+}
+.confirm__cars {
+    width: 80%;
+    margin: auto;
+    max-width: 400px;
+}
+.confirm__cars > p {
+    font-size: large;
+}
+.span__bold {
+    font-weight: bold;
 }

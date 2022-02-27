@@ -9,7 +9,7 @@ export const BackArrow = () => {
   return (
     <div className="arrow__back" onClick={() => navigate(-1)} >
       <FontAwesomeIcon icon={faCaretLeft} />
-      <label>Back</label>
+      <label onClick={() => navigate(-1)}>Back</label>
     </div>
   );
 };

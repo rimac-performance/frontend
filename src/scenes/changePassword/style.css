@@ -5,13 +5,13 @@
   margin-top: 20vh;
 }
 
-p {
+.container > p {
   font-size: 14px;
   color: gray;
   margin: 0 25px 8vh 25px;
 }
 
-h2 {
+.container > h2 {
   margin-bottom: 8vh;
 }
 

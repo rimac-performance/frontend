@@ -27,14 +27,14 @@ const CarsRegisterScreen = () => {
 
     const register = () => {
         console.log("adding car " + name + " with vin: " + vin);
-        navigate({pathname: "/carsConfirm/"+name+"&"+vin+"&"+params.token})
+        navigate({pathname: "../carsConfirm/"+name+"&"+vin+"&"+params.token})
     }
 
     return (
       <div className="screen__cars">
         <BackArrow />
         <div className="header__cars">
-          <img src={Logo} alt="logo" className="logo"/>
+          <img src={Logo} alt="logo"/>
           <p className="title__cars">Register</p>
         </div>
         <div className="register__cars">

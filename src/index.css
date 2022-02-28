@@ -6,12 +6,12 @@
 :root {
   --primary-color: #000;
   --header-color: rgba(0, 0, 0, 0.8);
-  --primary-bg-color: #FFF;
-  --secondary-active-color: #E9591C;
+  --primary-bg-color: #fff;
+  --secondary-active-color: #e9591c;
   --lg-button-color: rgba(196, 196, 196, 0.4);
-  --active-chip-color: #C4C4C4;
+  --active-chip-color: #c4c4c4;
   --chip-color: rgba(196, 196, 196, 0.2);
-  --share-bg-button: #F8F8F8;
+  --share-bg-button: #f8f8f8;
 }
 
 /*
@@ -55,6 +55,10 @@ h2 {
 
 p {
   font-size: 18px;
+}
+
+p.small {
+  font-size: 16px;
 }
 
 /*

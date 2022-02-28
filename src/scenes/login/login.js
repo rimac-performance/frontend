@@ -4,11 +4,14 @@ import { useState } from "react";
 import TextField from "../../components/atoms/text-fields/text-field";
 import { BackArrow } from "../../components/atoms/arrows";
 import "./style.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useNavigate, BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "../../navigations/Nav";
+import jwt_decode from "jwt-decode";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailInput = (e) => {
     const { value } = e.currentTarget;
@@ -35,20 +38,13 @@ const Login = () => {
         email: email.value,
         pswd: password.value,
       }),
-    }).then((value) => {
-      // console.log(value);
-      // let status = value.status;
-      // switch (status) {
-      //   case 200:
-      //     break;
-      //   case 400:
-      //     break;
-      //   case 404:
-      //     break;
-      //   default:
-      //   //pop up error message
-      // }
-    });
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        console.log(jwt_decode(response.token));
+        navigate({ pathname: "/home/" + response.token });
+      });
   }
 
   return (

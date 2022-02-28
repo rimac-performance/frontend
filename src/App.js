@@ -18,30 +18,40 @@ import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
 
-
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-        <Route path="/" element={<Landing />} />
-          <Route path="home" element={<Nav />}>
-            <Route path="cars" element={<CarsScreen />} />
-            <Route path="carsRegister/:id:token" element={<CarsRegisterScreen />} />
-            <Route path="carsConfirm/:name:vin:token" element={<CarsConfirmScreen />} />
-            <Route path="runs" element={<RunsScreen />} />
-            <Route path="runsList/:car:token" element={<RunsListScreen />} />
-            <Route path="runsUpload/:car:token" element={<RunsUploadScreen />} />
-            <Route path="community" element={<CommunityScreen />} />
-            <Route path="settings" element={<SettingsScreen />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="home/:token" element={<Nav />}>
+            <Route path="cars/:token" element={<CarsScreen />} />
+            <Route
+              path="carsRegister/:id:token"
+              element={<CarsRegisterScreen />}
+            />
+            <Route
+              path="carsConfirm/:name:vin:token"
+              element={<CarsConfirmScreen />}
+            />
+            <Route path="runs/:token" element={<RunsScreen />} />
+            <Route
+              path="runsList/:car_id/:token"
+              element={<RunsListScreen />}
+            />
+            <Route
+              path="runsUpload/:car:token"
+              element={<RunsUploadScreen />}
+            />
+            <Route path="community/:token" element={<CommunityScreen />} />
+            <Route path="settings/:token" element={<SettingsScreen />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="create" element={<CreateAccount />} />
-          <Route path="termOfService" element={<TermOfServices/>} />
-          <Route path="changePassword" element={<ChangePassword/>} />
-          <Route path="resetPassword" element={<ResetPassword/>} />
-          <Route path="errorPassword" element={<ErrorPassword/>} />
-
+          <Route path="termOfService" element={<TermOfServices />} />
+          <Route path="changePassword" element={<ChangePassword />} />
+          <Route path="resetPassword" element={<ResetPassword />} />
+          <Route path="errorPassword" element={<ErrorPassword />} />
         </Routes>
       </BrowserRouter>
     </div>

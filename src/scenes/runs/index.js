@@ -1,15 +1,16 @@
 import "./runs.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
-import AutomobileInfo from "../../components/atoms/automobile-info/automobile-info"
+import AutomobileInfo from "../../components/atoms/automobile-info/automobile-info";
 import { useState, useEffect } from "react";
-import { useNavigate, Redirect, Route } from "react-router-dom";
-import RunsListScreen from "./runsList";
+import { useNavigate, useParams } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
-const RunsScreen = ({user_id/*, token*/}) => {
-  let token = "TOKEN"
-
-  //const [cars, setCars] = useState({});
-  const [cars, setCars] = useState([
+const RunsScreen = () => {
+  let params = useParams();
+  const token = params.token;
+  const user = jwt_decode(token);
+  const [cars, setCars] = useState([]);
+  /*const [cars, setCars] = useState([
     {
       "car_id": "f6e94195-d71d-4301-b21f-6bbc613653fd",
       "vin": "1459359jd3",
@@ -24,25 +25,52 @@ const RunsScreen = ({user_id/*, token*/}) => {
       "year": 2019,
       "color": "blue"
     }
-  ]);
-  const [selection, makeSelection] = useState(null);
+  ]);*/
 
   const navigate = useNavigate();
 
-  const carsList = cars.map((car) => <AutomobileInfo onClick={() => /*makeSelection({car})*/navigate({pathname: "/runsList/"+car+"&"+token})} key={car.car_id} model={car.model} vin={car.vin} />)
+  const carsList = cars.map((car) => (
+    <AutomobileInfo
+      onClick={() =>
+        /*makeSelection({car})*/ navigate({
+          pathname: "../runsList/" + car.car_id + "/" + token,
+        })
+      }
+      key={car.car_id}
+      model={car.model}
+      vin={car.vin}
+    />
+  ));
 
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
 
   useEffect(() => {
-    const reqUrl = apiUrl + "?" + user_id;
-    /* fetch(reqUrl, 
-      {method: 'GET', headers: {'Authorization': 'Bearer ' + token}})
-      .then((response) => response.json())
+    const reqUrl = apiUrl + "?" + user.user_id;
+    const controller = new AbortController();
+
+    fetch(reqUrl, {
+      method: "GET",
+      headers: { Authorization: "Bearer " + token },
+      signal: controller.signal,
+    })
+      .then((response) => {
+        return response.json();
+      })
       .then((carList) => {
         console.log(carList);
-        //setCars(carList);
-      }) */
-  }, [])
+        setCars(carList);
+      })
+      .catch((err) => {
+        if (err.name === "AbortError") {
+          console.log("successfully aborted fetch");
+        } else {
+          //setError(err)
+        }
+      });
+    return () => {
+      controller.abort();
+    };
+  }, []);
 
   /*if (selection) {
     let runsListScreen = <RunsListScreen car={selection} token={token} />;
@@ -53,12 +81,10 @@ const RunsScreen = ({user_id/*, token*/}) => {
   return (
     <div className="screen__runs">
       <div className="header__runs">
-        <img src={Logo} alt="logo" className="logo"/>
+        <img src={Logo} alt="logo" />
         <p className="title__runs">Select a Car</p>
       </div>
-      <div className="list__runs__cars">
-        {carsList}
-      </div>
+      <div className="list__runs__cars">{carsList}</div>
     </div>
   );
 };

@@ -66,23 +66,23 @@ const CreateAccount = () => {
   return (
     <>
       <BackArrow></BackArrow>
-      <img src={Logo}></img>
+      <img className="logo__create__account" src={Logo}></img>
       <div>
         <form>
-          <label>First Name</label>
+          <label className="label__create__account">First Name</label>
           <TextField onChange={handleFirstNameInput}></TextField>
-          <label>Last Name</label>
+          <label className="label__create__account">Last Name</label>
           <TextField onChange={handleLastNameInput}></TextField>
-          <label>Email</label>
+          <label className="label__create__account">Email</label>
           <TextField onChange={handleEmailInput}></TextField>
-          <label>Phone</label>
+          <label className="label__create__account">Phone</label>
           <TextField onChange={handlePhoneInput}></TextField>
-          <label>Password</label>
+          <label className="label__create__account">Password</label>
           <TextField
             onChange={handlePasswordInput}
             type={"password"}
           ></TextField>
-          <label>Comfirm Password</label>
+          <label className="label__create__account">Confirm Password</label>
           <TextField
             onChange={handlePasswordInput}
             type={"password"}

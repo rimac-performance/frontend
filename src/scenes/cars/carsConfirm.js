@@ -24,14 +24,14 @@ const CarsConfirmScreen = () => {
 
     const addCar = () => {
         /* add car with api */
-        navigate({pathname: "/cars"});
+        navigate({pathname: "../cars"});
     }
 
     return (
         <div className="screen__cars">
         <BackArrow />
         <div className="header__cars">
-          <img src={Logo} alt="logo" className="logo"/>
+          <img src={Logo} alt="logo"/>
           <p className="title__cars">Register</p>
           <div className="img__model">
             <img src = "https://ichef.bbci.co.uk/news/976/cpsprodpb/156FE/production/_116860878_c_two1.jpg" alt = "car" />

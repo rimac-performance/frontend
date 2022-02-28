@@ -36,6 +36,10 @@
     width: 75%;
     margin: auto;
 }
+.img__model > img {
+    width: 100%;
+    height: 100%;
+}
 .label__runs {
     display: flex;
     width: 80%;

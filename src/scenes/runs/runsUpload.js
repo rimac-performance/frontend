@@ -16,7 +16,7 @@ const RunsUploadScreen = () => {
       <div className="screen__runs">
           <BackArrow />
         <div className="header__runs">
-          <img src={Logo} alt="logo" className="logo"/>
+          <img src={Logo} alt="logo"/>
           <p className="title__runs">New Run</p>
           <div className="img__model">
             <img src = "https://ichef.bbci.co.uk/news/976/cpsprodpb/156FE/production/_116860878_c_two1.jpg" alt = "car" />

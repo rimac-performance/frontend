@@ -82,7 +82,7 @@ const CreateAccount = () => {
             onChange={handlePasswordInput}
             type={"password"}
           ></TextField>
-          <label>Comfirm Password</label>
+          <label>Confirm Password</label>
           <TextField
             onChange={handlePasswordInput}
             type={"password"}

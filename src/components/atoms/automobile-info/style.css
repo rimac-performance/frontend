@@ -1,21 +1,29 @@
-.container{
-    display: flex;
-    padding: auto;
-    margin: 5px;
+.automobile__container{
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto 5px auto;
 }
 .image{
-    flex:1;
-    background-color: red;
-    width: auto;
+display: inline-block;
+    width: 45%;
     height: auto;
     margin: 5px;
-    justify-content: center;
+    justify-content:center;
+    vertical-align:top;
 }
 .infoName{
-    flex:1;
+    display: inline-block;
+    width: 45%;
     height: auto;
 }
-img{
+.infoName > h3 {
+    margin: 0 0 5px 0;
+}
+.infoName > p {
+    margin: 0;
+
+}
+.image > img{
     width: 100%;
     height: 100%;
 

@@ -1,10 +1,10 @@
-img {
+.logo__create__account {
   margin: 5px auto;
   text-align: center;
   display: block;
 }
 
-label {
+.label__create__account {
   font-weight: bold;
   display: block;
   margin: 15px;

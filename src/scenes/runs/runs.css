@@ -1,4 +1,4 @@
-.screen__cars {
+.screen__runs, .screen__runs__list {
     position: absolute;
     top: 0;
     left: 0;
@@ -6,56 +6,55 @@
     height: 90%;
     overflow: scroll;
 }
-.screen__cars > .button__primary {
+.screen__runs__list > .button__primary {
     position: absolute;
     bottom: 16px;
     left: 0;
     right: 0;
 }
-.header__cars {
+.header__runs {
     width: 50%;
     max-width: 250px;
     margin: 0 auto 16px auto
 }
-.title__cars {
+.title__runs {
     text-align: center;
     font-size: x-large;
     font-weight: bold;
     margin-top: 0;
     margin-bottom: 12px;
 }
-.list__cars {
+.list__runs__cars {
     margin: auto;
     height: 50vh;
     overflow: scroll;
 }
-.list__cars > div {
+.list__runs__cars > div {
     margin-bottom: 5vh;
 }
-.register__cars {
-    width: 85%;
+.img__model {
+    width: 75%;
     margin: auto;
-    max-width: 400px;
 }
-.register__cars > label {
-    display: block;
-    font-weight: bold;
-    font-size: larger;
-    margin: 1em 0 .5em 0;
+.img__model > img {
+    width: 100%;
+    height: 100%;
 }
-.register__cars > input {
-    margin: 0;
-    padding-right: 0;
-    margin-left: -3px
-}
-.confirm__cars {
+.label__runs {
+    display: flex;
     width: 80%;
     margin: auto;
     max-width: 400px;
 }
-.confirm__cars > p {
-    font-size: large;
+.label__runs > p {
+    flex: 1;
+    margin: 8px;
 }
-.span__bold {
-    font-weight: bold;
+.list__runs {
+    margin: auto;
+    height: 33vh;
+    overflow: scroll;
+}
+.upload__runs {
+    padding-top: 16px;
 }

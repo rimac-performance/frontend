@@ -49,7 +49,7 @@ const Login = () => {
 
   return (
     <>
-      <BackArrow></BackArrow>
+      <BackArrow to={"/"}></BackArrow>
       <div className="logo">
         <img src={Logo}></img>
       </div>

@@ -65,7 +65,7 @@ const CreateAccount = () => {
 
   return (
     <>
-      <BackArrow></BackArrow>
+      <BackArrow to={"/"}></BackArrow>
       <img className="logo__create__account" src={Logo}></img>
       <div>
         <form>

@@ -4,7 +4,7 @@ import Logo from "../../assets/image/Logo.png";
 const TermOfServices = () => {
   return (
     <>
-      <BackArrow></BackArrow>
+      <BackArrow to={"/"}></BackArrow>
       <img src={Logo}></img>
       <p>text</p>
     </>

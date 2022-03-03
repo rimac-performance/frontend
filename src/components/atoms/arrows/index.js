@@ -3,13 +3,20 @@ import { faCaretLeft, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "./arrows.css";
 
-export const BackArrow = () => {
-  const navigate = useNavigate()
+export const BackArrow = ({ to }) => {
+  const navigate = useNavigate();
 
   return (
-    <div className="arrow__back" onClick={() => navigate(-1)} >
+    <div className="arrow__back" onClick={() => navigate(-1)}>
       <FontAwesomeIcon icon={faCaretLeft} />
-      <label onClick={() => navigate(-1)}>Back</label>
+      <label
+        onClick={() => {
+          console.log(to);
+          navigate({ pathname: to }, { replace: true });
+        }}
+      >
+        Back
+      </label>
     </div>
   );
 };

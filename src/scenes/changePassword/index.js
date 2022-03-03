@@ -40,7 +40,7 @@ const ChangePassword = () => {
 
   return (
     <>
-      <BackArrow></BackArrow>
+      <BackArrow to={"/"}></BackArrow>
       <div className="container">
         <h2>Forgot Your Password?</h2>
         <p>

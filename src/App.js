@@ -27,11 +27,11 @@ function App() {
           <Route path="home/:token" element={<Nav />}>
             <Route path="cars/:token" element={<CarsScreen />} />
             <Route
-              path="carsRegister/:id:token"
+              path="carsRegister/:token"
               element={<CarsRegisterScreen />}
             />
             <Route
-              path="carsConfirm/:name:vin:token"
+              path="carsConfirm/:vin/:model/:year/:color/:token"
               element={<CarsConfirmScreen />}
             />
             <Route path="runs/:token" element={<RunsScreen />} />
@@ -40,7 +40,7 @@ function App() {
               element={<RunsListScreen />}
             />
             <Route
-              path="runsUpload/:car:token"
+              path="runsUpload/:car_id/:token"
               element={<RunsUploadScreen />}
             />
             <Route path="community/:token" element={<CommunityScreen />} />

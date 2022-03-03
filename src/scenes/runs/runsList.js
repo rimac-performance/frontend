@@ -71,7 +71,7 @@ const RunsListScreen = () => {
 
   return (
     <div className="screen__runs__list">
-      <BackArrow />
+      <BackArrow to={"../runs/" + token} />
       <div className="header__runs">
         <img src={Logo} alt="logo" />
         <p className="title__runs">Car Name</p>

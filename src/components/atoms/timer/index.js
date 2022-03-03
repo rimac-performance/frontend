@@ -2,23 +2,22 @@ import React, { useState } from "react";
 import "./style.css";
 import { Slider } from "@mui/material";
 
-const Timer = () => {
-  let timedRun = 20.01;
-
-  const [value, setValue] = useState([0, timedRun]);
+const Timer = ({ min, max, onChange }) => {
+  const [value, setValue] = useState([min, max]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    onChange(newValue);
   };
 
   const marks = [
     {
-      value: 0,
-      label: "0.00 s",
+      value: min,
+      label: `${min} m`,
     },
     {
-      value: timedRun,
-      label: timedRun + " s",
+      value: max,
+      label: `${max} m`,
     },
   ];
 
@@ -28,9 +27,9 @@ const Timer = () => {
       <Slider
         getAriaLabel={() => "Time range"}
         value={value}
-        track={true}
-        min={0}
-        max={timedRun}
+        track
+        min={min}
+        max={max}
         step={0.01}
         onChange={handleChange}
         valueLabelDisplay="auto"

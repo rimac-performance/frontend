@@ -5,7 +5,7 @@ import { BackArrow } from "../../components/atoms/arrows";
 import Timer from "../../components/atoms/timer";
 import RevLogo from "../../assets/logo/revPerformanceLogo.svg";
 import "./analysis.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CoolantInOut from "../../components/charts/coolantInOut";
 import LeftHPITempIGBT1 from "../../components/charts/leftHpiTempIgbt1";
 import LeftHPITempIGBT2 from "../../components/charts/leftHpiTempIgbt2";
@@ -27,8 +27,16 @@ import PDUHVBatterySOC from "../../components/charts/pduHvBatterySoc";
 import PDUHVBatteryVoltageCurrent from "../../components/charts/pduHvBatteryVoltageCurrent";
 import PDUHVBatteryVoltage from "../../components/charts/pduHvBatteryVoltage";
 import Odometer from "../../components/charts/odometer";
+import { useAnalysisData } from "../../services/apiService";
 
 const AnalysisScreen = () => {
+  const [range, setRange] = useState([0, 20]);
+  const [data, loading] = useAnalysisData();
+
+  const handleTimerChange = (newValue) => {
+    setRange(newValue);
+  };
+
   return (
     <div className={"container"}>
       <BackArrow />
@@ -39,12 +47,17 @@ const AnalysisScreen = () => {
       <div className="header">
         <h1>ANALYSIS</h1>
       </div>
-      <div>
-        <div className="timer">
-          <Timer />
-        </div>
-        {/*GRAPHS OF SENSOR DATA*/}
-        <AmbientTemp />
+      {!loading && (
+        <div>
+          <div className="timer">
+            <Timer
+              min={parseInt(data[0].time.slice(11, 13))}
+              max={parseInt(data[data.length - 1].time.slice(11, 13)) + 1}
+              onChange={handleTimerChange}
+            />
+          </div>
+          {/*GRAPHS OF SENSOR DATA*/}
+          {/*        <AmbientTemp />
         <InteriorTemp />
         <CoolantInOut />
         <LeftHPITempIGBT1 />
@@ -62,11 +75,12 @@ const AnalysisScreen = () => {
         <PDUHVBatteryVoltageCurrent />
         <PDUHVBatteryVoltage />
         <PCUAcceleratorPedal />
-        <Odometer />
-        <VehicleSpeed />
-        <VCUVehicleST />
-        <div style={{ marginBottom: 200 }} />
-      </div>
+        <Odometer />*/}
+          <VehicleSpeed range={range} data={data} />
+          <VCUVehicleST />
+          <div style={{ marginBottom: 200 }} />
+        </div>
+      )}
     </div>
   );
 };

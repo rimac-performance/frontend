@@ -1,27 +1,27 @@
 .navigation {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: flex-end;
+  height: 100vh;
 }
 
 .navigation__nav-bar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background-color: black;
-  padding: 30px 10px;
-  justify-content: space-evenly;
-  justify-items: center;
-  align-content: space-evenly;
-  align-items: center;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  display: flex;
+}
+
+.link {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .icon {
   color: white;
   font-size: 24px;
+  margin: 24px;
 }
 
 .active {
   color: #e9591c;
-  font-size: 24px;
 }

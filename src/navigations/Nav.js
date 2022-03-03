@@ -16,24 +16,33 @@ const Nav = () => {
   // console.log(location.pathname)
 
   function active(path) {
-    return location.pathname === path ? "active" : "icon";
+    return location.pathname === path ? "active" : undefined;
   }
 
   return (
     <div className="navigation">
       <Outlet />
       <div className="navigation__nav-bar">
-        <Link to={"/cars"}>
-          <FontAwesomeIcon className={active("/cars")} icon={faCar} />
+        <Link to={"/cars"} className={"link"}>
+          <FontAwesomeIcon className={`icon ${active("/cars")}`} icon={faCar} />
         </Link>
-        <Link to={"/analysis"}>
-          <FontAwesomeIcon className={active("/analysis")} icon={faChartBar} />
+        <Link to={"/analysis"} className={"link"}>
+          <FontAwesomeIcon
+            className={`icon ${active("/analysis")}`}
+            icon={faChartBar}
+          />
         </Link>
-        <Link to={"/community"}>
-          <FontAwesomeIcon className={active("/community")} icon={faUsers} />
+        <Link to={"/community"} className={"link"}>
+          <FontAwesomeIcon
+            className={`icon ${active("/community")}`}
+            icon={faUsers}
+          />
         </Link>
-        <Link to={"/settings"}>
-          <FontAwesomeIcon className={active("/settings")} icon={faGear} />
+        <Link to={"/settings"} className={"link"}>
+          <FontAwesomeIcon
+            className={`icon ${active("/settings")}`}
+            icon={faGear}
+          />
         </Link>
       </div>
       {/*<div onClick={() => navigate('/')}>noice</div>*/}

@@ -1,0 +1,54 @@
+.container {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.imageContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-top: 1.5em;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border-bottom: solid 3px var(--secondary-active-color);
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer {
+    width: 100%;
+}
+
+.heading2 {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin: 10px 50px;
+}
+
+.heading2center {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin: 10px 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.temp {
+    padding-top: 10px;
+    padding-left: 10px;
+    margin: 10px 50px;
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+}
+

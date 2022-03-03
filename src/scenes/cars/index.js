@@ -72,9 +72,7 @@ const CarsScreen = () => {
       <div className="list__cars">{carsList}</div>
       <PrimaryButton
         text={"New Car"}
-        onClick={() =>
-          navigate({ pathname: "../carsRegister/" + +"&" + token })
-        }
+        onClick={() => navigate({ pathname: "../carsRegister/" + token })}
       />
     </div>
   );

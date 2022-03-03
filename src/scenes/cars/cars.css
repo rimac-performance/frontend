@@ -1,61 +1,57 @@
 .screen__cars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 90%;
-    overflow: scroll;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90%;
+  overflow: scroll;
 }
 .screen__cars > .button__primary {
-    position: absolute;
-    bottom: 16px;
-    left: 0;
-    right: 0;
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
 }
 .header__cars {
-    width: 50%;
-    max-width: 250px;
-    margin: 0 auto 16px auto
+  width: 50%;
+  max-width: 250px;
+  margin: 0 auto 16px auto;
 }
 .title__cars {
-    text-align: center;
-    font-size: x-large;
-    font-weight: bold;
-    margin-top: 0;
-    margin-bottom: 12px;
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 .list__cars {
-    margin: auto;
-    height: 50vh;
-    overflow: scroll;
-}
-.list__cars > div {
-    margin-bottom: 5vh;
+  margin: auto;
+  height: 50vh;
+  overflow: scroll;
 }
 .register__cars {
-    width: 85%;
-    margin: auto;
-    max-width: 400px;
+  width: 85%;
+  margin: auto;
+  max-width: 400px;
 }
 .register__cars > label {
-    display: block;
-    font-weight: bold;
-    font-size: larger;
-    margin: 1em 0 .5em 0;
+  display: block;
+  font-weight: bold;
+  font-size: larger;
+  margin: 0.75em 0 0.5em 0;
 }
 .register__cars > input {
-    margin: 0;
-    padding-right: 0;
-    margin-left: -3px
+  margin: 0;
+  padding-right: 0;
 }
 .confirm__cars {
-    width: 80%;
-    margin: auto;
-    max-width: 400px;
+  width: 80%;
+  margin: auto;
+  max-width: 400px;
 }
 .confirm__cars > p {
-    font-size: large;
+  font-size: large;
 }
 .span__bold {
-    font-weight: bold;
+  font-weight: bold;
 }

@@ -40,7 +40,7 @@ function App() {
               element={<RunsListScreen />}
             />
             <Route
-              path="runsUpload/:car:token"
+              path="runsUpload/:car_id/:token"
               element={<RunsUploadScreen />}
             />
             <Route path="community/:token" element={<CommunityScreen />} />

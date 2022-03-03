@@ -31,11 +31,12 @@ const RunsScreen = () => {
 
   const carsList = cars.map((car) => (
     <AutomobileInfo
-      onClick={() =>
+      onClick={() => {
+        console.log("selecting car:" + car.car_id);
         /*makeSelection({car})*/ navigate({
           pathname: "../runsList/" + car.car_id + "/" + token,
-        })
-      }
+        });
+      }}
       key={car.car_id}
       model={car.model}
       vin={car.vin}

@@ -7,6 +7,7 @@ import { BackArrow } from "../../components/atoms/arrows";
 
 const CarsConfirmScreen = () => {
   let params = useParams();
+  console.log(params);
   const token = params.token;
   const navigate = useNavigate();
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
@@ -44,9 +45,12 @@ const CarsConfirmScreen = () => {
       })
       .then((car) => {
         console.log("car added");
-        navigate({
-          pathname: "../cars/" + token,
-        });
+        navigate(
+          {
+            pathname: "../cars/" + token,
+          },
+          { replace: true }
+        );
       })
       .catch((err) => {
         if (err.name === "AbortError") {
@@ -62,7 +66,7 @@ const CarsConfirmScreen = () => {
 
   return (
     <div className="screen__cars">
-      <BackArrow />
+      <BackArrow to={"../carsRegister/" + token} />
       <div className="header__cars">
         <img src={Logo} alt="logo" />
         <p className="title__cars">Register</p>

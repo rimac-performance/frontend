@@ -8,6 +8,7 @@ import { BackArrow } from "../../components/atoms/arrows";
 
 const CarsRegisterScreen = () => {
   let params = useParams();
+  console.log(params);
   const token = params.token;
   const navigate = useNavigate();
 
@@ -45,9 +46,9 @@ const CarsRegisterScreen = () => {
     navigate({
       pathname:
         "../carsConfirm/" +
-        model.value +
-        "/" +
         vin.value +
+        "/" +
+        model.value +
         "/" +
         year.value +
         "/" +
@@ -59,7 +60,7 @@ const CarsRegisterScreen = () => {
 
   return (
     <div className="screen__cars">
-      <BackArrow />
+      <BackArrow to={"../cars/" + token} />
       <div className="header__cars">
         <img src={Logo} alt="logo" />
         <p className="title__cars">Register</p>

@@ -30,7 +30,16 @@ const CarsScreen = () => {
   ]);*/
 
   const carsList = cars.map((car) => (
-    <AutomobileInfo key={car.car_id} model={car.model} vin={car.vin} />
+    <AutomobileInfo
+      onClick={() => {
+        navigate({
+          pathname: `../carsDetails/${car.vin}/${car.model}/${car.year}/${car.color}`,
+        });
+      }}
+      key={car.car_id}
+      model={car.model}
+      vin={car.vin}
+    />
   ));
 
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";

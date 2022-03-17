@@ -4,6 +4,7 @@ import HomeScreen from "./scenes/home";
 import Nav from "./navigations/Nav";
 import CarsScreen from "./scenes/cars";
 import CarsRegisterScreen from "./scenes/cars/carsRegister";
+import CarsDetailsScreen from "./scenes/cars/carsDetails";
 import CarsConfirmScreen from "./scenes/cars/carsConfirm";
 import RunsScreen from "./scenes/runs";
 import RunsListScreen from "./scenes/runs/runsList";
@@ -29,6 +30,10 @@ function App() {
             <Route
               path="carsRegister/:token"
               element={<CarsRegisterScreen />}
+            />
+            <Route
+              path="carsDetails/:vin/:model/:year/:color"
+              element={<CarsDetailsScreen />}
             />
             <Route
               path="carsConfirm/:vin/:model/:year/:color/:token"

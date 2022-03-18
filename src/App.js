@@ -17,44 +17,46 @@ import TermOfServices from "./scenes/termOfService";
 import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
+import AdminAnalysis from "./scenes/analysis/adminAnalysis";
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="home/:token" element={<Nav />}>
-            <Route path="cars/:token" element={<CarsScreen />} />
-            <Route
-              path="carsRegister/:token"
-              element={<CarsRegisterScreen />}
-            />
-            <Route
-              path="carsConfirm/:vin/:model/:year/:color/:token"
-              element={<CarsConfirmScreen />}
-            />
-            <Route path="runs/:token" element={<RunsScreen />} />
-            <Route
-              path="runsList/:car_id/:token"
-              element={<RunsListScreen />}
-            />
-            <Route
-              path="runsUpload/:car_id/:token"
-              element={<RunsUploadScreen />}
-            />
-            <Route path="community/:token" element={<CommunityScreen />} />
-            <Route path="settings/:token" element={<SettingsScreen />} />
-          </Route>
-          <Route path="login" element={<Login />} />
-          <Route path="create" element={<CreateAccount />} />
-          <Route path="termOfService" element={<TermOfServices />} />
-          <Route path="changePassword" element={<ChangePassword />} />
-          <Route path="resetPassword" element={<ResetPassword />} />
-          <Route path="errorPassword" element={<ErrorPassword />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    // <div className="App">
+    //   <BrowserRouter>
+    //     <Routes>
+    //       <Route path="/" element={<Landing />} />
+    //       <Route path="home/:token" element={<Nav />}>
+    //         <Route path="cars/:token" element={<CarsScreen />} />
+    //         <Route
+    //           path="carsRegister/:token"
+    //           element={<CarsRegisterScreen />}
+    //         />
+    //         <Route
+    //           path="carsConfirm/:vin/:model/:year/:color/:token"
+    //           element={<CarsConfirmScreen />}
+    //         />
+    //         <Route path="runs/:token" element={<RunsScreen />} />
+    //         <Route
+    //           path="runsList/:car_id/:token"
+    //           element={<RunsListScreen />}
+    //         />
+    //         <Route
+    //           path="runsUpload/:car_id/:token"
+    //           element={<RunsUploadScreen />}
+    //         />
+    //         <Route path="community/:token" element={<CommunityScreen />} />
+    //         <Route path="settings/:token" element={<SettingsScreen />} />
+    //       </Route>
+    //       <Route path="login" element={<Login />} />
+    //       <Route path="create" element={<CreateAccount />} />
+    //       <Route path="termOfService" element={<TermOfServices />} />
+    //       <Route path="changePassword" element={<ChangePassword />} />
+    //       <Route path="resetPassword" element={<ResetPassword />} />
+    //       <Route path="errorPassword" element={<ErrorPassword />} />
+    //     </Routes>
+    //   </BrowserRouter>
+    // </div>
+    <AdminAnalysis></AdminAnalysis>
   );
 }
 

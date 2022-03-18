@@ -9,22 +9,3 @@
   display: block;
   margin: 15px;
 }
-
-.textField {
-  font-size: 16px;
-  font-weight: 400;
-  height: 4vh;
-  border: 1px solid #ccc;
-  margin: 10px auto;
-  width: 90vw;
-  display: block;
-}
-.errorTextField {
-  border: 1px solid red;
-  font-size: 16px;
-  font-weight: 400;
-  height: 4vh;
-  border-width: 2px;
-  margin: 5px;
-  width: 90vw;
-}

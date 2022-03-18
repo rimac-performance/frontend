@@ -52,8 +52,11 @@ const Nav = () => {
         <Link to={"./community/" + token}>
           <FontAwesomeIcon className={active(["/community"])} icon={faUsers} />
         </Link>
-        <Link to={"./settings/" + token}>
-          <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
+        <Link to={"./settings/"}>
+          <FontAwesomeIcon
+            className={active(["/settings", "/contactDealer"])}
+            icon={faGear}
+          />
         </Link>
       </div>
       {/*<div onClick={() => navigate('/')}>noice</div>*/}

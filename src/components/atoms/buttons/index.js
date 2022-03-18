@@ -1,5 +1,4 @@
 import "./buttons.css";
-
 export const PrimaryButton = ({ text, onClick }) => {
   return (
     <div className="button__primary" onClick={onClick}>

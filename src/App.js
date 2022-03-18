@@ -17,11 +17,17 @@ import TermOfServices from "./scenes/termOfService";
 import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
+import ContactDealer from "./scenes/settings/contactDealer";
+import ContactDeveloper from "./scenes/settings/contactDeveloper";
+import Review from "./scenes/settings/review";
+import LogOut from "./scenes/settings/logout";
+import AdminAnalysis from "./scenes/analysis/adminAnalysis";
+import EngAnalysis from "./scenes/analysis/engAnalysis";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="home/:token" element={<Nav />}>
@@ -44,7 +50,11 @@ function App() {
               element={<RunsUploadScreen />}
             />
             <Route path="community/:token" element={<CommunityScreen />} />
-            <Route path="settings/:token" element={<SettingsScreen />} />
+            <Route path="settings/" element={<SettingsScreen />} />
+            <Route path="contactDealer/" element={<ContactDealer />} />
+            <Route path="contactDeveloper/" element={<ContactDeveloper />} />
+            <Route path="review/" element={<Review />} />
+            <Route path="logOut/" element={<LogOut />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="create" element={<CreateAccount />} />
@@ -53,7 +63,9 @@ function App() {
           <Route path="resetPassword" element={<ResetPassword />} />
           <Route path="errorPassword" element={<ErrorPassword />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
+      <AdminAnalysis></AdminAnalysis>
+      {/* <EngAnalysis></EngAnalysis> */}
     </div>
   );
 }

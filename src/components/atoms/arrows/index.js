@@ -4,10 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./arrows.css";
 
 export const BackArrow = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <div className="arrow__back" onClick={() => navigate(-1)} >
+    <div className="arrow__back" onClick={() => navigate(-1)}>
       <FontAwesomeIcon icon={faCaretLeft} />
       <label onClick={() => navigate(-1)}>Back</label>
     </div>

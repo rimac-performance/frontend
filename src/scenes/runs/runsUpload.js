@@ -1,13 +1,14 @@
 import "./runs.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { PrimaryButton, SecondaryButton } from "../../components/atoms/buttons";
+import { SecondaryButton } from "../../components/atoms/buttons";
 import { BackArrow } from "../../components/atoms/arrows";
 import TextField from "../../components/atoms/text-fields/text-field";
 
 const RunsUploadScreen = () => {
   let params = useParams();
+  let navigate = useNavigate();
   const token = params.token;
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/run";
 
@@ -17,34 +18,37 @@ const RunsUploadScreen = () => {
 
   const handleName = (e) => {
     let { value } = e.currentTarget;
-    setName({ value });
+    setName(value);
   };
 
   const fileSelectHandler = (e) => {
-    setFile(e.target.files[0]);
-    setIsSelected(true);
+    if (e.target.files[0] != null) {
+      console.log(e.target.files[0]);
+      setFile(e.target.files[0]);
+      setIsSelected(true);
+    }
   };
 
   const sendFile = () => {
-    if (isSelected && name != "") {
+    console.log(file.name + " of type " + file.type);
+    if (isSelected && name !== "") {
       console.log(`Sending ${file.name}`);
       const formData = new FormData();
-      formData.append("File", file);
-      console.log("POST arguments:");
-      console.log(formData);
+      formData.append("run", file);
+      formData.append("name", name);
+      formData.append("car_id", params.car_id);
 
       fetch(apiUrl, {
         method: "POST",
         headers: { Authorization: "Bearer " + token },
-        body: JSON.stringify({
-          run: formData,
-          name: name,
-          car_id: params.car_id,
-        }),
+        body: formData,
       })
         .then((response) => response.json())
         .then((result) => {
           console.log("Success:", result);
+          navigate({
+            pathname: "../runsList/" + params.car_id + "/" + params.token,
+          });
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -77,9 +81,14 @@ const RunsUploadScreen = () => {
         </div>
       )}
       <div className="upload__runs">
-        <input type="file" id="run__uploader" onChange={fileSelectHandler} />
+        <input
+          type="file"
+          id="run__uploader"
+          onChange={fileSelectHandler}
+          accept=".csv"
+        />
         <label
-          for="run__uploader"
+          htmlFor="run__uploader"
           style={{ display: "block" }}
           className="button__primary"
         >

@@ -64,7 +64,8 @@
 .upload__info > p {
   margin: 0.5em;
 }
-.upload__submission > .button__secondary {
+.upload__submission > .button__secondary,
+.hidden__edit > .button__primary {
   position: absolute;
   bottom: 16px;
   left: 0;

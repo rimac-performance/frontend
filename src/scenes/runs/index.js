@@ -4,28 +4,15 @@ import AutomobileInfo from "../../components/atoms/automobile-info/automobile-in
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import { PrimaryButton } from "../../components/atoms/buttons";
 
 const RunsScreen = () => {
   let params = useParams();
   const token = params.token;
   const user = jwt_decode(token);
   const [cars, setCars] = useState([]);
-  /*const [cars, setCars] = useState([
-    {
-      "car_id": "f6e94195-d71d-4301-b21f-6bbc613653fd",
-      "vin": "1459359jd3",
-      "model": "model",
-      "year": 2019,
-      "color": "blue"
-    },
-    {
-      "car_id": "f6e94195-4301-d71d-b21f-6bbc613653fd",
-      "vin": "1459359jd3",
-      "model": "model",
-      "year": 2019,
-      "color": "blue"
-    }
-  ]);*/
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isEngineer, setIsEngineer] = useState(false);
 
   const navigate = useNavigate();
 
@@ -48,6 +35,12 @@ const RunsScreen = () => {
   useEffect(() => {
     const reqUrl = apiUrl + "?" + user.user_id;
     const controller = new AbortController();
+
+    if (user.user_role === 3) {
+      setIsAdmin(true);
+    } else if (user.user_role === 2) {
+      setIsEngineer(true);
+    }
 
     fetch(reqUrl, {
       method: "GET",
@@ -86,6 +79,26 @@ const RunsScreen = () => {
         <p className="title__runs">Select a Car</p>
       </div>
       <div className="list__runs__cars">{carsList}</div>
+      {isAdmin ? (
+        <div className="hidden__edit">
+          <PrimaryButton
+            text={"Edit Sensors"}
+            onClick={() => navigate({ pathname: `../adminAnalysis/` })}
+          />
+        </div>
+      ) : (
+        <div />
+      )}
+      {isEngineer ? (
+        <div className="hidden__edit">
+          <PrimaryButton
+            text={"Edit Thresholds"}
+            onClick={() => navigate({ pathname: `../engineerAnalysis/` })}
+          />
+        </div>
+      ) : (
+        <div />
+      )}
     </div>
   );
 };

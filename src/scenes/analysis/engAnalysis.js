@@ -1,4 +1,4 @@
-import TextField from "../../components/atoms/text-fields/text-field";
+import SensorInfo from "../../components/atoms/sensors-info/sensor-view";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import { SecondaryButton } from "../../components/atoms/buttons";
 import "./style.css";
@@ -6,27 +6,27 @@ import { useState } from "react";
 
 const EngAnalysis = () => {
   const [state, setState] = useState({
-    time: false,
-    speed: false,
-    acceleration: false,
-    milage: false,
-    direction: false,
-    battery: false,
-    voltage: false,
-    consumption: false,
-    energy: false,
-    power: false,
-    coolant: false,
-    interior: false,
-    exterior: false,
-    Lrear: false,
-    Rrear: false,
-    Lmoter: false,
-    Rmotor: false,
-    unit: false,
-    power_available: false,
+    time: "",
+    speed: "",
+    acceleration: "",
+    milage: "",
+    direction: "",
+    battery: "",
+    voltage: "",
+    consumption: "",
+    energy: "",
+    power: "",
+    coolant: "",
+    interior: "",
+    exterior: "",
+    Lrear: "",
+    Rrear: "",
+    Lmoter: "",
+    Rmotor: "",
+    unit: "",
+    power_available: "",
   });
-  const checkBoxOnchange = (e) => {
+  const checkTextOnchange = (e) => {
     var temp = { ...state };
     temp[e.currentTarget.name] = !temp[e.currentTarget.name];
     setState(temp);
@@ -41,101 +41,141 @@ const EngAnalysis = () => {
           <img src={Logo} alt="logo" />
           <p className="title__community">Edit Sensors</p>
         </div>
-        <TextField
+        <p className="caption">
+          "This page allows engineers to set the tolerance levels for different
+          sensors. These thresholds will appear in analyses for all users."
+        </p>
+        <SensorInfo
           name={"time"}
           text={"Time"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"10s"}
+        ></SensorInfo>
+        <SensorInfo
           name={"speed"}
           text={"Speed"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"km/h"}
+        ></SensorInfo>
+        <SensorInfo
           name={"acceleration"}
           text={"Acceleration"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"km/h"}
+        ></SensorInfo>
+        <SensorInfo
           name={"milage"}
           text={"Milage"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
-          name={"direction"}
+          onChange={checkTextOnchange}
+          unit={"km"}
+        ></SensorInfo>
+        <SensorInfo
+          name={"direction_latitude"}
           text={"Direction"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Latitude"}
+        ></SensorInfo>
+        <SensorInfo
+          name={"direction_longitude"}
+          onChange={checkTextOnchange}
+          unit={"Longitude"}
+        ></SensorInfo>
+        <SensorInfo
+          name={"battery"}
+          text={"Battery State of Health"}
+          onChange={checkTextOnchange}
+          unit={"Percentage"}
+        ></SensorInfo>
+        <SensorInfo
           name={"battery"}
           text={"Battery Current"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"amps"}
+        ></SensorInfo>
+        <SensorInfo
           name={"voltage"}
           text={"Battery Voltage"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"volts"}
+        ></SensorInfo>
+        <SensorInfo
           name={"consumption"}
           text={"Battery Consumption"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Percentage"}
+        ></SensorInfo>
+        <SensorInfo
           name={"energy"}
           text={"Battery Energy Available"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"kWh"}
+        ></SensorInfo>
+        <SensorInfo
           name={"power"}
           text={"Vehicle Output Power "}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"kW"}
+        ></SensorInfo>
+        <SensorInfo
           name={"coolant"}
           text={"Coolant Temperature"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
+        <SensorInfo
           name={"interior"}
           text={"Interior Temperature"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
+        <SensorInfo
           name={"exterior"}
           text={"Exterior Temperature"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
+        <SensorInfo
           name={"Lrear"}
           text={"Rear Left Motor"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
+        <SensorInfo
           name={"Rrear"}
           text={"Rear Right Motor"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
+        <SensorInfo
           name={"Lmoter"}
           text={"Left Motor Temperature"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
+        <SensorInfo
           name={"Rmotor"}
           text={"Right Motor Temperature "}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
+        <SensorInfo
           name={"unit"}
           text={"Power Control Unit"}
-          onChange={checkBoxOnchange}
-        ></TextField>
-        <TextField
+          onChange={checkTextOnchange}
+          unit={"Range"}
+        ></SensorInfo>
+        <SensorInfo
           name={"power_available"}
           text={"Power Control Unit Power Available"}
-          onChange={checkBoxOnchange}
-        ></TextField>
+          onChange={checkTextOnchange}
+          unit={"Range"}
+        ></SensorInfo>
+        <SensorInfo
+          name={"cell_temperature"}
+          text={"Cell Temperature"}
+          onChange={checkTextOnchange}
+          unit={"Celsius"}
+        ></SensorInfo>
         <SecondaryButton text={"Submit"} onClick={submit}></SecondaryButton>
       </div>
     </>

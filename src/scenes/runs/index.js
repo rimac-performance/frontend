@@ -83,7 +83,7 @@ const RunsScreen = () => {
         <div className="hidden__edit">
           <PrimaryButton
             text={"Edit Sensors"}
-            onClick={() => navigate({ pathname: `../adminAnalysis/` })}
+            onClick={() => navigate({ pathname: `../adminAnalysis/${token}` })}
           />
         </div>
       ) : (
@@ -93,7 +93,9 @@ const RunsScreen = () => {
         <div className="hidden__edit">
           <PrimaryButton
             text={"Edit Thresholds"}
-            onClick={() => navigate({ pathname: `../engineerAnalysis/` })}
+            onClick={() =>
+              navigate({ pathname: `../engineerAnalysis/${token}` })
+            }
           />
         </div>
       ) : (

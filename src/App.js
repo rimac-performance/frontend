@@ -9,6 +9,8 @@ import CarsConfirmScreen from "./scenes/cars/carsConfirm";
 import RunsScreen from "./scenes/runs";
 import RunsListScreen from "./scenes/runs/runsList";
 import RunsUploadScreen from "./scenes/runs/runsUpload";
+import AdminAnalysisScreen from "./scenes/analysis/adminAnalysis";
+import EngAnalysisScreen from "./scenes/analysis/engAnalysis";
 import CommunityScreen from "./scenes/community";
 import SettingsScreen from "./scenes/settings";
 import Landing from "./scenes/landing";
@@ -48,6 +50,11 @@ function App() {
               path="runsUpload/:car_id/:token"
               element={<RunsUploadScreen />}
             />
+            <Route
+              path="adminAnalysis/:token"
+              element={<AdminAnalysisScreen />}
+            />
+            <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
             <Route path="community/:token" element={<CommunityScreen />} />
             <Route path="settings/:token" element={<SettingsScreen />} />
           </Route>

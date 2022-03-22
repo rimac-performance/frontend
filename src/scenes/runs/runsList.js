@@ -29,7 +29,7 @@ const RunsListScreen = () => {
       onClick={
         () =>
           console.log(
-            "analyzing " + run.name
+            `/analysis/${run.run_id}/${token}`
           ) /*navigate({pathname: '/analysis'})*/
       }
       key={run.run_id}

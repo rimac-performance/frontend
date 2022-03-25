@@ -14,13 +14,3 @@
 .container > h2 {
   margin-bottom: 8vh;
 }
-
-.textField {
-  font-size: 16px;
-  font-weight: 400;
-  height: 40px;
-  margin: 10px auto;
-  width: 90vw;
-  display: block;
-  border-color: gray;
-}

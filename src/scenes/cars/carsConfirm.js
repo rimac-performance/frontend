@@ -88,7 +88,7 @@ const CarsConfirmScreen = () => {
           <span className="span__bold">YEAR :</span> {car.year}
         </p>
         <p>
-          <span className="span__bold">FROM :</span> Croatia{}
+          <span className="span__bold">COLOR :</span> {car.color}
         </p>
       </div>
       <PrimaryButton text="Confirm" onClick={addCar} />

@@ -48,7 +48,11 @@ const RunsScreen = () => {
       signal: controller.signal,
     })
       .then((response) => {
-        return response.json();
+        if (response.status == 200) {
+          return response.json();
+        } else {
+          return [];
+        }
       })
       .then((carList) => {
         console.log(carList);

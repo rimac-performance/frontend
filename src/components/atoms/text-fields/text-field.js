@@ -1,11 +1,11 @@
 import "./style.css"
 
-const TextField = (props) => {
+const TextField = ({ width, onChange, error, placeholder, type }) => {
 
 
     return (
 
-          <input style = {{width: props.width ? props.width: ""}} className = {props.error ? "errorTextField" : "textField"} type="Text" placeholder= {props.placeholder}/>
+        <input style={{ width: width ? width : "" }} className={error ? "errorTextField" : "textField"} type="Text" placeholder={placeholder} onChange={onChange} type={type} />
 
     )
 

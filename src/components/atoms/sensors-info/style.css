@@ -1,0 +1,35 @@
+.block {
+  width: 80vw;
+  margin: auto auto auto 2em;
+}
+.input-holder {
+  font-family: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-holder input {
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0.3rem;
+  border: 1px solid;
+  /* margin-left: 2.5em; */
+}
+
+.input-holder input:focus {
+  border-color: #409eff;
+  outline: none;
+  box-shadow: inset 1px 1px 1px #e0e0e080, 0 0 0 3px #409eff80;
+}
+
+.input-holder label {
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 0.3rem;
+}
+.block p {
+  font-weight: bolder;
+  margin-bottom: auto;
+  font-size: 20px;
+}

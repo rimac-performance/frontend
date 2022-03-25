@@ -53,6 +53,21 @@
   height: 33vh;
   overflow: scroll;
 }
-.upload__runs {
-  padding-top: 16px;
+#run__uploader {
+  display: none;
+}
+.upload__info {
+  width: 80%;
+  margin: 1.5em auto;
+  text-align: center;
+}
+.upload__info > p {
+  margin: 0.5em;
+}
+.upload__submission > .button__secondary,
+.hidden__edit > .button__primary {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
 }

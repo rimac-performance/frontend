@@ -4,7 +4,7 @@ import { SecondaryButton } from "../../components/atoms/buttons";
 import "./style.css";
 import { useState } from "react";
 
-const EngAnalysis = () => {
+const EngAnalysisScreen = () => {
   const [state, setState] = useState({
     time: "",
     speed: "",
@@ -182,4 +182,4 @@ const EngAnalysis = () => {
   );
 };
 
-export default EngAnalysis;
+export default EngAnalysisScreen;

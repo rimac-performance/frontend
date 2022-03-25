@@ -1,19 +1,18 @@
-.textField{
-    font-size: 16px;
-    font-weight: 400;
-    height: 52px;
-    border-width: 2px;
-    margin: 10px auto;
-    width: 90vw;
-    display:block;
-
+.textField {
+  font-size: 16px;
+  font-weight: 400;
+  border: 1px solid gray;
+  margin: 10px auto;
+  padding: 8px 0 8px 8px;
+  width: 90vw;
+  display: block;
 }
-.errorTextField{
-    border-color: red;
-    font-size: 16px;
-    font-weight: 400;
-    height: 52px;
-    border-width: 2px;
-    margin: 5px;
-    width: 90vw;
+.errorTextField {
+  border: 1px solid red;
+  font-size: 16px;
+  font-weight: 400;
+  margin: 10px auto;
+  padding: 8px 0 8px 8px;
+  width: 90vw;
+  display: block;
 }

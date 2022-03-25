@@ -1,6 +1,6 @@
 import "./checkboxes.css";
 
-export const CheckBox = ({ text, onChange, name }) => {
+export const CheckBox = ({ text, onChange, name, checked }) => {
   return (
     <div className="checkbox">
       <p>{text}</p>
@@ -12,6 +12,7 @@ export const CheckBox = ({ text, onChange, name }) => {
           value={text}
           className="checkbox__default"
           type="checkbox"
+          checked={checked ? true : false}
         />
         <div className="checkbox__spacer" />
       </label>

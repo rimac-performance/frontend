@@ -4,6 +4,7 @@ import { BackArrow, FilterArrow } from "../../components/atoms/arrows/";
 import { PrimaryButton, RunButton } from "../../components/atoms/buttons";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { decode } from "he";
 
 const RunsListScreen = () => {
   let params = useParams();
@@ -28,11 +29,11 @@ const RunsListScreen = () => {
       onClick={
         () =>
           console.log(
-            "analyzing " + run.name
+            `/analysis/${run.run_id}/${token}`
           ) /*navigate({pathname: '/analysis'})*/
       }
       key={run.run_id}
-      text={run.name}
+      text={decode(run.name)}
     />
   ));
 

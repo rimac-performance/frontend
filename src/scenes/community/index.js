@@ -29,7 +29,7 @@ const CommunityScreen = () => {
 
   const search = () => {
     console.log(run_id);
-    //navigate({ pathname: "../../analysis" });
+    //navigate({ pathname: "../analysis/:run_id" });
   };
 
   return (

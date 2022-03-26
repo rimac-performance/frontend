@@ -29,7 +29,7 @@
 .button__run {
   border-radius: 6px;
   width: 85%;
-  max-width: 400px;
+  max-width: 150px;
   margin: 16px auto;
   padding: 24px 0;
   text-align: center;
@@ -41,19 +41,29 @@
 
 .button__image {
   border-radius: 6px;
-  width: 40%;
-  max-width: 200px;
-  margin: 16px auto;
+  width: 180px;
+  height: 150px;
+  /* max-width: 150px; */
+  margin: 10px 5px auto;
   padding: 24px 0;
   text-align: center;
   font-weight: bold;
   font-size: 16px;
   color: black;
-  background-color: #c4c4c4;
+  background-color: #ffffff;
+  position: relative;
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid #777582;
 }
 
-.button__image > img {
-  display: block;
-  width: 50%;
-  margin: 0px auto 16px auto;
+.setting_icon h1 {
+  /* margin: 120px auto; */
+  font-size: 45px;
+  background: linear-gradient(#aa00ff, #00a3d7);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline;
 }

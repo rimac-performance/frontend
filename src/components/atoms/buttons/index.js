@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./buttons.css";
 
 export const PrimaryButton = ({ text, onClick }) => {
@@ -24,11 +25,16 @@ export const RunButton = ({ text, onClick }) => {
   );
 };
 
-export const ImageButton = ({ text, img, onClick }) => {
+export const ImageButton = ({ text, icon, onClick }) => {
   return (
     <div className="button__image" onClick={onClick}>
-      <img src={img} alt="" />
+      {/* <img src={img} alt="" /> */}
       <label>{text}</label>
+      <div className="setting_icon">
+        <h1>
+          <FontAwesomeIcon icon={icon} />
+        </h1>
+      </div>
     </div>
   );
 };

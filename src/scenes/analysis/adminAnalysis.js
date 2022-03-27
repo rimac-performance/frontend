@@ -67,8 +67,9 @@ const AdminAnalysisScreen = () => {
         currentState.forEach((sensor) => {
           let temp = [...state];
           if (backToFront[sensor.name]) {
+            // if status is 1, enable; 2 => disabled
             let enable;
-            sensor.status == 2 ? (enable = true) : (enable = false);
+            sensor.status == 1 ? (enable = true) : (enable = false);
             let frontName = backToFront[sensor.name];
             if (keys[frontName] || frontName == "speed") {
               temp[keys[frontName]].isEnabled = enable;
@@ -94,7 +95,7 @@ const AdminAnalysisScreen = () => {
     console.log(state);
     state.forEach((sensor) => {
       let status;
-      sensor.isEnabled ? (status = 2) : (status = 1);
+      sensor.isEnabled ? (status = 1) : (status = 2);
       let dbNames = frontToBack[sensor.name].names;
       dbNames.forEach((dbName) => {
         msgBody.sensors.push({

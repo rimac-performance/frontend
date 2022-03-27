@@ -20,6 +20,8 @@ import TermOfServices from "./scenes/termOfService";
 import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
+import AdminLogin from "./scenes/admin";
+import UserManagementScreen from "./scenes/admin/userManagement";
 
 function App() {
   return (
@@ -64,6 +66,11 @@ function App() {
           <Route path="changePassword" element={<ChangePassword />} />
           <Route path="resetPassword" element={<ResetPassword />} />
           <Route path="errorPassword" element={<ErrorPassword />} />
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route
+            path="/admin/userManagement"
+            element={<UserManagementScreen />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

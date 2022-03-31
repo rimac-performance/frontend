@@ -6,10 +6,11 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { backToFront, frontToBack } from "../../utils/sensors";
 import { BackArrow } from "../../components/atoms/arrows";
+import { getToken } from "../../utils/token";
 
 const AdminAnalysisScreen = () => {
   const params = useParams();
-  const token = params.token;
+  const token = getToken();
 
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/sensor/status";
 

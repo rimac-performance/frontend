@@ -53,7 +53,7 @@ const VehicleSpeed = ({ data, range }) => {
     labels: filteredData.map((item) => item.time.slice(11, 16)),
     datasets: [
       {
-        label: "MPH",
+        label: "km/h",
         data: data.map(
           (item) => item["mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed"]
         ),

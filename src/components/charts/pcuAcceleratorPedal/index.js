@@ -37,7 +37,7 @@ const data = {
   labels: ["0.00 s", "5.00 s", "10.00 s", "15.00 s", "20.00 s"],
   datasets: [
     {
-      label: "Temperature",
+      label: "km/h",
       data: [0, 7.5, 8, 13, 12.5],
       borderColor: "#E9591CFF",
       backgroundColor: "rgba(233,89,28,0.5)",

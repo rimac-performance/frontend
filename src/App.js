@@ -20,6 +20,7 @@ import TermOfServices from "./scenes/termOfService";
 import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
+import AnalysisScreen from "./scenes/analysis";
 
 function App() {
   return (
@@ -53,6 +54,10 @@ function App() {
             <Route
               path="adminAnalysis/:token"
               element={<AdminAnalysisScreen />}
+            />
+            <Route
+              path="analysis/:run_id/:token"
+              element={<AnalysisScreen />}
             />
             <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
             <Route path="community/:token" element={<CommunityScreen />} />

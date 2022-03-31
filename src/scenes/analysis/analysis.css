@@ -52,3 +52,9 @@ h1 {
     justify-content: center;
 }
 
+.checkbox-wrapper {
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+}
+

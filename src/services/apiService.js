@@ -32,27 +32,26 @@ export const exampleRequest = () => {
     .catch((error) => console.log("error", error));
 };
 
-export const useAnalysisData = () => {
+export const useAnalysisData = (run_id, token) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
 
   useEffect(() => {
     const myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYWRkMzA2ZjMtZDU5MS00MTkwLTlkODEtMjFkYThmNTY0NjgwIiwiZW1haWwiOiJnaHVja2luMEB5YWhvby5jby5qcCIsInBob25lIjoiODIzLTk0MS0xNzYxIiwiZmlyc3RfbmFtZSI6IkdhZWxhbiIsImxhc3RfbmFtZSI6Ikh1Y2tpbiIsInVzZXJfcm9sZSI6MSwiaWF0IjoxNjQ1ODUxNjc3fQ.cBYy80MwOx28met9IDnRxsqlohBOGRqfKW4FccgWEWU"
-    );
+    // myHeaders.append(
+    //   "Authorization",
+    //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmExZTkzOTUtNmFlNS00NzVlLTgzMTgtNjg5NzY4MGFkYjE3IiwiZW1haWwiOiJjZHd5ZXI1QGFtYXpvbi5jb20iLCJwaG9uZSI6IjEzMC05NzgtNDM1MyIsImZpcnN0X25hbWUiOiJDb3NldHRlIiwibGFzdF9uYW1lIjoiRHd5ZXIiLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTY0NzkwOTMwN30.A8C0pU3NZNi1J2u2wv0nfVcmaLMI_l-567Ll3UracQw"
+    // );
+    myHeaders.append("Authorization", `Bearer ${token}`);
     myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "Cookie",
-      "d7ea6c8721c1b3d7dd46a400ca594ba5=becfdcac6520f9b71d0a48d5e3fda138"
-    );
 
     const raw = JSON.stringify({
-      run_id: "d871dc3a-0537-47d9-97d5-75c817424612",
+      run_id,
       fields: [
         "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
         "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_mileage",
+        "mean_PDU_HV_battery_performance:PDU_HV_battery_voltage",
+        "mean_PDU_HV_battery_performance:PDU_HV_battery_current",
       ],
     });
 
@@ -69,6 +68,7 @@ export const useAnalysisData = () => {
     )
       .then((response) => response.json())
       .then(async (result) => {
+        console.log("result", result);
         await setData(cleanData(result));
         setLoading(false);
       })
@@ -79,6 +79,7 @@ export const useAnalysisData = () => {
 };
 
 const cleanData = (data) => {
+  console.log(data);
   let cleanedData;
 
   cleanedData = removeNullDataPoints(data);

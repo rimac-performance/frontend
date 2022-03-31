@@ -7,7 +7,7 @@ const Odometer = () => {
     <div className="section">
       <h2 className="black heading2center">Odometer - Vehicle Mileage</h2>
       <div className="chart">
-        <div className="black temp">{odometer} miles</div>
+        <div className="black temp">{odometer} km</div>
       </div>
     </div>
   );

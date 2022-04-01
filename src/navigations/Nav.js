@@ -8,13 +8,14 @@ import {
   faUserPen,
 } from "@fortawesome/free-solid-svg-icons";
 import "./nav.css";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import jwtDecode from "jwt-decode";
+import { getToken } from "../utils/token";
 
 const Nav = () => {
   const navigate = useNavigate();
-  const params = useParams();
-  const token = params.token;
+  const token = getToken();
   const [adminPermission, setAdminPermission] = useState(false);
 
   //Step 1. Another way to link somewhere
@@ -32,60 +33,79 @@ const Nav = () => {
   }
 
   useEffect(() => {
-    navigate({ pathname: "./cars/" + token });
+    let user = jwtDecode(token);
+    if (user.user_role === 3) {
+      console.log("Welcome administrator!");
+      setAdminPermission(true);
+    } else {
+      setAdminPermission(false);
+    }
+    navigate({ pathname: "./cars/" });
   }, []);
 
   return (
     <div className="navigation">
       <Outlet />
       {adminPermission ? (
-        <div className="navigation__nav-bar">
-          <Link to={"./cars/" + token}>
+        <div className="navigation__nav-bar__admin">
+          <Link to={"./cars/"}>
             <FontAwesomeIcon
               className={active(["/cars", "/carsRegister", "/carsConfirm"])}
               icon={faCar}
             />
           </Link>
-          <Link to={"./runs/" + token}>
+          <Link to={"./runs/"}>
             <FontAwesomeIcon
-              className={active(["/runs", "/runsList", "/runsUpload"])}
+              className={active([
+                "/runs",
+                "/runsList",
+                "/runsUpload",
+                "/sensorEdit",
+                "engAnalysis",
+              ])}
               icon={faChartBar}
             />
           </Link>
-          <Link to={"./community/" + token}>
+          <Link to={"./community/"}>
             <FontAwesomeIcon
               className={active(["/community"])}
               icon={faUsers}
             />
           </Link>
-          <Link to={"./settings/" + token}>
+          <Link to={"./admin/"}>
+            <FontAwesomeIcon className={active(["/admin"])} icon={faUserPen} />
+          </Link>
+          <Link to={"./settings/"}>
             <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
           </Link>
         </div>
       ) : (
-        <div className="navigation__nav-bar__admin">
-          <Link to={"./cars/" + token}>
+        <div className="navigation__nav-bar">
+          <Link to={"./cars/"}>
             <FontAwesomeIcon
               className={active(["/cars", "/carsRegister", "/carsConfirm"])}
               icon={faCar}
             />
           </Link>
-          <Link to={"./runs/" + token}>
+          <Link to={"./runs/"}>
             <FontAwesomeIcon
-              className={active(["/runs", "/runsList", "/runsUpload"])}
+              className={active([
+                "/runs",
+                "/runsList",
+                "/runsUpload",
+                "/sensorEdit",
+                "engAnalysis",
+              ])}
               icon={faChartBar}
             />
           </Link>
-          <Link to={"./community/" + token}>
+          <Link to={"./community/"}>
             <FontAwesomeIcon
               className={active(["/community"])}
               icon={faUsers}
             />
           </Link>
-          <Link to={"/admin/userManagement"}>
-            <FontAwesomeIcon className={active(["/admin"])} icon={faUserPen} />
-          </Link>
-          <Link to={"./settings/" + token}>
+          <Link to={"./settings/"}>
             <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
           </Link>
         </div>

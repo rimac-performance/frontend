@@ -6,11 +6,12 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import { validate } from "../../utils/validate";
+import { getToken } from "../../utils/token";
 
 const CarsRegisterScreen = () => {
   let params = useParams();
   console.log(params);
-  const token = params.token;
+  const token = getToken();
   const navigate = useNavigate();
 
   const [vin, setVin] = useState("");
@@ -82,16 +83,14 @@ const CarsRegisterScreen = () => {
           "/" +
           year.value +
           "/" +
-          color.value +
-          "/" +
-          token,
+          color.value,
       });
     }
   };
 
   return (
     <div className="screen__cars">
-      <BackArrow to={"../cars/" + token} />
+      <BackArrow to={"../cars/"} />
       <div className="header__cars">
         <img src={Logo} alt="logo" />
         <p className="title__cars">Register</p>

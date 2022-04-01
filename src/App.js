@@ -9,7 +9,7 @@ import CarsConfirmScreen from "./scenes/cars/carsConfirm";
 import RunsScreen from "./scenes/runs";
 import RunsListScreen from "./scenes/runs/runsList";
 import RunsUploadScreen from "./scenes/runs/runsUpload";
-import AdminAnalysisScreen from "./scenes/analysis/adminAnalysis";
+import SensorEditScreen from "./scenes/analysis/sensorEdit";
 import EngAnalysisScreen from "./scenes/analysis/engAnalysis";
 import CommunityScreen from "./scenes/community";
 import SettingsScreen from "./scenes/settings";
@@ -20,8 +20,7 @@ import TermOfServices from "./scenes/termOfService";
 import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
-import AdminLogin from "./scenes/admin";
-import UserManagementScreen from "./scenes/admin/userManagement";
+import AdminManagementScreen from "./scenes/admin";
 
 function App() {
   return (
@@ -29,36 +28,25 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="home/:token" element={<Nav />}>
-            <Route path="cars/:token" element={<CarsScreen />} />
-            <Route
-              path="carsRegister/:token"
-              element={<CarsRegisterScreen />}
-            />
+          <Route path="home" element={<Nav />}>
+            <Route path="cars" element={<CarsScreen />} />
+            <Route path="carsRegister" element={<CarsRegisterScreen />} />
             <Route
               path="carsDetails/:vin/:model/:year/:color"
               element={<CarsDetailsScreen />}
             />
             <Route
-              path="carsConfirm/:vin/:model/:year/:color/:token"
+              path="carsConfirm/:vin/:model/:year/:color"
               element={<CarsConfirmScreen />}
             />
-            <Route path="runs/:token" element={<RunsScreen />} />
-            <Route
-              path="runsList/:car_id/:token"
-              element={<RunsListScreen />}
-            />
-            <Route
-              path="runsUpload/:car_id/:token"
-              element={<RunsUploadScreen />}
-            />
-            <Route
-              path="adminAnalysis/:token"
-              element={<AdminAnalysisScreen />}
-            />
-            <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
-            <Route path="community/:token" element={<CommunityScreen />} />
-            <Route path="settings/:token" element={<SettingsScreen />} />
+            <Route path="runs" element={<RunsScreen />} />
+            <Route path="runsList/:car_id" element={<RunsListScreen />} />
+            <Route path="runsUpload/:car_id" element={<RunsUploadScreen />} />
+            <Route path="sensorEdit" element={<SensorEditScreen />} />
+            <Route path="engAnalysis" element={<EngAnalysisScreen />} />
+            <Route path="community" element={<CommunityScreen />} />
+            <Route path="admin" element={<AdminManagementScreen />} />
+            <Route path="settings" element={<SettingsScreen />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="create" element={<CreateAccount />} />
@@ -66,11 +54,6 @@ function App() {
           <Route path="changePassword" element={<ChangePassword />} />
           <Route path="resetPassword" element={<ResetPassword />} />
           <Route path="errorPassword" element={<ErrorPassword />} />
-          <Route path="/admin" element={<AdminLogin />} />
-          <Route
-            path="/admin/userManagement"
-            element={<UserManagementScreen />}
-          />
         </Routes>
       </BrowserRouter>
     </div>

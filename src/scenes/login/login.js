@@ -45,7 +45,7 @@ const Login = () => {
         console.log(response);
         console.log(jwt_decode(response.token));
         setToken(response.token);
-        navigate({ pathname: "/home/" + response.token });
+        navigate({ pathname: "/home/" });
       });
   }
 

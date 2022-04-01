@@ -2,14 +2,12 @@ import { CheckBox } from "../../components/atoms/checkboxes";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import { SecondaryButton } from "../../components/atoms/buttons";
 import "./style.css";
-import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { backToFront, frontToBack } from "../../utils/sensors";
 import { BackArrow } from "../../components/atoms/arrows";
 import { getToken } from "../../utils/token";
 
-const AdminAnalysisScreen = () => {
-  const params = useParams();
+const SensorEditScreen = () => {
   const token = getToken();
 
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/sensor/status";
@@ -124,7 +122,7 @@ const AdminAnalysisScreen = () => {
   return (
     <>
       <div className="screen__community ">
-        <BackArrow to={`../runs/${token}`} />
+        <BackArrow to={`../runs/`} />
         <div className="header__community">
           <img src={Logo} alt="logo" />
           <p className="title__community">Edit Sensors</p>
@@ -254,4 +252,4 @@ const AdminAnalysisScreen = () => {
   );
 };
 
-export default AdminAnalysisScreen;
+export default SensorEditScreen;

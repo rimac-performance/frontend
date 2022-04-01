@@ -5,22 +5,13 @@ import { PrimaryButton, RunButton } from "../../components/atoms/buttons";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { decode } from "he";
+import { getToken } from "../../utils/token";
 
 const RunsListScreen = () => {
   let params = useParams();
-  const token = params.token;
+  const token = getToken();
 
   const [runs, setRuns] = useState([]);
-  /*const [runs, setRuns] = useState([
-    {
-      run_id: "f6e94195-d71d-4301-b21f-6bbc613653fd",
-      name: "Run 1",
-    },
-    {
-      run_id: "f6e94195-4301-d71d-b21f-6bbc613653fd",
-      name: "Run 2",
-    },
-  ]);*/
 
   const navigate = useNavigate();
 
@@ -29,7 +20,7 @@ const RunsListScreen = () => {
       onClick={
         () =>
           console.log(
-            `/analysis/${run.run_id}/${token}`
+            `/analysis/${run.run_id}`
           ) /*navigate({pathname: '/analysis'})*/
       }
       key={run.run_id}
@@ -72,7 +63,7 @@ const RunsListScreen = () => {
 
   return (
     <div className="screen__runs__list">
-      <BackArrow to={"../runs/" + token} />
+      <BackArrow to={"../runs/"} />
       <div className="header__runs">
         <img src={Logo} alt="logo" />
         <p className="title__runs">Car Name</p>
@@ -92,7 +83,7 @@ const RunsListScreen = () => {
         text={"NEW RUN"}
         onClick={() =>
           navigate({
-            pathname: "../runsUpload/" + params.car_id + "/" + token,
+            pathname: "../runsUpload/" + params.car_id,
           })
         }
       />

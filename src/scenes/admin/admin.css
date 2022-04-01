@@ -1,3 +1,25 @@
-.login__admin__error {
-  color: red;
+.screen__admin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90%;
+  overflow: scroll;
+}
+.header__admin {
+  width: 50%;
+  max-width: 250px;
+  margin: 0 auto 16px auto;
+}
+.title__admin {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.list__users {
+  margin: auto;
+  height: 50vh;
+  overflow: scroll;
 }

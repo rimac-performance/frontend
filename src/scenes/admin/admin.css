@@ -20,6 +20,25 @@
 }
 .list__users {
   margin: auto;
-  height: 50vh;
+  height: 55vh;
   overflow: scroll;
+}
+.list__users__user {
+  display: flex;
+  width: 90%;
+  margin: auto;
+}
+.user__name {
+  display: none;
+}
+.user__email {
+  flex: 2;
+}
+.user__buttons {
+  flex: 1;
+  align-self: center;
+  text-align: right;
+}
+.user__buttons > svg {
+  padding: 0 1em 0 0;
 }

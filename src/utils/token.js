@@ -1,6 +1,4 @@
 export const setToken = (tokenString) => {
-  console.log("setting new user token to:");
-  console.log(tokenString);
   sessionStorage.setItem("revToken", tokenString);
 };
 

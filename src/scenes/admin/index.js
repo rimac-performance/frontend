@@ -2,6 +2,9 @@ import "./admin.css";
 import { useEffect, useState } from "react";
 import Logo from "../../assets/image/Logo.png";
 import { getToken } from "../../utils/token";
+import { PrimaryButton } from "../../components/atoms/buttons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faPen } from "@fortawesome/free-solid-svg-icons";
 
 const AdminManagementScreen = () => {
   //TODO make usersList pretty and meaningful
@@ -14,9 +17,30 @@ const AdminManagementScreen = () => {
 
   const [users, setUsers] = useState([]);
 
+  const newUser = () => {
+    //TODO
+    console.log("adding new user");
+  };
+
+  const editUser = () => {
+    //TODO
+    console.log("editing user");
+  };
+
+  const deleteUser = () => {
+    //TODO
+    console.log("deleting user");
+  };
+
   let usersList = users.map((user) => (
-    <div key={user.user_id}>
-      <p>{user.email}</p>
+    <div className="list__users__user" key={user.user_id}>
+      <p className="user__name">{user.last_name}</p>
+      <p className="user__name">{user.first_name}</p>
+      <p className="user__email">{user.email}</p>
+      <div className="user__buttons">
+        <FontAwesomeIcon icon={faPen} onClick={editUser} />
+        <FontAwesomeIcon icon={faTrashCan} onClick={deleteUser} />
+      </div>
     </div>
   ));
 
@@ -38,6 +62,7 @@ const AdminManagementScreen = () => {
         <p className="title__admin">Manage Users</p>
       </div>
       <div className="list__users">{usersList}</div>
+      <PrimaryButton text={"Add User"} onClick={newUser} />
     </div>
   );
 };

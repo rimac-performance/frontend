@@ -22,25 +22,6 @@ export const BackArrow = ({ to }) => {
   );
 };
 
-export const LogoutArrow = ({ to }) => {
-  const navigate = useNavigate();
-
-  return (
-    <div className="arrow__back" onClick={() => navigate(-1)}>
-      <FontAwesomeIcon icon={faCaretLeft} />
-      <label
-        onClick={() => {
-          console.log(to);
-          clearToken();
-          navigate({ pathname: to }, { replace: true });
-        }}
-      >
-        Log out
-      </label>
-    </div>
-  );
-};
-
 export const FilterArrow = ({ text }) => {
   const onClick = () => {
     return;

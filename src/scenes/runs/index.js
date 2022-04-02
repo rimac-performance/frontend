@@ -30,7 +30,12 @@ const RunsScreen = () => {
     />
   ));
 
-  const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
+  let apiUrl;
+  if (user.user_role === 2 || user.user_role === 3) {
+    apiUrl = "https://rimacperformance-dev.ryacom.org/api/car/all";
+  } else {
+    apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
+  }
 
   useEffect(() => {
     const reqUrl = apiUrl + "?" + user.user_id;

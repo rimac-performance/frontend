@@ -11,7 +11,6 @@ import { roles } from "../../utils/roles";
 
 const AdminManagementScreen = () => {
   //TODO make usersList pretty and meaningful
-  //TODO user view where their information is expanded and they can be deleted
 
   const token = getToken();
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/admin";
@@ -20,15 +19,31 @@ const AdminManagementScreen = () => {
   const [users, setUsers] = useState([]);
   const [selectedUser, setSelectedUser] = useState({});
   const [isDeleting, setIsDeleting] = useState(false);
-  const [refresh, setRefresh] = useState(false);
+
+  function removeSelectedUser() {
+    let temp = [...users];
+    for (let i = 0; i < temp.length; i++) {
+      if (temp[i].user_id == selectedUser.user_id) {
+        temp.splice(i, 1);
+      }
+    }
+    setUsers(temp);
+  }
 
   const newUser = () => {
     navigate({ pathname: "./newUser" });
   };
 
-  const editUser = () => {
-    //TODO
-    console.log("editing user");
+  const editUser = (user) => {
+    let args = [
+      user.first_name,
+      user.last_name,
+      user.email,
+      user.phone,
+      user.user_role,
+      user.user_id,
+    ];
+    navigate(`./editUser/${args}`);
   };
 
   const openDeleteDialog = (user) => {
@@ -38,8 +53,8 @@ const AdminManagementScreen = () => {
 
   const closeDeleteDialog = () => {
     setIsDeleting(false);
+    removeSelectedUser();
     setSelectedUser({});
-    setRefresh(!refresh);
   };
 
   const deleteUser = () => {
@@ -55,21 +70,6 @@ const AdminManagementScreen = () => {
     closeDeleteDialog();
   };
 
-  let usersList = users.map((user) => (
-    <div className="list__users__user" key={user.user_id}>
-      <p className="user__name">{user.last_name}</p>
-      <p className="user__name">{user.first_name}</p>
-      <p className="user__email">{user.email}</p>
-      <div className="user__buttons">
-        <FontAwesomeIcon icon={faPen} onClick={editUser} />
-        <FontAwesomeIcon
-          icon={faTrashCan}
-          onClick={() => openDeleteDialog(user)}
-        />
-      </div>
-    </div>
-  ));
-
   useEffect(() => {
     fetch(`${apiUrl}/all`, {
       method: "GET",
@@ -79,7 +79,22 @@ const AdminManagementScreen = () => {
       .then((allUsers) => {
         setUsers(allUsers);
       });
-  }, [refresh]);
+  }, []);
+
+  let usersList = users.map((user) => (
+    <div className="list__users__user" key={user.user_id}>
+      <p className="user__name">{user.last_name}</p>
+      <p className="user__name">{user.first_name}</p>
+      <p className="user__email">{user.email}</p>
+      <div className="user__buttons">
+        <FontAwesomeIcon icon={faPen} onClick={() => editUser(user)} />
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          onClick={() => openDeleteDialog(user)}
+        />
+      </div>
+    </div>
+  ));
 
   const deleteDialog = (
     <Dialog

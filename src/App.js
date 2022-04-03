@@ -22,6 +22,7 @@ import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
 import AdminManagementScreen from "./scenes/admin";
 import AdminNewUserScreen from "./scenes/admin/newUser";
+import AdminEditUserScreen from "./scenes/admin/editUser";
 
 function App() {
   return (
@@ -48,6 +49,10 @@ function App() {
             <Route path="community" element={<CommunityScreen />} />
             <Route path="admin" element={<AdminManagementScreen />} />
             <Route path="admin/newUser" element={<AdminNewUserScreen />} />
+            <Route
+              path="admin/editUser/:args"
+              element={<AdminEditUserScreen />}
+            />
             <Route path="settings" element={<SettingsScreen />} />
           </Route>
           <Route path="login" element={<Login />} />

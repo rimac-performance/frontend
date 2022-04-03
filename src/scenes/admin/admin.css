@@ -11,6 +11,9 @@
   max-width: 250px;
   margin: 0 auto 16px auto;
 }
+.header__admin > img {
+  width: 100%;
+}
 .title__admin {
   text-align: center;
   font-size: x-large;
@@ -18,15 +21,19 @@
   margin-top: 0;
   margin-bottom: 12px;
 }
+.list__admin {
+  width: 90%;
+  max-width: 500px;
+  margin: auto;
+}
 .list__users {
   margin: auto;
-  height: 50vh;
+  height: 55vh;
   overflow: scroll;
 }
 .list__users__user {
   display: flex;
-  width: 90%;
-  margin: auto;
+  width: 100%;
 }
 .user__name {
   display: none;
@@ -45,13 +52,10 @@
 }
 .list__users__header {
   display: flex;
-  width: 90%;
-  margin: auto;
+  width: 100%;
   border-bottom: 1px solid gray;
 }
-.list__users__header > p {
-  margin: 0 8px 8px 0;
-}
+
 .user__name__header {
   display: none;
   font-weight: bold;
@@ -65,4 +69,81 @@
   flex: 1;
   text-align: right;
   font-weight: bold;
+}
+
+/* Tablet width */
+@media screen and (min-width: 900px) {
+  .list__admin {
+    max-width: 750px;
+  }
+  .list__users__header > p {
+    font-size: x-large;
+  }
+  .list__users__user > p,
+  .user__buttons {
+    font-size: larger;
+  }
+  .user__buttons > svg {
+    padding-right: 2em;
+  }
+  .user__buttons__header {
+    padding-right: 1.5em;
+  }
+  .header__admin {
+    max-width: 500px;
+    display: flex;
+  }
+  .header__admin > img {
+    flex: 1;
+  }
+  .title__admin {
+    flex: 1;
+    padding: 0.5em 0 0 1em;
+    margin: 0;
+    font-size: xx-large;
+  }
+}
+
+/* Desktop width */
+@media screen and (min-width: 1200px) {
+  .list__admin {
+    max-width: 900px;
+  }
+  .user__name__header,
+  .user__name {
+    display: inline;
+    flex: 1;
+  }
+  .user__buttons__header {
+    padding-right: 0;
+    text-align: center;
+  }
+  .user__buttons {
+    display: flex;
+  }
+  .user__buttons > svg {
+    flex: 1;
+    padding: 0;
+  }
+}
+
+/* Tall screen */
+@media screen and (min-height: 900px) {
+  .list__users {
+    height: 60vh;
+  }
+}
+
+/* Extra tall screen */
+@media screen and (min-height: 1200px) {
+  .list__users {
+    height: 65vh;
+  }
+}
+
+/* Extremely tall screen */
+@media screen and (min-height: 1400px) {
+  .list__users {
+    height: 70vh;
+  }
 }

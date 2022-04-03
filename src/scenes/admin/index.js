@@ -53,7 +53,6 @@ const AdminManagementScreen = () => {
 
   const closeDeleteDialog = () => {
     setIsDeleting(false);
-    removeSelectedUser();
     setSelectedUser({});
   };
 
@@ -67,6 +66,7 @@ const AdminManagementScreen = () => {
       console.log(response);
     });
     console.log("deleting user: " + selectedUser.email);
+    removeSelectedUser();
     closeDeleteDialog();
   };
 
@@ -77,9 +77,12 @@ const AdminManagementScreen = () => {
     })
       .then((response) => response.json())
       .then((allUsers) => {
+        allUsers.sort((a, b) => {
+          return a.email.localeCompare(b.email);
+        });
         setUsers(allUsers);
       });
-  }, []);
+  }, [token]);
 
   let usersList = users.map((user) => (
     <div className="list__users__user" key={user.user_id}>
@@ -98,7 +101,7 @@ const AdminManagementScreen = () => {
 
   const deleteDialog = (
     <Dialog
-      message={`Are you sure you want to delete ${
+      message={`Are you sure you want to delete: ${
         roles[selectedUser.user_role]
       } ${selectedUser.last_name}, ${selectedUser.first_name}; ${
         selectedUser.email
@@ -117,13 +120,15 @@ const AdminManagementScreen = () => {
         <img src={Logo} alt="logo" />
         <p className="title__admin">Manage Users</p>
       </div>
-      <div className="list__users__header">
-        <p className="user__name__header">Last Name</p>
-        <p className="user__name__header">First Name</p>
-        <p className="user__email__header">User Email</p>
-        <p className="user__buttons__header">Actions</p>
+      <div className="list__admin">
+        <div className="list__users__header">
+          <p className="user__name__header">Last Name</p>
+          <p className="user__name__header">First Name</p>
+          <p className="user__email__header">User Email</p>
+          <p className="user__buttons__header">Actions</p>
+        </div>
+        <div className="list__users">{usersList}</div>
       </div>
-      <div className="list__users">{usersList}</div>
       <PrimaryButton text={"Add User"} onClick={newUser} />
     </div>
   );

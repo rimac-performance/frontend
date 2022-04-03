@@ -1,3 +1,5 @@
+import "./dialogs.css";
+
 export const Dialog = ({
   message,
   acceptText,

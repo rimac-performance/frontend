@@ -7,10 +7,6 @@ export const exampleRequest = () => {
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmExZTkzOTUtNmFlNS00NzVlLTgzMTgtNjg5NzY4MGFkYjE3IiwiZW1haWwiOiJjZHd5ZXI1QGFtYXpvbi5jb20iLCJwaG9uZSI6IjEzMC05NzgtNDM1MyIsImZpcnN0X25hbWUiOiJDb3NldHRlIiwibGFzdF9uYW1lIjoiRHd5ZXIiLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTY0NzkwOTMwN30.A8C0pU3NZNi1J2u2wv0nfVcmaLMI_l-567Ll3UracQw"
   );
   myHeaders.append("Content-Type", "application/json");
-  myHeaders.append(
-    "Cookie",
-    "d7ea6c8721c1b3d7dd46a400ca594ba5=becfdcac6520f9b71d0a48d5e3fda138"
-  );
 
   const raw = JSON.stringify({
     run_id: "d871dc3a-0537-47d9-97d5-75c817424612",
@@ -99,11 +95,11 @@ const cleanData = (data) => {
   let cleanedData;
 
   cleanedData = removeNullDataPoints(data);
-  cleanedData = removeMillisecondDataPoints(cleanedData);
+  // cleanedData = removeMillisecondDataPoints(cleanedData);
 
   //TODO Replace slice with date objects
 
-  console.log(cleanedData);
+  console.log({cleanedData});
 
   return cleanedData;
 };

@@ -1,0 +1,43 @@
+.screen__setting {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 90%;
+  overflow: scroll;
+}
+* {
+  box-sizing: border-box;
+}
+
+.header__setting {
+  width: 50%;
+  max-width: 250px;
+  margin: 0 auto 16px auto;
+  text-decoration: underline #e9591c 3px;
+}
+
+.title__setting {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+.button_body {
+  max-width: 500px;
+  margin: auto;
+}
+.container {
+  margin-top: auto;
+}
+
+.terms-of-service {
+  margin: 15px;
+}
+
+.terms-of-service > p,
+ul > li {
+  font-size: 14px;
+  color: gray;
+}

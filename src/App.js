@@ -20,6 +20,11 @@ import TermOfServices from "./scenes/termOfService";
 import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
+import ContactDealer from "./scenes/settings/contactDealer";
+import ContactDeveloper from "./scenes/settings/contactDeveloper";
+import ChangePassword_setting from "./scenes/settings/changePassword";
+import Review from "./scenes/settings/review";
+import LogOut from "./scenes/settings/logout";
 import AdminManagementScreen from "./scenes/admin";
 import AdminNewUserScreen from "./scenes/admin/newUser";
 import AdminEditUserScreen from "./scenes/admin/editUser";
@@ -53,6 +58,14 @@ function App() {
               path="admin/editUser/:args"
               element={<AdminEditUserScreen />}
             />
+            <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
+            <Route path="community/:token" element={<CommunityScreen />} />
+            <Route path="settings/:token" element={<SettingsScreen />} />
+            <Route path="contactDealer" element={<ContactDealer />} />
+            <Route path="contactDeveloper" element={<ContactDeveloper />} />
+            <Route path="changePassword" element={<ChangePassword_setting />} />
+            <Route path="review" element={<Review />} />
+            <Route path="LogOut" element={<LogOut />} />
             <Route path="settings" element={<SettingsScreen />} />
           </Route>
           <Route path="login" element={<Login />} />

@@ -14,11 +14,10 @@ const TextField = ({
       defaultValue={value}
       style={{ width: width ? width : "" }}
       className={error ? "errorTextField" : "textField"}
-      type="Text"
       placeholder={placeholder}
       onChange={onChange}
       onBlur={onBlur}
-      type={type}
+      type={type ? type : "text"}
     />
   );
 };

@@ -449,11 +449,11 @@ const AnalysisScreen = () => {
         <div>
           <Chips
             text1={"Chart"}
-            text2={"Tablular"}
+            text2={"Tabular"}
             selected={tab}
             onClick={(text) => setTab(text)}
           />
-          {tab === "chart" ? <ShowCharts /> : <Table data={data} />}
+          {tab.toLowerCase() === "chart" ? <ShowCharts /> : <Table data={data} />}
           <div style={{ marginBottom: 200 }} />
         </div>
       )}

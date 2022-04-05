@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { PrimaryButton } from "../../components/atoms/buttons";
+import { getToken } from "../../utils/token";
 
 const RunsScreen = () => {
-  let params = useParams();
-  const token = params.token;
+  const token = getToken();
   const user = jwt_decode(token);
   const [cars, setCars] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -20,8 +20,8 @@ const RunsScreen = () => {
     <AutomobileInfo
       onClick={() => {
         console.log("selecting car:" + car.car_id);
-        /*makeSelection({car})*/ navigate({
-          pathname: "../runsList/" + car.car_id + "/" + token,
+        navigate({
+          pathname: "../runsList/" + car.car_id,
         });
       }}
       key={car.car_id}
@@ -30,7 +30,12 @@ const RunsScreen = () => {
     />
   ));
 
-  const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
+  let apiUrl;
+  if (user.user_role === 2 || user.user_role === 3) {
+    apiUrl = "https://rimacperformance-dev.ryacom.org/api/car/all";
+  } else {
+    apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
+  }
 
   useEffect(() => {
     const reqUrl = apiUrl + "?" + user.user_id;
@@ -70,12 +75,6 @@ const RunsScreen = () => {
     };
   }, []);
 
-  /*if (selection) {
-    let runsListScreen = <RunsListScreen car={selection} token={token} />;
-    let route = <Route path="runsList" element={runsListScreen} />;
-    navigate(route);
-  }*/
-
   return (
     <div className="screen__runs">
       <div className="header__runs">
@@ -87,7 +86,7 @@ const RunsScreen = () => {
         <div className="hidden__edit">
           <PrimaryButton
             text={"Edit Sensors"}
-            onClick={() => navigate({ pathname: `../adminAnalysis/${token}` })}
+            onClick={() => navigate({ pathname: `../sensorEdit/` })}
           />
         </div>
       ) : (
@@ -97,7 +96,7 @@ const RunsScreen = () => {
         <div className="hidden__edit">
           <PrimaryButton
             text={"Edit Thresholds"}
-            onClick={() => navigate({ pathname: `../engAnalysis/${token}` })}
+            onClick={() => navigate({ pathname: `../engAnalysis/` })}
           />
         </div>
       ) : (

@@ -5,11 +5,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import { SecondaryButton } from "../../components/atoms/buttons";
 import { BackArrow } from "../../components/atoms/arrows";
 import TextField from "../../components/atoms/text-fields/text-field";
+import { getToken } from "../../utils/token";
 
 const RunsUploadScreen = () => {
   let params = useParams();
   let navigate = useNavigate();
-  const token = params.token;
+  const token = getToken();
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/run";
 
   const [file, setFile] = useState(null);
@@ -47,7 +48,7 @@ const RunsUploadScreen = () => {
         .then((result) => {
           console.log("Success:", result);
           navigate({
-            pathname: "../runsList/" + params.car_id + "/" + params.token,
+            pathname: "../runsList/" + params.car_id,
           });
         })
         .catch((error) => {
@@ -58,7 +59,7 @@ const RunsUploadScreen = () => {
 
   return (
     <div className="screen__runs">
-      <BackArrow to={"../runsList/" + params.car_id + "/" + params.token} />
+      <BackArrow to={"../runsList/" + params.car_id} />
       <div className="header__runs">
         <img src={Logo} alt="logo" />
         <p className="title__runs">New Run</p>

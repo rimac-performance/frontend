@@ -4,7 +4,7 @@ export const exampleRequest = () => {
   const myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYWRkMzA2ZjMtZDU5MS00MTkwLTlkODEtMjFkYThmNTY0NjgwIiwiZW1haWwiOiJnaHVja2luMEB5YWhvby5jby5qcCIsInBob25lIjoiODIzLTk0MS0xNzYxIiwiZmlyc3RfbmFtZSI6IkdhZWxhbiIsImxhc3RfbmFtZSI6Ikh1Y2tpbiIsInVzZXJfcm9sZSI6MSwiaWF0IjoxNjQ1ODUxNjc3fQ.cBYy80MwOx28met9IDnRxsqlohBOGRqfKW4FccgWEWU"
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmExZTkzOTUtNmFlNS00NzVlLTgzMTgtNjg5NzY4MGFkYjE3IiwiZW1haWwiOiJjZHd5ZXI1QGFtYXpvbi5jb20iLCJwaG9uZSI6IjEzMC05NzgtNDM1MyIsImZpcnN0X25hbWUiOiJDb3NldHRlIiwibGFzdF9uYW1lIjoiRHd5ZXIiLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTY0NzkwOTMwN30.A8C0pU3NZNi1J2u2wv0nfVcmaLMI_l-567Ll3UracQw"
   );
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
@@ -29,7 +29,7 @@ export const exampleRequest = () => {
     requestOptions
   )
     .then((response) => response.json())
-    .catch((error) => console.log("error", error));
+    .catch((error) => console.error("error", error));
 };
 
 export const useAnalysisData = (run_id, token) => {
@@ -52,6 +52,22 @@ export const useAnalysisData = (run_id, token) => {
         "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_mileage",
         "mean_PDU_HV_battery_performance:PDU_HV_battery_voltage",
         "mean_PDU_HV_battery_performance:PDU_HV_battery_current",
+        "mean_PDU_HV_LV_status:PDU_HV_battery_SOH",
+        "mean_PDU_HV_LV_status:PDU_HV_battery_SOC",
+        "mean_HPI_FL_phase_curr_motor_temp:HPI_temp_motor1",
+        "mean_HPI_FL_phase_curr_motor_temp:HPI_temp_motor2",
+        "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor2",
+        "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
+        "mean_SAFETY_PCU_vehicle_ST:PCU_accelerator_pedal",
+        "mean_HPI_FR_inverter_temp:HPI_temp_IGBT3",
+        "mean_HPI_FL_inverter_temp:HPI_temp_IGBT3",
+        "mean_HPI_FL_inverter_temp:HPI_temp_IGBT2",
+        "mean_HPI_FR_inverter_temp:HPI_temp_IGBT2",
+        "mean_HPI_FL_inverter_temp:HPI_temp_IGBT1",
+        "mean_CCU_R_temp_1:CCU_R_batt_coolant_in_temp",
+        "mean_CCU_R_temp_1:CCU_R_batt_coolant_out_temp",
+        "mean_CCU_F_temp_1:CCU_F_ambient_temp",
+        "mean_CCU_F_temp_1:CCU_F_interior_temp",
       ],
     });
 
@@ -72,7 +88,7 @@ export const useAnalysisData = (run_id, token) => {
         await setData(cleanData(result));
         setLoading(false);
       })
-      .catch((error) => console.log("error", error));
+      .catch((error) => console.error("error", error));
   }, []);
 
   return [data, loading];

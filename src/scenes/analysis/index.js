@@ -43,8 +43,24 @@ import { useAnalysisData } from "../../services/apiService";
 import Mileage from "../../components/charts/mileage";
 import { Chips } from "../../components/atoms/chips";
 import Table from "../../components/table";
-import { PrimaryButton } from "../../components/atoms/buttons";
-import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import { PrimaryButton, SecondaryButton } from "../../components/atoms/buttons";
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  TextField,
+} from "@mui/material";
+import { Line } from "react-chartjs-2";
+import {
+  CategoryScale,
+  Chart as ChartJS,
+  Legend,
+  LinearScale,
+  LineElement,
+  PointElement,
+  Title,
+  Tooltip,
+} from "chart.js";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -169,6 +185,202 @@ const FullScreenDialog = () => {
   );
 };
 
+const FullScreenDialogDownloadButton = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <SecondaryButton text={"Download"} onClick={handleClickOpen} />
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <AppBar sx={{ position: "relative" }}>
+          <Toolbar style={{ background: "#E9591C", color: "#000000" }}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              Download Data
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div className="imageContainer">
+          <img className="logo" src={RevLogo} alt="Rev Performance" />
+        </div>
+        <div className="header">
+          <h1>DOWNLOAD</h1>
+        </div>
+        <div className="checkbox-wrapper">
+          Click below to download the tabular data.
+        </div>
+        <PrimaryButton text={"Download"} onClick={handleClickOpen} />
+      </Dialog>
+    </div>
+  );
+};
+
+const FullScreenDialogShareButton = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <SecondaryButton text={"Share"} onClick={handleClickOpen} />
+      <Dialog
+        fullScreen
+        open={open}
+        onClose={handleClose}
+        TransitionComponent={Transition}
+      >
+        <AppBar sx={{ position: "relative" }}>
+          <Toolbar style={{ background: "#E9591C", color: "#000000" }}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              onClick={handleClose}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+            <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+              Share
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div className="imageContainer">
+          <img className="logo" src={RevLogo} alt="Rev Performance" />
+        </div>
+        <div className="header">
+          <h1>SHARE</h1>
+        </div>
+        <div className="checkbox-wrapper">
+          Enter the email for who you would like to share this run with.
+        </div>
+        <div className="checkbox-text-field">
+          <TextField
+            className="checkbox-text-field-input"
+            id="outlined-basic"
+            label="Email Address"
+            variant="outlined"
+          />
+        </div>
+        <PrimaryButton text={"Share"} onClick={handleClickOpen} />
+      </Dialog>
+    </div>
+  );
+};
+
+const charts = [
+  {
+    row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
+    label: "Front Right Motor 1 Temp",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor2",
+    label: "Front Right Motor 2 Temp",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_HPI_FL_phase_curr_motor_temp:HPI_temp_motor1",
+    label: "Front Left Motor 1 Temp",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOC",
+    label: "PDU HV Battery SOC",
+    graphLabel: "%",
+  },
+  {
+    row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOH",
+    label: "PDU HV Battery SOH",
+    graphLabel: "%",
+  },
+  {
+    row: "mean_PDU_HV_battery_performance:PDU_HV_battery_current",
+    label: "PDU HV Battery Current",
+    graphLabel: "%",
+  },
+  {
+    row: "mean_PDU_HV_battery_performance:PDU_HV_battery_voltage",
+    label: "PDU HV Battery Voltage",
+    graphLabel: "volts",
+  },
+  {
+    row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
+    label: "Vehicle Speed",
+    graphLabel: "km/h",
+  },
+  {
+    row: "mean_SAFETY_PCU_vehicle_ST:PCU_accelerator_pedal",
+    label: "PCU Accelerator Pedal",
+    graphLabel: "km/h",
+  },
+  {
+    row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT3",
+    label: "Front Right HPI Temp IGBT3",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT3",
+    label: "Front Left HPI Temp IGBT3",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT2",
+    label: "Front Left HPI Temp IGBT2",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT2",
+    label: "Front Right HPI Temp IGBT2",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT1",
+    label: "Front Left HPI Temp IGBT1",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT1",
+    label: "Front Right HPI Temp IGBT1",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_CCU_F_temp_1:CCU_F_ambient_temp",
+    label: "Ambient Temperature",
+    graphLabel: "°C",
+  },
+  {
+    row: "mean_CCU_F_temp_1:CCU_F_interior_temp",
+    label: "Interior Temperature",
+    graphLabel: "°C",
+  },
+];
+
 const AnalysisScreen = () => {
   const params = useParams();
   const { run_id, token } = params;
@@ -193,27 +405,21 @@ const AnalysisScreen = () => {
             onChange={handleTimerChange}
           />
         </div>
-        <AmbientTemp />
-        <InteriorTemp />
-        <CoolantInOut />
-        <LeftHPITempIGBT1 />
-        <LeftHPITempIGBT2 />
-        <LeftHPITempIGBT3 />
-        <RightHPITempIGBT1 />
-        <RightHPITempIGBT2 />
-        <RightHPITempIGBT3 />
-        <RightTempMotor1 />
-        <RightTempMotor2 />
-        <LeftTempMotor2 />
-        <LeftTempMotor1 />
-        <PDUHVBatterySOC />
-        <PDUHVBatterySOH />
-        <PDUHVBatteryVoltageCurrent range={range} data={data} />
-        <PDUHVBatteryVoltage range={range} data={data} />
-        <PCUAcceleratorPedal />
+
         <Odometer />
-        <VehicleSpeed range={range} data={data} />
         <VCUVehicleST />
+        <CoolantInOut data={data} range={range} />
+
+        {charts.map((chart) => (
+          <Chart
+            key={chart.row}
+            row={chart.row}
+            label={chart.label}
+            data={data}
+            range={range}
+            graphLabel={chart.graphLabel}
+          />
+        ))}
       </div>
     );
   };
@@ -228,6 +434,14 @@ const AnalysisScreen = () => {
       <div className="header">
         <h1>ANALYSIS</h1>
       </div>
+      <div className="share-download-wrapper">
+        <div className="download">
+          <FullScreenDialogDownloadButton />
+        </div>
+        <div className="share">
+          <FullScreenDialogShareButton />
+        </div>
+      </div>
       <div>
         <FullScreenDialog />
       </div>
@@ -239,10 +453,68 @@ const AnalysisScreen = () => {
             selected={tab}
             onClick={(text) => setTab(text)}
           />
-          {tab === "chart" ? <ShowCharts /> : <Table />}
+          {tab === "chart" ? <ShowCharts /> : <Table data={data} />}
           <div style={{ marginBottom: 200 }} />
         </div>
       )}
+    </div>
+  );
+};
+
+const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      position: "top",
+    },
+    title: {
+      display: true,
+    },
+  },
+};
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+const Chart = ({ row, label, data, range, graphLabel }) => {
+  const filteredData = data;
+  // const filteredData = data.filter((item) => {
+  //   console.log(
+  //     new Date(item.time).getMinutes() + new Date(item.time).getSeconds() / 60
+  //   );
+  //
+  //   const itemTime =
+  //     new Date(item.time).getMinutes() + new Date(item.time).getSeconds() / 60;
+  //   console.log(itemTime, range[0], range[1]);
+  //
+  //   return itemTime > range[0] && itemTime < range[1];
+  // });
+
+  const graphData = {
+    labels: filteredData.map((item) => item.time.slice(11, 16)),
+    datasets: [
+      {
+        label: graphLabel,
+        data: data.map((item) => item[row]),
+        borderColor: "#E9591CFF",
+        backgroundColor: "rgba(233,89,28,0.5)",
+      },
+    ],
+  };
+
+  return (
+    <div className="section">
+      <h2 className="black heading2center">{label}</h2>
+      <div className="chart">
+        <Line options={options} data={graphData} />
+      </div>
     </div>
   );
 };

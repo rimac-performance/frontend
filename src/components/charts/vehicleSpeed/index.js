@@ -35,17 +35,18 @@ const options = {
 };
 
 const VehicleSpeed = ({ data, range }) => {
-  const filteredData = data.filter((item) => {
-    console.log(
-      new Date(item.time).getMinutes() + new Date(item.time).getSeconds() / 60
-    );
-
-    const itemTime =
-      new Date(item.time).getMinutes() + new Date(item.time).getSeconds() / 60;
-    console.log(itemTime, range[0], range[1]);
-
-    return itemTime > range[0] && itemTime < range[1];
-  });
+  const filteredData = data;
+  // const filteredData = data.filter((item) => {
+  //   console.log(
+  //     new Date(item.time).getMinutes() + new Date(item.time).getSeconds() / 60
+  //   );
+  //
+  //   const itemTime =
+  //     new Date(item.time).getMinutes() + new Date(item.time).getSeconds() / 60;
+  //   console.log(itemTime, range[0], range[1]);
+  //
+  //   return itemTime > range[0] && itemTime < range[1];
+  // });
 
   console.log(filteredData);
 

@@ -35,6 +35,7 @@ const options = {
 };
 
 const PDUHVBatteryVoltage = ({ data, range }) => {
+  const filteredData = data;
   // const filteredData = data.filter((item) => {
   //   console.log(
   //     new Date(item.time).getMinutes() + new Date(item.time).getSeconds() / 60

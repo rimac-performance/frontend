@@ -27,7 +27,7 @@ const Timer = ({ min, max, onChange }) => {
       <Slider
         getAriaLabel={() => "Time range"}
         value={value}
-        track
+        track={"normal"}
         min={min}
         max={max}
         step={0.01}

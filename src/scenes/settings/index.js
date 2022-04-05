@@ -7,6 +7,7 @@ import {
   faWrench,
   faStarHalfStroke,
   faRightFromBracket,
+  faUnlock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -36,6 +37,11 @@ const SettingsScreen = () => {
             text={"LEAVE A REVIEW"}
             icon={faStarHalfStroke}
             onClick={() => navigate({ pathname: "../review/" })}
+          ></ImageButton>
+          <ImageButton
+            text={"CHANGE PASSWORD"}
+            icon={faUnlock}
+            onClick={() => navigate({ pathname: "../changePassword/" })}
           ></ImageButton>
           <ImageButton
             text={"LOG OUT"}

@@ -1,7 +1,7 @@
 import "./style.css";
-import { PrimaryButton } from "../../components/atoms/buttons";
 import { BackArrow } from "../../components/atoms/arrows";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import ButtonMailto from "../../components/atoms/buttonmailto/buttonmailto";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 
 const ContactDealer = () => {
@@ -22,7 +22,7 @@ const ContactDealer = () => {
             Your dealer is Rev cars of Rochester, New York. Click below to email
             your dealership.
           </p>
-          <PrimaryButton text={"EMAIL"}></PrimaryButton>
+          <ButtonMailto />
         </div>
       </div>
     </>

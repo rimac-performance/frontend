@@ -1,6 +1,7 @@
 import "./style.css";
-import { PrimaryButton } from "../../components/atoms/buttons";
 import { BackArrow } from "../../components/atoms/arrows";
+import { useParams } from "react-router-dom";
+import ButtonMailto from "../../components/atoms/buttonmailto/buttonmailto";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 const Review = () => {
   return (
@@ -13,11 +14,8 @@ const Review = () => {
         </div>
         <div className="container">
           <h1>Review</h1>
-          <p>
-            Want to tell us how we are doing? Head to the app store below and
-            give us a review!
-          </p>
-          <PrimaryButton text={"REVIEW"}></PrimaryButton>
+          <p>Want to tell us how we are doing? Send us an email below!</p>
+          <ButtonMailto />
         </div>
       </div>
     </>

@@ -2,18 +2,27 @@ import Logo from "../../assets/image/Logo.png";
 import { SecondaryButton } from "../../components/atoms/buttons/index";
 import { useState } from "react";
 import TextField from "../../components/atoms/text-fields/text-field";
-import { CheckBox } from "../../components/atoms/checkboxes/index";
 import { BackArrow } from "../../components/atoms/arrows";
-import { validate, validatePass } from "../../utils/validate";
-import "./style.css";
+import {
+  validate,
+  validatePass,
+  validatePermission,
+} from "../../utils/validate";
+import { getToken } from "../../utils/token";
+import { useNavigate } from "react-router-dom";
 
-const CreateAccount = () => {
+const AdminNewUserScreen = () => {
+  const apiUrl = "https://revperformance-dev.ryacom.org/api/admin";
+  const token = getToken();
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const [permission, setPermission] = useState("");
 
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -21,6 +30,7 @@ const CreateAccount = () => {
   const [firstNameError, setFirstNameError] = useState(false);
   const [lastNameError, setLastNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+  const [permissionError, setPermissionError] = useState(false);
 
   const handleEmailInput = (e) => {
     const { value } = e.currentTarget;
@@ -55,6 +65,12 @@ const CreateAccount = () => {
   const handlePhoneInput = (e) => {
     const { value } = e.currentTarget;
     setPhone({
+      value,
+    });
+  };
+  const handlePermissionInput = (e) => {
+    const { value } = e.currentTarget;
+    setPermission({
       value,
     });
   };
@@ -98,13 +114,19 @@ const CreateAccount = () => {
       setPasswordConfirmError(true);
       flag = false;
     }
+    if (validatePermission(permission.value)) {
+      setPermissionError(false);
+    } else {
+      setPermissionError(true);
+      flag = false;
+    }
 
     if (flag) {
-      fetch("https://revperformance-dev.ryacom.org/api/user/register", {
+      fetch(apiUrl, {
         method: "POST",
         headers: {
-          Accept: "*/*",
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
           first_name: firstName.value,
@@ -112,53 +134,58 @@ const CreateAccount = () => {
           pswd: password.value,
           phone: phone.value,
           email: email.value,
+          user_role: permission.value,
         }),
       }).then((value) => {
         console.log(value);
+        navigate({ pathname: "../admin" });
       });
     }
   }
 
   return (
-    <>
-      <BackArrow to={"/"}></BackArrow>
+    <div className="screen__admin">
+      <BackArrow to={"../admin"}></BackArrow>
       <img className="logo__create__account" src={Logo}></img>
-      <div>
-        <form>
-          <label className="label__create__account">First Name</label>
-          <TextField
-            onChange={handleFirstNameInput}
-            error={firstNameError}
-          ></TextField>
-          <label className="label__create__account">Last Name</label>
-          <TextField
-            onChange={handleLastNameInput}
-            error={lastNameError}
-          ></TextField>
-          <label className="label__create__account">Email</label>
-          <TextField onChange={handleEmailInput} error={emailError}></TextField>
-          <label className="label__create__account">Phone</label>
-          <TextField onChange={handlePhoneInput} error={phoneError}></TextField>
-          <label className="label__create__account">Password</label>
-          <TextField
-            onChange={handlePasswordInput}
-            type={"password"}
-            error={passwordError}
-          ></TextField>
-          <label className="label__create__account">Confirm Password</label>
-          <TextField
-            onChange={handlePasswordConfirmInput}
-            type={"password"}
-            error={passwordConfirmError}
-          ></TextField>
-          <SecondaryButton
-            text={"CREATE ACCOUNT "}
-            onClick={create}
-          ></SecondaryButton>
-          <CheckBox text={"I Accept The Terms of Use"}></CheckBox>
-        </form>
-      </div>
-    </>
+      <form>
+        <label className="label__create__account">First Name</label>
+        <TextField
+          onChange={handleFirstNameInput}
+          error={firstNameError}
+        ></TextField>
+        <label className="label__create__account">Last Name</label>
+        <TextField
+          onChange={handleLastNameInput}
+          error={lastNameError}
+        ></TextField>
+        <label className="label__create__account">Email</label>
+        <TextField onChange={handleEmailInput} error={emailError}></TextField>
+        <label className="label__create__account">Phone</label>
+        <TextField onChange={handlePhoneInput} error={phoneError}></TextField>
+        <label className="label__create__account">Password</label>
+        <TextField
+          onChange={handlePasswordInput}
+          type={"password"}
+          error={passwordError}
+        ></TextField>
+        <label className="label__create__account">Confirm Password</label>
+        <TextField
+          onChange={handlePasswordConfirmInput}
+          type={"password"}
+          error={passwordConfirmError}
+        ></TextField>
+        <label className="label__create__account">Permission Level</label>
+        <TextField
+          onChange={handlePermissionInput}
+          placeholder={"1, 2, or 3"}
+          error={permissionError}
+        ></TextField>
+        <SecondaryButton
+          text={"CREATE ACCOUNT "}
+          onClick={create}
+        ></SecondaryButton>
+      </form>
+    </div>
   );
 };
-export default CreateAccount;
+export default AdminNewUserScreen;

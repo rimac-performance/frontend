@@ -6,6 +6,7 @@ import { BackArrow } from "../../components/atoms/arrows";
 import "./style.css";
 import { useNavigate, BrowserRouter, Routes, Route } from "react-router-dom";
 import Nav from "../../navigations/Nav";
+import { setToken } from "../../utils/token";
 import jwt_decode from "jwt-decode";
 
 const Login = () => {
@@ -43,7 +44,8 @@ const Login = () => {
       .then((response) => {
         console.log(response);
         console.log(jwt_decode(response.token));
-        navigate({ pathname: "/home/" + response.token });
+        setToken(response.token);
+        navigate({ pathname: "/home/" });
       });
   }
 

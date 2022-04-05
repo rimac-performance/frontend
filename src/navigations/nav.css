@@ -18,6 +18,19 @@
   height: 10%;
 }
 
+.navigation__nav-bar__admin {
+  position: fixed;
+  width: 100%;
+  background-color: black;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  height: 10%;
+}
+
 .icon {
   color: white;
   font-size: 24px;
@@ -26,4 +39,16 @@
 .active {
   color: #e9591c;
   font-size: 24px;
+}
+
+/* Tablet view */
+@media screen and (min-width: 900px) {
+  .icon,
+  .active {
+    font-size: 48px;
+  }
+  .navigation__nav-bar,
+  .navigation__nav-bar__admin {
+    min-height: 72px;
+  }
 }

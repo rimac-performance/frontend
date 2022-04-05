@@ -1,6 +1,7 @@
 .container {
     height: 100vh;
     overflow-y: auto;
+    margin-top: 0;
 }
 
 .imageContainer {
@@ -78,4 +79,8 @@ h1 {
 
 .download {
     flex: 1;
+}
+
+.logo {
+    margin-top: 0;
 }

@@ -49,7 +49,7 @@ const RunsUploadScreen = () => {
         .then((result) => {
           console.log("Success:", result);
           navigate({
-            pathname: "../runsList/" + params.car_id,
+            pathname: `../runsList/${params.model}/${params.car_id}`,
           });
         })
         .catch((error) => {
@@ -60,7 +60,7 @@ const RunsUploadScreen = () => {
 
   return (
     <div className="screen__runs">
-      <BackArrow to={"../runsList/" + params.car_id} />
+      <BackArrow to={`../runsList/${params.model}/${params.car_id}`} />
       <div className="header__runs">
         <img src={Logo} alt="logo" />
         <p className="title__runs">New Run</p>

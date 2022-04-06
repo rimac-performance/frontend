@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import { getToken } from "../../utils/token";
+import Automobile from "../../assets/image/automobile.png";
 
 const CarsConfirmScreen = () => {
   let params = useParams();
   console.log(params);
   const token = getToken();
   const navigate = useNavigate();
-  const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
+  const apiUrl = { Automobile };
 
   const [car, setCar] = useState({
     vin: params.vin,

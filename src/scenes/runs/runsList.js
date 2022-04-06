@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { decode } from "he";
 import { getToken } from "../../utils/token";
+import Automobile from "../../assets/image/automobile.png";
 
 const RunsListScreen = () => {
   let params = useParams();
@@ -68,10 +69,7 @@ const RunsListScreen = () => {
         <img src={Logo} alt="logo" />
         <p className="title__runs">Car Name</p>
         <div className="img__model">
-          <img
-            src="https://ichef.bbci.co.uk/news/976/cpsprodpb/156FE/production/_116860878_c_two1.jpg"
-            alt="car"
-          />
+          <img src={Automobile} alt="car" />
         </div>
       </div>
       <div className="label__runs">

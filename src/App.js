@@ -47,8 +47,14 @@ function App() {
               element={<CarsConfirmScreen />}
             />
             <Route path="runs" element={<RunsScreen />} />
-            <Route path="runsList/:car_id" element={<RunsListScreen />} />
-            <Route path="runsUpload/:car_id" element={<RunsUploadScreen />} />
+            <Route
+              path="runsList/:model/:car_id"
+              element={<RunsListScreen />}
+            />
+            <Route
+              path="runsUpload/:model/:car_id"
+              element={<RunsUploadScreen />}
+            />
             <Route path="sensorEdit" element={<SensorEditScreen />} />
             <Route path="engAnalysis" element={<EngAnalysisScreen />} />
             <Route path="community" element={<CommunityScreen />} />

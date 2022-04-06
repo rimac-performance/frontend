@@ -21,7 +21,7 @@ const RunsScreen = () => {
       onClick={() => {
         console.log("selecting car:" + car.car_id);
         navigate({
-          pathname: "../runsList/" + car.car_id,
+          pathname: `../runsList/${car.model}/${car.car_id}`,
         });
       }}
       key={car.car_id}

@@ -1,12 +1,11 @@
 import "./style.css";
+import Automobile from "../../../assets/image/automobile.png";
+
 const AutomobileInfo = (props) => {
   return (
     <div onClick={props.onClick} className="automobile__container">
       <div className="image">
-        <img
-          src="https://ichef.bbci.co.uk/news/976/cpsprodpb/156FE/production/_116860878_c_two1.jpg"
-          alt="car"
-        ></img>
+        <img src={Automobile} alt="car"></img>
       </div>
 
       <div className="infoName">

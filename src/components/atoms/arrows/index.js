@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "./arrows.css";
-import { clearToken } from "../../../utils/token";
 
 export const BackArrow = ({ to }) => {
   const navigate = useNavigate();
@@ -22,13 +21,9 @@ export const BackArrow = ({ to }) => {
   );
 };
 
-export const FilterArrow = ({ text }) => {
-  const onClick = () => {
-    return;
-  };
-
+export const FilterArrow = ({ onClick }) => {
   return (
-    <div className="arrow__filter">
+    <div className="arrow__filter" onClick={onClick}>
       <FontAwesomeIcon icon={faCaretDown} />
       <label>Filter</label>
     </div>

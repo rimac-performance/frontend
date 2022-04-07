@@ -20,6 +20,7 @@ import TermOfServices from "./scenes/termOfService";
 import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
+import AnalysisScreen from "./scenes/analysis";
 import ContactDealer from "./scenes/settings/contactDealer";
 import ContactDeveloper from "./scenes/settings/contactDeveloper";
 import ChangePassword_setting from "./scenes/settings/changePassword";
@@ -63,6 +64,10 @@ function App() {
             <Route
               path="admin/editUser/:args"
               element={<AdminEditUserScreen />}
+            />
+            <Route
+              path="analysis/:run_id/:token"
+              element={<AnalysisScreen />}
             />
             <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
             <Route path="community/:token" element={<CommunityScreen />} />

@@ -9,7 +9,7 @@ import CarsConfirmScreen from "./scenes/cars/carsConfirm";
 import RunsScreen from "./scenes/runs";
 import RunsListScreen from "./scenes/runs/runsList";
 import RunsUploadScreen from "./scenes/runs/runsUpload";
-import AdminAnalysisScreen from "./scenes/analysis/adminAnalysis";
+import SensorEditScreen from "./scenes/analysis/sensorEdit";
 import EngAnalysisScreen from "./scenes/analysis/engAnalysis";
 import CommunityScreen from "./scenes/community";
 import SettingsScreen from "./scenes/settings";
@@ -21,6 +21,14 @@ import ChangePassword from "./scenes/changePassword";
 import ResetPassword from "./scenes/changePassword/passwordReset";
 import ErrorPassword from "./scenes/changePassword/passwordError";
 import AnalysisScreen from "./scenes/analysis";
+import ContactDealer from "./scenes/settings/contactDealer";
+import ContactDeveloper from "./scenes/settings/contactDeveloper";
+import ChangePassword_setting from "./scenes/settings/changePassword";
+import Review from "./scenes/settings/review";
+import LogOut from "./scenes/settings/logout";
+import AdminManagementScreen from "./scenes/admin";
+import AdminNewUserScreen from "./scenes/admin/newUser";
+import AdminEditUserScreen from "./scenes/admin/editUser";
 
 function App() {
   return (
@@ -28,32 +36,34 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="home/:token" element={<Nav />}>
-            <Route path="cars/:token" element={<CarsScreen />} />
-            <Route
-              path="carsRegister/:token"
-              element={<CarsRegisterScreen />}
-            />
+          <Route path="home" element={<Nav />}>
+            <Route path="cars" element={<CarsScreen />} />
+            <Route path="carsRegister" element={<CarsRegisterScreen />} />
             <Route
               path="carsDetails/:vin/:model/:year/:color"
               element={<CarsDetailsScreen />}
             />
             <Route
-              path="carsConfirm/:vin/:model/:year/:color/:token"
+              path="carsConfirm/:vin/:model/:year/:color"
               element={<CarsConfirmScreen />}
             />
-            <Route path="runs/:token" element={<RunsScreen />} />
+            <Route path="runs" element={<RunsScreen />} />
             <Route
-              path="runsList/:car_id/:token"
+              path="runsList/:model/:car_id"
               element={<RunsListScreen />}
             />
             <Route
-              path="runsUpload/:car_id/:token"
+              path="runsUpload/:model/:car_id"
               element={<RunsUploadScreen />}
             />
+            <Route path="sensorEdit" element={<SensorEditScreen />} />
+            <Route path="engAnalysis" element={<EngAnalysisScreen />} />
+            <Route path="community" element={<CommunityScreen />} />
+            <Route path="admin" element={<AdminManagementScreen />} />
+            <Route path="admin/newUser" element={<AdminNewUserScreen />} />
             <Route
-              path="adminAnalysis/:token"
-              element={<AdminAnalysisScreen />}
+              path="admin/editUser/:args"
+              element={<AdminEditUserScreen />}
             />
             <Route
               path="analysis/:run_id/:token"
@@ -62,6 +72,12 @@ function App() {
             <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
             <Route path="community/:token" element={<CommunityScreen />} />
             <Route path="settings/:token" element={<SettingsScreen />} />
+            <Route path="contactDealer" element={<ContactDealer />} />
+            <Route path="contactDeveloper" element={<ContactDeveloper />} />
+            <Route path="changePassword" element={<ChangePassword_setting />} />
+            <Route path="review" element={<Review />} />
+            <Route path="LogOut" element={<LogOut />} />
+            <Route path="settings" element={<SettingsScreen />} />
           </Route>
           <Route path="login" element={<Login />} />
           <Route path="create" element={<CreateAccount />} />

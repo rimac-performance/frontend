@@ -4,13 +4,15 @@ import { PrimaryButton } from "../../components/atoms/buttons";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
+import { getToken } from "../../utils/token";
+import Automobile from "../../assets/image/automobile.png";
 
 const CarsConfirmScreen = () => {
   let params = useParams();
   console.log(params);
-  const token = params.token;
+  const token = getToken();
   const navigate = useNavigate();
-  const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
+  const apiUrl = { Automobile };
 
   const [car, setCar] = useState({
     vin: params.vin,
@@ -47,7 +49,7 @@ const CarsConfirmScreen = () => {
         console.log("car added");
         navigate(
           {
-            pathname: "../cars/" + token,
+            pathname: "../cars/",
           },
           { replace: true }
         );
@@ -66,7 +68,7 @@ const CarsConfirmScreen = () => {
 
   return (
     <div className="screen__cars">
-      <BackArrow to={"../carsRegister/" + token} />
+      <BackArrow to={"../carsRegister/"} />
       <div className="header__cars">
         <img src={Logo} alt="logo" />
         <p className="title__cars">Register</p>

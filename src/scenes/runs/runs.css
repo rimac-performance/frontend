@@ -71,3 +71,15 @@
   left: 0;
   right: 0;
 }
+.filter__runs__list {
+  width: 40%;
+  max-width: 200px;
+  margin: 0 10% 0 50%;
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 6px;
+  background-color: white;
+}
+.filter__runs__filter {
+  margin: 1em;
+}

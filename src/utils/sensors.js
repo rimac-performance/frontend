@@ -108,7 +108,7 @@ export const frontToBack = {
   power_available: {
     names: ["mean_PCU_power_LIM:PCU_drive_power_available"],
   },
-  cell: {
+  cell_temperature: {
     names: [
       "mean_PDU_BMS_cell_min_max_vals:PDU_cell_temp_max",
       "mean_PDU_BMS_cell_min_max_vals:PDU_cell_temp_min",
@@ -141,5 +141,5 @@ export const backToFront = {
   "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1": "Rmotor",
   "mean_PCU_IVI_FB_2:PCU_vehicle_range": "unit",
   "mean_PCU_power_LIM:PCU_drive_power_available": "power_available",
-  "mean_PDU_BMS_cell_min_max_vals:PDU_cell_temp_max": "cell",
+  "mean_PDU_BMS_cell_min_max_vals:PDU_cell_temp_max": "cell_temperature",
 };

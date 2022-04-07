@@ -21,13 +21,9 @@ export const BackArrow = ({ to }) => {
   );
 };
 
-export const FilterArrow = ({ text }) => {
-  const onClick = () => {
-    return;
-  };
-
+export const FilterArrow = ({ onClick }) => {
   return (
-    <div className="arrow__filter">
+    <div className="arrow__filter" onClick={onClick}>
       <FontAwesomeIcon icon={faCaretDown} />
       <label>Filter</label>
     </div>

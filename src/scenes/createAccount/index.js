@@ -92,7 +92,7 @@ const CreateAccount = () => {
       setPasswordError(true);
       flag = false;
     }
-    if (validatePass(passwordConfirm)) {
+    if (validatePass(password.value, passwordConfirm.value)) {
       setPasswordConfirmError(false);
     } else {
       setPasswordConfirmError(true);

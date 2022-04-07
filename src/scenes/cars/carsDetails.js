@@ -2,6 +2,7 @@ import "./cars.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import { BackArrow } from "../../components/atoms/arrows";
 import { useParams } from "react-router-dom";
+import Automobile from "../../assets/image/automobile.png";
 
 const CarsDetailsScreen = () => {
   let params = useParams();
@@ -20,10 +21,7 @@ const CarsDetailsScreen = () => {
         <img src={Logo} alt="logo" />
         <p className="title__cars">Details</p>
         <div className="img__model">
-          <img
-            src="https://ichef.bbci.co.uk/news/976/cpsprodpb/156FE/production/_116860878_c_two1.jpg"
-            alt="car"
-          />
+          <img src={Automobile} alt="car" />
         </div>
       </div>
       <div className="confirm__cars">

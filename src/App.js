@@ -84,6 +84,7 @@ function App() {
           <Route path="termOfService" element={<TermOfServices />} />
           <Route path="changePassword" element={<ChangePassword />} />
           <Route path="resetPassword" element={<ResetPassword />} />
+          <Route path="resetPassword/:code" element={<ResetPassword />} />
           <Route path="errorPassword" element={<ErrorPassword />} />
         </Routes>
       </BrowserRouter>

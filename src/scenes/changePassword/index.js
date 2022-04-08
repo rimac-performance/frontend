@@ -3,11 +3,15 @@ import { useState } from "react";
 import TextField from "../../components/atoms/text-fields/text-field";
 import { PrimaryButton } from "../../components/atoms/buttons";
 import { BackArrow } from "../../components/atoms/arrows";
+import { useNavigate } from "react-router-dom";
+
 const ChangePassword = () => {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailInput = (e) => {
     const { value } = e.currentTarget;
+
     setEmail({
       value,
     });
@@ -28,9 +32,11 @@ const ChangePassword = () => {
       switch (status) {
         case 200:
           console.log("Success");
+          navigate("../resetPassword");
           break;
         case 404:
           console.log("There is a error");
+          navigate("../errorPassword");
           break;
         default:
         //pop up error message

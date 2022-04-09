@@ -61,12 +61,13 @@ import {
   Title,
   Tooltip,
 } from "chart.js";
+import { getToken } from "../../utils/token";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const FullScreenDialog = () => {
+const FullScreenDialog = ({ charts, setCharts, coolant, setCoolant }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -75,6 +76,21 @@ const FullScreenDialog = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleToggle = (index, value) => {
+    let newCharts = [...charts];
+
+    newCharts[index].display = value;
+
+    setCharts(newCharts);
+  };
+
+  const handleCoolantToggle = (value) => {
+    setCoolant({
+      ...coolant,
+      display: value,
+    });
   };
 
   return (
@@ -99,85 +115,33 @@ const FullScreenDialog = () => {
             <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
               Filter Sensors
             </Typography>
-            <Button autoFocus color="inherit" onClick={handleClose}>
-              save
-            </Button>
+            {/*<Button autoFocus color="inherit" onClick={handleChecked}>*/}
+            {/*  save*/}
+            {/*</Button>*/}
           </Toolbar>
         </AppBar>
         <div className="checkbox-wrapper">
           <FormGroup>
             <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Ambient Temperature"
+              control={
+                <Checkbox
+                  checked={coolant.display}
+                  onChange={(e) => handleCoolantToggle(e.target.checked)}
+                />
+              }
+              label={coolant.label}
             />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Interior Temperature"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Coolant In Out"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left HPI Temperature IGBT1"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left HPI Temperature IGBT2"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left HPI Temperature IGBT3"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Right Temperature Motor 1"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Right Temperature Motor 2"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left Temperature Motor 1"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left Temperature Motor 2"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery SOC"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery SOH"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery Voltage Current"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery Voltage"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PCU Accelerator Pedal"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Odometer"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Vehicle Speed"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="VCU Vehicle ST"
-            />
+            {charts.map((chart, index) => (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={chart.display}
+                    onChange={(e) => handleToggle(index, e.target.checked)}
+                  />
+                }
+                label={chart.label}
+              />
+            ))}
           </FormGroup>
         </div>
       </Dialog>
@@ -293,100 +257,126 @@ const FullScreenDialogShareButton = () => {
   );
 };
 
-const charts = [
-  {
-    row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
-    label: "Front Right Motor 1 Temp",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor2",
-    label: "Front Right Motor 2 Temp",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_HPI_FL_phase_curr_motor_temp:HPI_temp_motor1",
-    label: "Front Left Motor 1 Temp",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOC",
-    label: "PDU HV Battery SOC",
-    graphLabel: "%",
-  },
-  {
-    row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOH",
-    label: "PDU HV Battery SOH",
-    graphLabel: "%",
-  },
-  {
-    row: "mean_PDU_HV_battery_performance:PDU_HV_battery_current",
-    label: "PDU HV Battery Current",
-    graphLabel: "%",
-  },
-  {
-    row: "mean_PDU_HV_battery_performance:PDU_HV_battery_voltage",
-    label: "PDU HV Battery Voltage",
-    graphLabel: "volts",
-  },
-  {
-    row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
-    label: "Vehicle Speed",
-    graphLabel: "km/h",
-  },
-  {
-    row: "mean_SAFETY_PCU_vehicle_ST:PCU_accelerator_pedal",
-    label: "PCU Accelerator Pedal",
-    graphLabel: "km/h",
-  },
-  {
-    row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT3",
-    label: "Front Right HPI Temp IGBT3",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT3",
-    label: "Front Left HPI Temp IGBT3",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT2",
-    label: "Front Left HPI Temp IGBT2",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT2",
-    label: "Front Right HPI Temp IGBT2",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT1",
-    label: "Front Left HPI Temp IGBT1",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT1",
-    label: "Front Right HPI Temp IGBT1",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_CCU_F_temp_1:CCU_F_ambient_temp",
-    label: "Ambient Temperature",
-    graphLabel: "°C",
-  },
-  {
-    row: "mean_CCU_F_temp_1:CCU_F_interior_temp",
-    label: "Interior Temperature",
-    graphLabel: "°C",
-  },
-];
-
 const AnalysisScreen = () => {
   const params = useParams();
-  const { run_id, token } = params;
+  const { run_id } = params;
+  const token = getToken();
   const [range, setRange] = useState([0, 20]);
   const [data, loading] = useAnalysisData(run_id, token);
   const [tab, setTab] = useState("chart");
+  const [charts, setCharts] = useState([
+    //   //TODO:
+    //   //- Using the api api/sensor/threshold
+    //   //- Label->Advised Engineer Threshold
+    //   //- Make another line for the threshold
+    {
+      row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
+      label: "Front Right Motor 1 Temp",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor2",
+      label: "Front Right Motor 2 Temp",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FL_phase_curr_motor_temp:HPI_temp_motor1",
+      label: "Front Left Motor 1 Temp",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOC",
+      label: "PDU HV Battery SOC",
+      graphLabel: "%",
+      display: true,
+    },
+    {
+      row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOH",
+      label: "PDU HV Battery SOH",
+      graphLabel: "%",
+      display: true,
+    },
+    {
+      row: "mean_PDU_HV_battery_performance:PDU_HV_battery_current",
+      label: "PDU HV Battery Current",
+      graphLabel: "%",
+      display: true,
+    },
+    {
+      row: "mean_PDU_HV_battery_performance:PDU_HV_battery_voltage",
+      label: "PDU HV Battery Voltage",
+      graphLabel: "volts",
+      display: true,
+    },
+    {
+      row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
+      label: "Vehicle Speed",
+      graphLabel: "km/h",
+      display: true,
+    },
+    {
+      row: "mean_SAFETY_PCU_vehicle_ST:PCU_accelerator_pedal",
+      label: "PCU Accelerator Pedal",
+      graphLabel: "km/h",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT3",
+      label: "Front Right HPI Temp IGBT3",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT3",
+      label: "Front Left HPI Temp IGBT3",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT2",
+      label: "Front Left HPI Temp IGBT2",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT2",
+      label: "Front Right HPI Temp IGBT2",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT1",
+      label: "Front Left HPI Temp IGBT1",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT1",
+      label: "Front Right HPI Temp IGBT1",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_CCU_F_temp_1:CCU_F_ambient_temp",
+      label: "Ambient Temperature",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_CCU_F_temp_1:CCU_F_interior_temp",
+      label: "Interior Temperature",
+      graphLabel: "°C",
+      display: true,
+    },
+  ]);
+
+  const [coolant, setCoolant] = useState({
+    label: "Coolant In Vs. Out",
+    display: true,
+  });
 
   console.log("run_id", run_id);
   console.log("token", token);
@@ -406,20 +396,34 @@ const AnalysisScreen = () => {
           />
         </div>
 
-        <Odometer />
-        <VCUVehicleST />
-        <CoolantInOut data={data} range={range} />
-
-        {charts.map((chart) => (
-          <Chart
-            key={chart.row}
-            row={chart.row}
-            label={chart.label}
+        {coolant.display && (
+          <CoolantInOut
             data={data}
             range={range}
-            graphLabel={chart.graphLabel}
+            label={coolant.label}
+            display={coolant.display}
           />
-        ))}
+        )}
+
+        {data &&
+          data.length > 0 &&
+          charts.map((chart) => {
+            if (!chart.display) return;
+
+            return (
+              <Chart
+                key={chart.row}
+                row={chart.row}
+                label={chart.label}
+                data={data}
+                range={range}
+                graphLabel={chart.graphLabel}
+              />
+            );
+          })}
+
+        <Odometer />
+        <VCUVehicleST />
       </div>
     );
   };
@@ -443,7 +447,12 @@ const AnalysisScreen = () => {
         </div>
       </div>
       <div>
-        <FullScreenDialog />
+        <FullScreenDialog
+          charts={charts}
+          setCharts={setCharts}
+          coolant={coolant}
+          setCoolant={setCoolant}
+        />
       </div>
       {!loading && (
         <div>
@@ -453,7 +462,11 @@ const AnalysisScreen = () => {
             selected={tab}
             onClick={(text) => setTab(text)}
           />
-          {tab.toLowerCase() === "chart" ? <ShowCharts /> : <Table data={data} />}
+          {tab.toLowerCase() === "chart" ? (
+            <ShowCharts />
+          ) : (
+            <Table data={data} />
+          )}
           <div style={{ marginBottom: 200 }} />
         </div>
       )}

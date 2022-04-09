@@ -19,9 +19,7 @@ const RunsListScreen = () => {
 
   const runsList = runs.map((run) => (
     <RunButton
-      onClick={() =>
-        navigate({ pathname: `../analysis/${run.run_id}/${token}` })
-      }
+      onClick={() => navigate({ pathname: `../analysis/${run.run_id}` })}
       key={run.run_id}
       text={decode(run.name)}
     />

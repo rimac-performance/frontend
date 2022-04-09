@@ -34,7 +34,7 @@ const options = {
   },
 };
 
-const CoolantInOut = ({ data, range }) => {
+const CoolantInOut = ({ data, range, label, display }) => {
   const filteredData = data;
   // const filteredData = data.filter((item) => {
   //   console.log(
@@ -53,6 +53,16 @@ const CoolantInOut = ({ data, range }) => {
   const graphData = {
     labels: filteredData.map((item) => item.time.slice(11, 16)),
     datasets: [
+      // {
+      //   //TODO:
+      //   //- Using the api api/sensor/threshold
+      //   //- Label->Advised Engineer Threshold
+      //   //- Make another line for the threshold
+      //   label: "Threshold",
+      //   data: {thresh},
+      //   borderColor: "#E9591CFF",
+      //   backgroundColor: "rgba(233,89,28,0.5)",
+      // },
       {
         label: "Coolant In",
         data: data.map(

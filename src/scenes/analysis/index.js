@@ -106,78 +106,14 @@ const FullScreenDialog = () => {
         </AppBar>
         <div className="checkbox-wrapper">
           <FormGroup>
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Ambient Temperature"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Interior Temperature"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Coolant In Out"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left HPI Temperature IGBT1"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left HPI Temperature IGBT2"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left HPI Temperature IGBT3"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Right Temperature Motor 1"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Right Temperature Motor 2"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left Temperature Motor 1"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Left Temperature Motor 2"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery SOC"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery SOH"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery Voltage Current"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PDU HV Battery Voltage"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="PCU Accelerator Pedal"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Odometer"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="Vehicle Speed"
-            />
-            <FormControlLabel
-              control={<Checkbox defaultChecked />}
-              label="VCU Vehicle ST"
-            />
+            {charts.data &&
+              charts.data.length > 0 &&
+              charts.map((chart) => (
+                <FormControlLabel
+                  control={<Checkbox defaultChecked />}
+                  label={charts.label}
+                />
+              ))}
           </FormGroup>
         </div>
       </Dialog>
@@ -294,6 +230,10 @@ const FullScreenDialogShareButton = () => {
 };
 
 const charts = [
+  //   //TODO:
+  //   //- Using the api api/sensor/threshold
+  //   //- Label->Advised Engineer Threshold
+  //   //- Make another line for the threshold
   {
     row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
     label: "Front Right Motor 1 Temp",
@@ -410,16 +350,18 @@ const AnalysisScreen = () => {
         <VCUVehicleST />
         <CoolantInOut data={data} range={range} />
 
-        {charts.map((chart) => (
-          <Chart
-            key={chart.row}
-            row={chart.row}
-            label={chart.label}
-            data={data}
-            range={range}
-            graphLabel={chart.graphLabel}
-          />
-        ))}
+        {data &&
+          data.length > 0 &&
+          charts.map((chart) => (
+            <Chart
+              key={chart.row}
+              row={chart.row}
+              label={chart.label}
+              data={data}
+              range={range}
+              graphLabel={chart.graphLabel}
+            />
+          ))}
       </div>
     );
   };
@@ -453,7 +395,11 @@ const AnalysisScreen = () => {
             selected={tab}
             onClick={(text) => setTab(text)}
           />
-          {tab.toLowerCase() === "chart" ? <ShowCharts /> : <Table data={data} />}
+          {tab.toLowerCase() === "chart" ? (
+            <ShowCharts />
+          ) : (
+            <Table data={data} />
+          )}
           <div style={{ marginBottom: 200 }} />
         </div>
       )}

@@ -41,3 +41,25 @@ ul > li {
   font-size: 14px;
   color: gray;
 }
+
+@media screen and (min-width: 800px) {
+  .terms-of-service {
+    width: 65%;
+    margin: auto;
+  }
+  .terms-of-service > p,
+  ul > li {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .terms-of-service {
+    width: 50%;
+    max-width: 800px;
+  }
+  .terms-of-service > p,
+  ul > li {
+    font-size: 18px;
+  }
+}

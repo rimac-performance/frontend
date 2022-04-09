@@ -34,7 +34,7 @@ const options = {
   },
 };
 
-const CoolantInOut = ({ data, range }) => {
+const CoolantInOut = ({ data, range, label, display }) => {
   const filteredData = data;
   // const filteredData = data.filter((item) => {
   //   console.log(

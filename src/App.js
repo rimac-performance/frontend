@@ -65,10 +65,7 @@ function App() {
               path="admin/editUser/:args"
               element={<AdminEditUserScreen />}
             />
-            <Route
-              path="analysis/:run_id/:token"
-              element={<AnalysisScreen />}
-            />
+            <Route path="analysis/:run_id" element={<AnalysisScreen />} />
             <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
             <Route path="community/:token" element={<CommunityScreen />} />
             <Route path="settings/:token" element={<SettingsScreen />} />

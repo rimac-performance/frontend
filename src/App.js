@@ -67,10 +67,7 @@ function App() {
               path="admin/editUser/:args"
               element={<AdminEditUserScreen />}
             />
-            <Route
-              path="analysis/:run_id/:token"
-              element={<AnalysisScreen />}
-            />
+            <Route path="analysis/:run_id" element={<AnalysisScreen />} />
             <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
             <Route path="community/:token" element={<CommunityScreen />} />
             <Route path="settings/:token" element={<SettingsScreen />} />
@@ -86,6 +83,7 @@ function App() {
           <Route path="termOfService" element={<TermOfServices />} />
           <Route path="changePassword" element={<ChangePassword />} />
           <Route path="resetPassword" element={<ResetPassword />} />
+          <Route path="resetPassword/:code" element={<ResetPassword />} />
           <Route path="errorPassword" element={<ErrorPassword />} />
         </Routes>
       </BrowserRouter>

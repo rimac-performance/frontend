@@ -93,7 +93,6 @@ export const useAnalysisData = (run_id, token) => {
 };
 
 const cleanData = (data) => {
-  console.log(data);
   let cleanedData;
 
   cleanedData = removeNullDataPoints(data);

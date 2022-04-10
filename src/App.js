@@ -29,6 +29,7 @@ import LogOut from "./scenes/settings/logout";
 import AdminManagementScreen from "./scenes/admin";
 import AdminNewUserScreen from "./scenes/admin/newUser";
 import AdminEditUserScreen from "./scenes/admin/editUser";
+import GuestAnalysisScreen from "./scenes/analysis/guestAnalysis";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/:run_id" element={<GuestAnalysisScreen />} />
           <Route path="home" element={<Nav />}>
             <Route path="cars" element={<CarsScreen />} />
             <Route path="carsRegister" element={<CarsRegisterScreen />} />
@@ -65,10 +67,7 @@ function App() {
               path="admin/editUser/:args"
               element={<AdminEditUserScreen />}
             />
-            <Route
-              path="analysis/:run_id/:token"
-              element={<AnalysisScreen />}
-            />
+            <Route path="analysis/:run_id" element={<AnalysisScreen />} />
             <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
             <Route path="community/:token" element={<CommunityScreen />} />
             <Route path="settings/:token" element={<SettingsScreen />} />
@@ -84,6 +83,7 @@ function App() {
           <Route path="termOfService" element={<TermOfServices />} />
           <Route path="changePassword" element={<ChangePassword />} />
           <Route path="resetPassword" element={<ResetPassword />} />
+          <Route path="resetPassword/:code" element={<ResetPassword />} />
           <Route path="errorPassword" element={<ErrorPassword />} />
         </Routes>
       </BrowserRouter>

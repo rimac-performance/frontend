@@ -17,6 +17,10 @@
   text-decoration: underline #e9591c 3px;
 }
 
+.header__community > img {
+  width: 100%;
+}
+
 .title__community {
   text-align: center;
   font-size: x-large;

@@ -5,7 +5,7 @@ import TextField from "../../components/atoms/text-fields/text-field";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
-import { validate } from "../../utils/validate";
+import { validate, validateVin } from "../../utils/validate";
 
 const CarsRegisterScreen = () => {
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const CarsRegisterScreen = () => {
     console.log("adding car " + model.value + " with vin: " + vin.value);
     let flag = true;
 
-    if (validate(vin)) {
+    if (validateVin(vin)) {
       setVinError(false);
     } else {
       setVinError(true);

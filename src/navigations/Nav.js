@@ -62,6 +62,7 @@ const Nav = () => {
                 "/runsUpload",
                 "/sensorEdit",
                 "engAnalysis",
+                "analysis",
               ])}
               icon={faChartBar}
             />
@@ -76,7 +77,16 @@ const Nav = () => {
             <FontAwesomeIcon className={active(["/admin"])} icon={faUserPen} />
           </Link>
           <Link to={"./settings/"}>
-            <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
+            <FontAwesomeIcon
+              className={active([
+                "/settings",
+                "contact",
+                "review",
+                "changePassword",
+                "logout",
+              ])}
+              icon={faGear}
+            />
           </Link>
         </div>
       ) : (
@@ -95,6 +105,7 @@ const Nav = () => {
                 "/runsUpload",
                 "/sensorEdit",
                 "engAnalysis",
+                "analysis",
               ])}
               icon={faChartBar}
             />
@@ -106,7 +117,16 @@ const Nav = () => {
             />
           </Link>
           <Link to={"./settings/"}>
-            <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
+            <FontAwesomeIcon
+              className={active([
+                "/settings",
+                "contact",
+                "review",
+                "changePassword",
+                "logout",
+              ])}
+              icon={faGear}
+            />
           </Link>
         </div>
       )}

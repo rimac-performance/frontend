@@ -33,12 +33,12 @@ const ChangePassword_setting = () => {
   return (
     <>
       <div className="screen__setting">
-        <BackArrow to={"../seeting/"} />
+        <BackArrow to={"../settings/"} />
         <div className="header__setting">
           <img src={Logo} alt="logo" />
           <p className="title__setting">SETTINGS</p>
         </div>
-        <div className="container">
+        <div className="container__settings">
           <h1>Change Password</h1>
           <p>
             New passwords must be at least 8 characters long, with at least one

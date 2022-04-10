@@ -7,5 +7,12 @@
 .label__create__account {
   font-weight: bold;
   display: block;
-  margin: 15px;
+  width: 90%;
+  margin: 8px auto 0 auto;
+  max-width: 450px;
+}
+
+.create__account__disabled > div {
+  background-color: rgba(100, 100, 100, 0.7);
+  border-color: rgba(100, 100, 100, 0.7);
 }

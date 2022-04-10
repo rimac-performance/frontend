@@ -11,3 +11,12 @@ export const validatePermission = (role) => {
   let roles = [1, 2, 3];
   return roles.includes(roleNum);
 };
+
+export const validateVin = (vin) => {
+  if (vin.length == 17) {
+    if (!vin.includes("O") || !vin.includes("I") || !vin.includes("Q")) {
+      return true;
+    }
+  }
+  return false;
+};

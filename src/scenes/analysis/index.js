@@ -537,7 +537,7 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
   // });
 
   const graphData = {
-    labels: filteredData.map((item) => moment(item.time).format("mm:ss SS")),
+    labels: filteredData.map((item) => moment(item.time).format("mm:ss.SS")),
     datasets: [
       {
         label: graphLabel,
@@ -553,6 +553,7 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
       <h2 className="black heading2center">{label}</h2>
       <div className="chart">
         <Line options={options} data={graphData} />
+        <div className="body">mm:ss.ms</div>
       </div>
     </div>
   );

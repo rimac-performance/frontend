@@ -14,10 +14,10 @@ const Landing = () => {
       </div>
       <div className="container">
         <Link to={"/login"}>
-          <PrimaryButton text={"LOG IN"}></PrimaryButton>
+          <PrimaryButton text={"Log In"}></PrimaryButton>
         </Link>
         <Link to={"/create"}>
-          <SecondaryButton text={"CREATE ACCOUNT"}></SecondaryButton>
+          <SecondaryButton text={"Create Account"}></SecondaryButton>
         </Link>
         <a href={"../changePassword"}>Forgot Your Password?</a>
       </div>

@@ -59,7 +59,7 @@ const ChangePassword_setting = () => {
             placeholder={"Comfirm Password"}
             onChange={handleNewPasswordInput}
           ></TextField>
-          <PrimaryButton text={"CHANGE PASSWORD"} onClick={changePassword}>
+          <PrimaryButton text={"Change Password"} onClick={changePassword}>
             {" "}
           </PrimaryButton>
         </div>

@@ -10,6 +10,7 @@
   font-size: 16px;
   color: black;
   background-color: white;
+  cursor: pointer;
 }
 
 .button__secondary {
@@ -24,6 +25,7 @@
   font-size: 16px;
   color: white;
   background-color: black;
+  cursor: pointer;
 }
 
 .button__run {
@@ -37,6 +39,7 @@
   font-size: 24px;
   color: black;
   background-color: #c4c4c4;
+  cursor: pointer;
 }
 
 .button__image {
@@ -54,6 +57,7 @@
   display: inline-block;
   visibility: visible;
   border: 2px solid #777582;
+  cursor: pointer;
 }
 
 .setting__icon h1 {

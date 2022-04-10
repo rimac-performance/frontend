@@ -66,7 +66,7 @@ const Login = () => {
             type={"password"}
             placeholder={"Password"}
           ></TextField>
-          <SecondaryButton text={"LOG IN "} onClick={login}></SecondaryButton>
+          <SecondaryButton text={"Log In "} onClick={login}></SecondaryButton>
         </form>
         <a href={"../changePassword"}>Forgot Your Password?</a>
       </div>

@@ -14,7 +14,7 @@ const LogOut = () => {
         <div className="container__settings">
           <h1>Log Out</h1>
           <p>Are you sure you would like to be logged out?</p>
-          <PrimaryButton text={"LOG OUT"}></PrimaryButton>
+          <PrimaryButton text={"Log Out"}></PrimaryButton>
         </div>
       </div>
     </>

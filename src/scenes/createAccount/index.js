@@ -167,7 +167,7 @@ const CreateAccount = () => {
             ></SecondaryButton>
           ) : (
             <div className="create__account__disabled">
-              <SecondaryButton text={"CREATE ACCOUNT"} onClick={() => {}} />
+              <SecondaryButton text={"Create Account"} onClick={() => {}} />
             </div>
           )}
           <CheckBox

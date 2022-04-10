@@ -136,8 +136,8 @@ const EngAnalysisScreen = () => {
         <p className="title__community">Edit Sensors</p>
       </div>
       <p className="caption">
-        "This page allows engineers to set the tolerance levels for different
-        sensors. These thresholds will appear in analyses for all users."
+        This page allows engineers to set the tolerance levels for different
+        sensors. These thresholds will appear in analyses for all users.
       </p>
       <SensorInfo
         name={"speed"}

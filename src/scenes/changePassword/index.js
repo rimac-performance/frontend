@@ -57,7 +57,7 @@ const ChangePassword = () => {
           onChange={handleEmailInput}
           placeholder={"Please Enter your email"}
         ></TextField>
-        <PrimaryButton text={"SEND"} onClick={forgot}></PrimaryButton>
+        <PrimaryButton text={"Send"} onClick={forgot}></PrimaryButton>
       </div>
     </>
   );

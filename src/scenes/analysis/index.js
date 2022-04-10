@@ -286,9 +286,6 @@ const ShowCharts = ({ data, coolant, charts, range }) => {
             />
           );
         })}
-
-      <Odometer />
-      <VCUVehicleST />
     </div>
   );
 };
@@ -320,6 +317,12 @@ const AnalysisScreen = ({ data, loading }) => {
     //   //- Using the api api/sensor/threshold
     //   //- Label->Advised Engineer Threshold
     //   //- Make another line for the threshold
+    {
+      row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
+      label: "Odometer - Vehicle Speed",
+      graphLabel: "km/h",
+      display: true,
+    },
     {
       row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
       label: "Front Right Motor 1 Temp",
@@ -419,6 +422,12 @@ const AnalysisScreen = ({ data, loading }) => {
     {
       row: "mean_CCU_F_temp_1:CCU_F_interior_temp",
       label: "Interior Temperature",
+      graphLabel: "°C",
+      display: true,
+    },
+    {
+      row: "mean_SAFETY_VCU_vehicle_ST:VCU_vehicle_ST",
+      label: "VCU Vehicle ST",
       graphLabel: "°C",
       display: true,
     },
@@ -551,7 +560,7 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
   return (
     <div className="section">
       <h2 className="black heading2center">{label}</h2>
-      <div className="chart">
+      <div className="graph-chart">
         <Line options={options} data={graphData} />
         <div className="body">mm:ss.ms</div>
       </div>

@@ -29,6 +29,7 @@ import LogOut from "./scenes/settings/logout";
 import AdminManagementScreen from "./scenes/admin";
 import AdminNewUserScreen from "./scenes/admin/newUser";
 import AdminEditUserScreen from "./scenes/admin/editUser";
+import GuestAnalysisScreen from "./scenes/analysis/guestAnalysis";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="/:run_id" element={<GuestAnalysisScreen />} />
           <Route path="home" element={<Nav />}>
             <Route path="cars" element={<CarsScreen />} />
             <Route path="carsRegister" element={<CarsRegisterScreen />} />

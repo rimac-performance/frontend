@@ -62,6 +62,7 @@ const Nav = () => {
                 "/runsUpload",
                 "/sensorEdit",
                 "engAnalysis",
+                "analysis",
               ])}
               icon={faChartBar}
             />
@@ -95,6 +96,7 @@ const Nav = () => {
                 "/runsUpload",
                 "/sensorEdit",
                 "engAnalysis",
+                "analysis",
               ])}
               icon={faChartBar}
             />

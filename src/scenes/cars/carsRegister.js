@@ -41,7 +41,6 @@ const CarsRegisterScreen = () => {
   };
 
   const register = () => {
-    console.log("adding car " + model.value + " with vin: " + vin.value);
     let flag = true;
 
     if (validateVin(vin.value)) {
@@ -70,6 +69,8 @@ const CarsRegisterScreen = () => {
     }
 
     if (flag) {
+      console.log("adding car " + model.value + " with vin: " + vin.value);
+
       navigate({
         pathname:
           "../carsConfirm/" +

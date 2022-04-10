@@ -30,6 +30,8 @@ import AdminEditUserScreen from "./scenes/admin/editUser";
 import GuestAnalysisScreen from "./scenes/analysis/guestAnalysis";
 
 function App() {
+  console.log(process.env.NODE_ENV);
+
   return (
     <div className="App">
       <BrowserRouter>

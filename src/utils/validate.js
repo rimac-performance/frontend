@@ -14,9 +14,17 @@ export const validatePermission = (role) => {
 
 export const validateVin = (vin) => {
   if (vin.length == 17) {
-    if (!vin.includes("O") || !vin.includes("I") || !vin.includes("Q")) {
+    if (!vin.includes("O") && !vin.includes("I") && !vin.includes("Q")) {
       return true;
+    } else {
+      console.log(
+        `O: ${vin.includes("O")} I: ${vin.includes("I")} Q: ${vin.includes(
+          "Q"
+        )}`
+      );
     }
+  } else {
+    console.log("vin is " + vin.length + " characters");
   }
   return false;
 };

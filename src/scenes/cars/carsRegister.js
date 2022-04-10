@@ -44,7 +44,7 @@ const CarsRegisterScreen = () => {
     console.log("adding car " + model.value + " with vin: " + vin.value);
     let flag = true;
 
-    if (validateVin(vin)) {
+    if (validateVin(vin.value)) {
       setVinError(false);
     } else {
       setVinError(true);

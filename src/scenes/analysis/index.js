@@ -151,7 +151,11 @@ const FullScreenDialog = ({ charts, setCharts, coolant, setCoolant }) => {
 };
 
 const FullScreenDialogDownloadButton = () => {
+  const apiUrl = "https://revperformance-dev.ryacom.org/api/run/download?";
+  const params = useParams();
+  const { run_id } = params;
   const [open, setOpen] = React.useState(false);
+  const token = getToken();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -194,7 +198,9 @@ const FullScreenDialogDownloadButton = () => {
         <div className="checkbox-wrapper">
           Click below to download the tabular data.
         </div>
-        <PrimaryButton text={"Download"} onClick={handleClickOpen} />
+        <a target="_blank" href={`${apiUrl}run_id=${run_id}`}>
+          <PrimaryButton text={"Download"} />
+        </a>
       </Dialog>
     </div>
   );

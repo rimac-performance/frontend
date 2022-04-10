@@ -55,3 +55,8 @@
 .span__bold {
   font-weight: bold;
 }
+.errorChecking {
+  color: gray;
+  font-size: 13px;
+  padding-bottom: 10px;
+}

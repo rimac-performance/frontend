@@ -141,6 +141,7 @@ const CreateAccount = () => {
           <TextField onChange={handlePhoneInput} error={phoneError}></TextField>
           <label className="label__create__account">Password</label>
           <TextField
+            errorMsg={`Passwords must be at least 8 characters long, containing at least one letter and one number.`}
             onChange={handlePasswordInput}
             type={"password"}
             error={passwordError}

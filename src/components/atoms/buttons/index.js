@@ -30,7 +30,7 @@ export const ImageButton = ({ text, icon, onClick }) => {
     <div className="button__image" onClick={onClick}>
       {/* <img src={img} alt="" /> */}
       <label>{text}</label>
-      <div className="setting_icon">
+      <div className="setting__icon">
         <h1>
           <FontAwesomeIcon icon={icon} />
         </h1>

@@ -14,6 +14,7 @@ const CreateAccount = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const [tosIsChecked, setTosIsChecked] = useState(false);
 
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
@@ -119,6 +120,14 @@ const CreateAccount = () => {
     }
   }
 
+  const enableSubmit = () => {
+    if (!tosIsChecked) {
+      setTosIsChecked(true);
+    } else {
+      setTosIsChecked(false);
+    }
+  };
+
   return (
     <>
       <BackArrow to={"/"}></BackArrow>
@@ -151,11 +160,22 @@ const CreateAccount = () => {
             type={"password"}
             error={passwordConfirmError}
           ></TextField>
-          <SecondaryButton
-            text={"CREATE ACCOUNT "}
-            onClick={create}
-          ></SecondaryButton>
-          <CheckBox text={"I Accept The Terms of Use"}></CheckBox>
+          {tosIsChecked ? (
+            <SecondaryButton
+              text={"CREATE ACCOUNT "}
+              onClick={create}
+            ></SecondaryButton>
+          ) : (
+            <div className="create__account__disabled">
+              <SecondaryButton text={"CREATE ACCOUNT"} onClick={() => {}} />
+            </div>
+          )}
+          <CheckBox
+            text={"I Accept The Terms of Use"}
+            name={"checkbox__tos"}
+            onChange={enableSubmit}
+            checked={tosIsChecked}
+          ></CheckBox>
         </form>
       </div>
     </>

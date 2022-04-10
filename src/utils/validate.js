@@ -1,3 +1,5 @@
+import { faL } from "@fortawesome/free-solid-svg-icons";
+
 export const validate = (text) => {
   return text !== "";
 };
@@ -31,6 +33,12 @@ export const validateVin = (vin) => {
     console.log("vin is " + vin.length + "/17 characters");
   }
   return false;
+};
+export const validateYear = (year) => {
+  let numYear = parseInt(year.value, 10);
+  let currentYear = new Date().getFullYear() + 1;
+  if (numYear < 1900 || numYear > currentYear) return false;
+  return true;
 };
 
 function isNumber(char) {

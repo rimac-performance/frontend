@@ -5,7 +5,8 @@ import TextField from "../../components/atoms/text-fields/text-field";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
-import { validate, validateVin } from "../../utils/validate";
+import { validate, validateVin, validateYear } from "../../utils/validate";
+import { getToken } from "../../utils/token";
 
 const CarsRegisterScreen = () => {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ const CarsRegisterScreen = () => {
       setModelError(true);
       flag = false;
     }
-    if (validate(year)) {
+    if (validateYear(year)) {
       setYearError(false);
     } else {
       setYearError(true);
@@ -94,7 +95,10 @@ const CarsRegisterScreen = () => {
       </div>
       <div className="register__cars">
         <label>VIN #</label>
+
         <TextField
+          errorMsg={`  The VIN Number must be 17 characters long and cannot include letters
+          O, I, or Q`}
           width="100%"
           onChange={handleVin}
           placeholder="VIN"
@@ -109,6 +113,8 @@ const CarsRegisterScreen = () => {
         />
         <label>Year</label>
         <TextField
+          errorMsg={`The car Year must be between the year of 1900 and the current year
+          plus one additional year.`}
           width="100%"
           onChange={handleYear}
           placeholder="YEAR"

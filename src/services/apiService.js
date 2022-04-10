@@ -83,7 +83,7 @@ export const useAnalysisData = (run_id, token) => {
     )
       .then((response) => response.json())
       .then(async (result) => {
-        console.log("result", result);
+        //console.log("result", result);
         await setData(cleanData(result));
         setLoading(false);
       })
@@ -101,7 +101,7 @@ const cleanData = (data) => {
 
   //TODO Replace slice with date objects
 
-  console.log({ cleanedData });
+  //console.log({ cleanedData });
 
   return cleanedData;
 };

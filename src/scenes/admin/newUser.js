@@ -164,6 +164,7 @@ const AdminNewUserScreen = () => {
         <TextField onChange={handlePhoneInput} error={phoneError}></TextField>
         <label className="label__create__account">Password</label>
         <TextField
+          errorMsg={`Passwords must be at least 8 characters long, containing at least one letter and one number.`}
           onChange={handlePasswordInput}
           type={"password"}
           error={passwordError}
@@ -176,6 +177,7 @@ const AdminNewUserScreen = () => {
         ></TextField>
         <label className="label__create__account">Permission Level</label>
         <TextField
+          errorMsg={`Permission Levels are as follows: 1 - Car Owner, 2 - Engineer, 3 - System Administrator.`}
           onChange={handlePermissionInput}
           placeholder={"1, 2, or 3"}
           error={permissionError}

@@ -18,3 +18,13 @@
   max-width: 450px;
   display: block;
 }
+.errorMsg {
+  color: red;
+  font-size: 13px;
+  padding-bottom: 10px;
+}
+.errorChecking {
+  color: gray;
+  font-size: 13px;
+  padding-bottom: 10px;
+}

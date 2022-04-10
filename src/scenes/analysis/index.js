@@ -19,6 +19,7 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import CoolantInOut from "../../components/charts/coolantInOut";
+import Map from "../../components/map";
 import LeftHPITempIGBT1 from "../../components/charts/leftHpiTempIgbt1";
 import LeftHPITempIGBT2 from "../../components/charts/leftHpiTempIgbt2";
 import LeftHPITempIGBT3 from "../../components/charts/leftHpiTempIgbt3";
@@ -461,6 +462,13 @@ const AnalysisScreen = () => {
             text2={"Tabular"}
             selected={tab}
             onClick={(text) => setTab(text)}
+          />
+          <Map
+            isMarkerShown
+            googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: `100%` }} />}
+            containerElement={<div style={{ height: `400px` }} />}
+            mapElement={<div style={{ height: `100%` }} />}
           />
           {tab.toLowerCase() === "chart" ? (
             <ShowCharts />

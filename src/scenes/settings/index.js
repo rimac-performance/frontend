@@ -21,7 +21,7 @@ const SettingsScreen = () => {
           <img src={Logo} alt="logo" />
           <p className="title__setting">SETTINGS</p>
         </div>
-        <div className="button_body">
+        <div className="button__body">
           <ImageButton
             text={"CONTACT DEALER"}
             onClick={() => navigate({ pathname: "../contactDealer/" })}

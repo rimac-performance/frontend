@@ -446,7 +446,7 @@ const AnalysisScreen = ({ data, loading }) => {
 
   return (
     <div className={"container"}>
-      <BackArrow />
+      <BackArrow to={"../"} />
       <div style={{ height: 24 }} />
       <div className="imageContainer">
         <img className="logo" src={RevLogo} alt="Rev Performance" />

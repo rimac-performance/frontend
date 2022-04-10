@@ -86,6 +86,7 @@ h1 {
 .logo {
   margin-top: 0;
 }
+
 .guest__ad {
   width: 80%;
   max-width: 400px;
@@ -118,5 +119,20 @@ h1 {
   .section{
     margin-left: 500px;
     margin-right: 500px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .share-download-wrapper {
+    width: 430px;
+    margin: auto;
+  }
+  .timer {
+    width: 500px;
+    margin: auto;
+  }
+  .section {
+    width: 80%;
+    margin: auto;
   }
 }

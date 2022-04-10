@@ -18,6 +18,9 @@
   max-width: 250px;
   margin: 0 auto 16px auto;
 }
+.header__runs > img {
+  width: 100%;
+}
 .title__runs {
   text-align: center;
   font-size: x-large;
@@ -27,7 +30,7 @@
 }
 .list__runs__cars {
   margin: auto;
-  height: 65vh;
+  height: 55vh;
   overflow: scroll;
 }
 .img__model {
@@ -63,6 +66,14 @@
 }
 .upload__info > p {
   margin: 0.5em;
+  color: gray;
+}
+.upload__info__caption {
+  width: 80%;
+  margin: 1.5em auto;
+}
+.upload__info__caption > p {
+  margin: 0.5em;
 }
 .upload__submission > .button__secondary,
 .hidden__edit > .button__primary {
@@ -82,4 +93,25 @@
 }
 .filter__runs__filter {
   margin: 1em;
+}
+
+/* Tall screen */
+@media screen and (min-height: 900px) {
+  .list__runs__cars {
+    height: 60vh;
+  }
+}
+
+/* Extra tall screen */
+@media screen and (min-height: 1200px) {
+  .list__runs__cars {
+    height: 65vh;
+  }
+}
+
+/* Extremely tall screen */
+@media screen and (min-height: 1400px) {
+  .list__runs__cars {
+    height: 70vh;
+  }
 }

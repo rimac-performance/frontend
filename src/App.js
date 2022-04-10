@@ -1,6 +1,5 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomeScreen from "./scenes/home";
 import Nav from "./navigations/Nav";
 import CarsScreen from "./scenes/cars";
 import CarsRegisterScreen from "./scenes/cars/carsRegister";
@@ -11,7 +10,6 @@ import RunsListScreen from "./scenes/runs/runsList";
 import RunsUploadScreen from "./scenes/runs/runsUpload";
 import SensorEditScreen from "./scenes/analysis/sensorEdit";
 import EngAnalysisScreen from "./scenes/analysis/engAnalysis";
-import CommunityScreen from "./scenes/community";
 import SettingsScreen from "./scenes/settings";
 import Landing from "./scenes/landing";
 import Login from "./scenes/login/login";
@@ -32,6 +30,8 @@ import AdminEditUserScreen from "./scenes/admin/editUser";
 import GuestAnalysisScreen from "./scenes/analysis/guestAnalysis";
 
 function App() {
+  console.log(process.env.NODE_ENV);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -60,7 +60,6 @@ function App() {
             />
             <Route path="sensorEdit" element={<SensorEditScreen />} />
             <Route path="engAnalysis" element={<EngAnalysisScreen />} />
-            <Route path="community" element={<CommunityScreen />} />
             <Route path="admin" element={<AdminManagementScreen />} />
             <Route path="admin/newUser" element={<AdminNewUserScreen />} />
             <Route
@@ -68,8 +67,6 @@ function App() {
               element={<AdminEditUserScreen />}
             />
             <Route path="analysis/:run_id" element={<AnalysisScreen />} />
-            <Route path="engAnalysis/:token" element={<EngAnalysisScreen />} />
-            <Route path="community/:token" element={<CommunityScreen />} />
             <Route path="settings/:token" element={<SettingsScreen />} />
             <Route path="contactDealer" element={<ContactDealer />} />
             <Route path="contactDeveloper" element={<ContactDeveloper />} />

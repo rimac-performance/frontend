@@ -68,6 +68,9 @@ const RunsUploadScreen = () => {
           <img src={Automobile} alt="car" />
         </div>
       </div>
+      <div className="upload__info__caption">
+        <p>Please select a Rev Performance vehicle data CSV</p>
+      </div>
       {isSelected ? (
         <div className="upload__info">
           <p>File: {file.name}</p>

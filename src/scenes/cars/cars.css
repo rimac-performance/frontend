@@ -17,6 +17,9 @@
   max-width: 250px;
   margin: 0 auto 16px auto;
 }
+.header__cars > img {
+  width: 100%;
+}
 .title__cars {
   text-align: center;
   font-size: x-large;
@@ -26,7 +29,7 @@
 }
 .list__cars {
   margin: auto;
-  height: 50vh;
+  height: 55vh;
   overflow: scroll;
 }
 .register__cars {
@@ -59,4 +62,25 @@
   color: gray;
   font-size: 13px;
   padding-bottom: 10px;
+}
+
+/* Tall screen */
+@media screen and (min-height: 900px) {
+  .list__cars {
+    height: 60vh;
+  }
+}
+
+/* Extra tall screen */
+@media screen and (min-height: 1200px) {
+  .list__cars {
+    height: 65vh;
+  }
+}
+
+/* Extremely tall screen */
+@media screen and (min-height: 1400px) {
+  .list__cars {
+    height: 70vh;
+  }
 }

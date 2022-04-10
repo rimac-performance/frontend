@@ -10,6 +10,7 @@
   font-size: 16px;
   color: black;
   background-color: white;
+  cursor: pointer;
 }
 
 .button__secondary {
@@ -24,6 +25,7 @@
   font-size: 16px;
   color: white;
   background-color: black;
+  cursor: pointer;
 }
 
 .button__run {
@@ -37,14 +39,14 @@
   font-size: 24px;
   color: black;
   background-color: #c4c4c4;
+  cursor: pointer;
 }
 
 .button__image {
   border-radius: 6px;
   width: 180px;
   height: 150px;
-  /* max-width: 150px; */
-  margin: 10px 5px auto;
+  margin: 0 5px 10px;
   padding: 24px 0;
   text-align: center;
   font-weight: bold;
@@ -55,10 +57,10 @@
   display: inline-block;
   visibility: visible;
   border: 2px solid #777582;
+  cursor: pointer;
 }
 
-.setting_icon h1 {
-  /* margin: 120px auto; */
+.setting__icon h1 {
   font-size: 45px;
   background: linear-gradient(#aa00ff, #00a3d7);
   -webkit-background-clip: text;
@@ -66,4 +68,18 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline;
+}
+
+@media screen and (min-width: 900px) {
+  .button__image {
+    width: 240px;
+    height: 200px;
+    margin: 10px;
+  }
+  .button__image > label {
+    font-size: 18px;
+  }
+  .setting__icon h1 {
+    font-size: 60px;
+  }
 }

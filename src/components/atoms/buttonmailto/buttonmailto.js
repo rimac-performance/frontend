@@ -11,7 +11,7 @@ const ButtonMailto = () => {
         e.preventDefault();
       }}
     >
-      <PrimaryButton text={"EMAIL"}></PrimaryButton>
+      <PrimaryButton text={"Email"}></PrimaryButton>
     </Link>
   );
 };

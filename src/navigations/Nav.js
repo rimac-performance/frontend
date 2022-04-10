@@ -67,17 +67,20 @@ const Nav = () => {
               icon={faChartBar}
             />
           </Link>
-          <Link to={"./community/"}>
-            <FontAwesomeIcon
-              className={active(["/community"])}
-              icon={faUsers}
-            />
-          </Link>
           <Link to={"./admin/"}>
             <FontAwesomeIcon className={active(["/admin"])} icon={faUserPen} />
           </Link>
           <Link to={"./settings/"}>
-            <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
+            <FontAwesomeIcon
+              className={active([
+                "/settings",
+                "contact",
+                "review",
+                "changePassword",
+                "logout",
+              ])}
+              icon={faGear}
+            />
           </Link>
         </div>
       ) : (
@@ -101,14 +104,17 @@ const Nav = () => {
               icon={faChartBar}
             />
           </Link>
-          <Link to={"./community/"}>
-            <FontAwesomeIcon
-              className={active(["/community"])}
-              icon={faUsers}
-            />
-          </Link>
           <Link to={"./settings/"}>
-            <FontAwesomeIcon className={active(["/settings"])} icon={faGear} />
+            <FontAwesomeIcon
+              className={active([
+                "/settings",
+                "contact",
+                "review",
+                "changePassword",
+                "logout",
+              ])}
+              icon={faGear}
+            />
           </Link>
         </div>
       )}

@@ -11,6 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import React, { useEffect, useState } from "react";
 import { exampleRequest } from "../../../services/apiService";
+import moment from "moment";
 
 ChartJS.register(
   CategoryScale,
@@ -48,10 +49,10 @@ const CoolantInOut = ({ data, range, label, display }) => {
   //   return itemTime > range[0] && itemTime < range[1];
   // });
 
-  console.log(filteredData);
+  // console.log(filteredData);
 
   const graphData = {
-    labels: filteredData.map((item) => item.time.slice(11, 16)),
+    labels: filteredData.map((item) => moment(item.time).format("mm:ss.SS")),
     datasets: [
       // {
       //   //TODO:
@@ -64,7 +65,7 @@ const CoolantInOut = ({ data, range, label, display }) => {
       //   backgroundColor: "rgba(233,89,28,0.5)",
       // },
       {
-        label: "Coolant In",
+        label: "Coolant In °C",
         data: data.map(
           (item) => item["mean_CCU_R_temp_1:CCU_R_batt_coolant_in_temp"]
         ),
@@ -72,7 +73,7 @@ const CoolantInOut = ({ data, range, label, display }) => {
         backgroundColor: "rgba(233,89,28,0.5)",
       },
       {
-        label: "Coolant Out",
+        label: "Coolant Out °C",
         data: data.map(
           (item) => item["mean_CCU_R_temp_1:CCU_R_batt_coolant_out_temp"]
         ),
@@ -91,6 +92,7 @@ const CoolantInOut = ({ data, range, label, display }) => {
       </h2>
       <div className="chart">
         <Line options={options} data={graphData} />
+        <div className="body">mm:ss.ms</div>
       </div>
     </div>
   );

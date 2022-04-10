@@ -6,12 +6,8 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import { validate } from "../../utils/validate";
-import { getToken } from "../../utils/token";
 
 const CarsRegisterScreen = () => {
-  let params = useParams();
-  console.log(params);
-  const token = getToken();
   const navigate = useNavigate();
 
   const [vin, setVin] = useState("");

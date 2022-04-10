@@ -10,3 +10,19 @@
   color: black;
   font-weight: bold;
 }
+
+@media screen and (min-width: 900px) {
+  .caption {
+    font-size: 18px;
+  }
+  .checkbox > p {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .caption {
+  }
+  .checkbox {
+  }
+}

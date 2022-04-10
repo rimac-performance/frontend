@@ -100,4 +100,23 @@ h1 {
   margin-bottom: 50px;
 }
 
+@media (min-width: 850px) {
+  .section{
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
 
+@media (min-width: 1000px) {
+  .section{
+    margin-left: 275px;
+    margin-right: 275px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .section{
+    margin-left: 500px;
+    margin-right: 500px;
+  }
+}

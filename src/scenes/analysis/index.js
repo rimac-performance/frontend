@@ -366,12 +366,6 @@ const AnalysisScreen = ({ data, loading }) => {
       display: true,
     },
     {
-      row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
-      label: "Vehicle Speed",
-      graphLabel: "km/h",
-      display: true,
-    },
-    {
       row: "mean_SAFETY_PCU_vehicle_ST:PCU_accelerator_pedal",
       label: "PCU Accelerator Pedal",
       graphLabel: "km/h",

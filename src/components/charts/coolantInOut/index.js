@@ -11,6 +11,7 @@ import {
 import { Line } from "react-chartjs-2";
 import React, { useEffect, useState } from "react";
 import { exampleRequest } from "../../../services/apiService";
+import moment from "moment";
 
 ChartJS.register(
   CategoryScale,
@@ -48,10 +49,10 @@ const CoolantInOut = ({ data, range, label, display }) => {
   //   return itemTime > range[0] && itemTime < range[1];
   // });
 
-  console.log(filteredData);
+  // console.log(filteredData);
 
   const graphData = {
-    labels: filteredData.map((item) => item.time.slice(11, 16)),
+    labels: filteredData.map((item) => moment(item.time).format("mm:ss.SS")),
     datasets: [
       // {
       //   //TODO:

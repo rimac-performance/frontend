@@ -62,6 +62,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { getToken } from "../../utils/token";
+import moment from "moment";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -257,12 +258,62 @@ const FullScreenDialogShareButton = () => {
   );
 };
 
-const AnalysisScreen = () => {
+const ShowCharts = ({ data, coolant, charts, range }) => {
+  return (
+    <div>
+      {coolant.display && (
+        <CoolantInOut
+          data={data}
+          range={range}
+          label={coolant.label}
+          display={coolant.display}
+        />
+      )}
+
+      {data &&
+        data.length > 0 &&
+        charts.map((chart) => {
+          if (!chart.display) return;
+
+          return (
+            <Chart
+              key={chart.row}
+              row={chart.row}
+              label={chart.label}
+              data={data}
+              range={range}
+              graphLabel={chart.graphLabel}
+            />
+          );
+        })}
+
+      <Odometer />
+      <VCUVehicleST />
+    </div>
+  );
+};
+
+const AnalysisScreenWrapper = () => {
   const params = useParams();
   const { run_id } = params;
   const token = getToken();
-  const [range, setRange] = useState([0, 20]);
   const [data, loading] = useAnalysisData(run_id, token);
+
+  return <AnalysisScreen data={data} loading={loading} />;
+};
+
+const AnalysisScreen = ({ data, loading }) => {
+  const [range, setRange] = useState([0, 20]);
+
+  useEffect(() => {
+    console.log("checking");
+    if (data)
+      setRange([
+        moment(data[0].time).minutes() - 1,
+        moment(data[data.length - 1].time).minutes() + 1,
+      ]);
+  }, [data]);
+
   const [tab, setTab] = useState("chart");
   const [charts, setCharts] = useState([
     //   //TODO:
@@ -378,55 +429,17 @@ const AnalysisScreen = () => {
     display: true,
   });
 
-  console.log("run_id", run_id);
-  console.log("token", token);
-
   const handleTimerChange = (newValue) => {
     setRange(newValue);
   };
 
-  const ShowCharts = () => {
-    return (
-      <div>
-        <div className="timer">
-          <Timer
-            min={parseInt(data[0].time.slice(11, 13))}
-            max={parseInt(data[data.length - 1].time.slice(11, 13)) + 1}
-            onChange={handleTimerChange}
-          />
-        </div>
-
-        {coolant.display && (
-          <CoolantInOut
-            data={data}
-            range={range}
-            label={coolant.label}
-            display={coolant.display}
-          />
-        )}
-
-        {data &&
-          data.length > 0 &&
-          charts.map((chart) => {
-            if (!chart.display) return;
-
-            return (
-              <Chart
-                key={chart.row}
-                row={chart.row}
-                label={chart.label}
-                data={data}
-                range={range}
-                graphLabel={chart.graphLabel}
-              />
-            );
-          })}
-
-        <Odometer />
-        <VCUVehicleST />
-      </div>
+  const filteredData =
+    data &&
+    data.filter(
+      (item) =>
+        moment(item.time).minutes() >= range[0] &&
+        moment(item.time).minutes() <= range[1]
     );
-  };
 
   return (
     <div className={"container"}>
@@ -462,10 +475,23 @@ const AnalysisScreen = () => {
             selected={tab}
             onClick={(text) => setTab(text)}
           />
+          <div className="timer">
+            <Timer
+              min={moment(data[0].time).minutes() - 1}
+              max={moment(data[data.length - 1].time).minutes() + 1}
+              onChange={handleTimerChange}
+            />
+          </div>
           {tab.toLowerCase() === "chart" ? (
-            <ShowCharts />
+            <ShowCharts
+              data={filteredData}
+              handleTimerChange={handleTimerChange}
+              coolant={coolant}
+              charts={charts}
+              range={range}
+            />
           ) : (
-            <Table data={data} />
+            <Table data={filteredData} />
           )}
           <div style={{ marginBottom: 200 }} />
         </div>
@@ -511,7 +537,7 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
   // });
 
   const graphData = {
-    labels: filteredData.map((item) => item.time.slice(11, 16)),
+    labels: filteredData.map((item) => moment(item.time).format("mm:ss SS")),
     datasets: [
       {
         label: graphLabel,
@@ -532,4 +558,4 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
   );
 };
 
-export default AnalysisScreen;
+export default AnalysisScreenWrapper;

@@ -97,6 +97,31 @@ h1 {
   text-decoration: underline;
 }
 
+.body {
+  margin-bottom: 50px;
+}
+
+@media (min-width: 850px) {
+  .section{
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .section{
+    margin-left: 275px;
+    margin-right: 275px;
+  }
+}
+
+@media (min-width: 2000px) {
+  .section{
+    margin-left: 500px;
+    margin-right: 500px;
+  }
+}
+
 @media screen and (min-width: 900px) {
   .share-download-wrapper {
     width: 430px;

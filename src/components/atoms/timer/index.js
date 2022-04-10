@@ -7,6 +7,9 @@ const Timer = ({ min, max, onChange }) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const handleChangeCommitted = (event, newValue) => {
     onChange(newValue);
   };
 
@@ -30,8 +33,9 @@ const Timer = ({ min, max, onChange }) => {
         track={"normal"}
         min={min}
         max={max}
-        step={0.01}
+        step={1}
         onChange={handleChange}
+        onChangeCommitted={handleChangeCommitted}
         valueLabelDisplay="auto"
         marks={marks}
         sx={{

@@ -66,6 +66,7 @@ export const useAnalysisData = (run_id, token) => {
         "mean_CCU_R_temp_1:CCU_R_batt_coolant_out_temp",
         "mean_CCU_F_temp_1:CCU_F_ambient_temp",
         "mean_CCU_F_temp_1:CCU_F_interior_temp",
+        "mean_SAFETY_VCU_vehicle_ST:VCU_vehicle_ST",
       ],
     });
 

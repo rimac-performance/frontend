@@ -62,6 +62,7 @@ import {
   Tooltip,
 } from "chart.js";
 import { getToken } from "../../utils/token";
+import moment from "moment";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -257,18 +258,71 @@ const FullScreenDialogShareButton = () => {
   );
 };
 
-const AnalysisScreen = () => {
+const ShowCharts = ({ data, coolant, charts, range }) => {
+  return (
+    <div>
+      {coolant.display && (
+        <CoolantInOut
+          data={data}
+          range={range}
+          label={coolant.label}
+          display={coolant.display}
+        />
+      )}
+
+      {data &&
+        data.length > 0 &&
+        charts.map((chart) => {
+          if (!chart.display) return;
+
+          return (
+            <Chart
+              key={chart.row}
+              row={chart.row}
+              label={chart.label}
+              data={data}
+              range={range}
+              graphLabel={chart.graphLabel}
+            />
+          );
+        })}
+    </div>
+  );
+};
+
+const AnalysisScreenWrapper = () => {
   const params = useParams();
   const { run_id } = params;
   const token = getToken();
-  const [range, setRange] = useState([0, 20]);
   const [data, loading] = useAnalysisData(run_id, token);
+
+  return <AnalysisScreen data={data} loading={loading} />;
+};
+
+const AnalysisScreen = ({ data, loading }) => {
+  const [range, setRange] = useState([0, 20]);
+
+  useEffect(() => {
+    console.log("checking");
+    if (data)
+      setRange([
+        moment(data[0].time).minutes() - 1,
+        moment(data[data.length - 1].time).minutes() + 1,
+      ]);
+  }, [data]);
+
   const [tab, setTab] = useState("chart");
   const [charts, setCharts] = useState([
     //   //TODO:
     //   //- Using the api api/sensor/threshold
     //   //- Label->Advised Engineer Threshold
     //   //- Make another line for the threshold
+    {
+      row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
+      label: "Odometer - Vehicle Speed",
+      graphLabel: "km/h",
+      display: true,
+    },
     {
       row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
       label: "Front Right Motor 1 Temp",
@@ -309,12 +363,6 @@ const AnalysisScreen = () => {
       row: "mean_PDU_HV_battery_performance:PDU_HV_battery_voltage",
       label: "PDU HV Battery Voltage",
       graphLabel: "volts",
-      display: true,
-    },
-    {
-      row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
-      label: "Vehicle Speed",
-      graphLabel: "km/h",
       display: true,
     },
     {
@@ -371,6 +419,12 @@ const AnalysisScreen = () => {
       graphLabel: "°C",
       display: true,
     },
+    {
+      row: "mean_SAFETY_VCU_vehicle_ST:VCU_vehicle_ST",
+      label: "VCU Vehicle ST",
+      graphLabel: "°C",
+      display: true,
+    },
   ]);
 
   const [coolant, setCoolant] = useState({
@@ -378,55 +432,17 @@ const AnalysisScreen = () => {
     display: true,
   });
 
-  console.log("run_id", run_id);
-  console.log("token", token);
-
   const handleTimerChange = (newValue) => {
     setRange(newValue);
   };
 
-  const ShowCharts = () => {
-    return (
-      <div>
-        <div className="timer">
-          <Timer
-            min={parseInt(data[0].time.slice(11, 13))}
-            max={parseInt(data[data.length - 1].time.slice(11, 13)) + 1}
-            onChange={handleTimerChange}
-          />
-        </div>
-
-        {coolant.display && (
-          <CoolantInOut
-            data={data}
-            range={range}
-            label={coolant.label}
-            display={coolant.display}
-          />
-        )}
-
-        {data &&
-          data.length > 0 &&
-          charts.map((chart) => {
-            if (!chart.display) return;
-
-            return (
-              <Chart
-                key={chart.row}
-                row={chart.row}
-                label={chart.label}
-                data={data}
-                range={range}
-                graphLabel={chart.graphLabel}
-              />
-            );
-          })}
-
-        <Odometer />
-        <VCUVehicleST />
-      </div>
+  const filteredData =
+    data &&
+    data.filter(
+      (item) =>
+        moment(item.time).minutes() >= range[0] &&
+        moment(item.time).minutes() <= range[1]
     );
-  };
 
   return (
     <div className={"container"}>
@@ -462,10 +478,23 @@ const AnalysisScreen = () => {
             selected={tab}
             onClick={(text) => setTab(text)}
           />
+          <div className="timer">
+            <Timer
+              min={moment(data[0].time).minutes() - 1}
+              max={moment(data[data.length - 1].time).minutes() + 1}
+              onChange={handleTimerChange}
+            />
+          </div>
           {tab.toLowerCase() === "chart" ? (
-            <ShowCharts />
+            <ShowCharts
+              data={filteredData}
+              handleTimerChange={handleTimerChange}
+              coolant={coolant}
+              charts={charts}
+              range={range}
+            />
           ) : (
-            <Table data={data} />
+            <Table data={filteredData} />
           )}
           <div style={{ marginBottom: 200 }} />
         </div>
@@ -511,7 +540,7 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
   // });
 
   const graphData = {
-    labels: filteredData.map((item) => item.time.slice(11, 16)),
+    labels: filteredData.map((item) => moment(item.time).format("mm:ss.SS")),
     datasets: [
       {
         label: graphLabel,
@@ -525,11 +554,12 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
   return (
     <div className="section">
       <h2 className="black heading2center">{label}</h2>
-      <div className="chart">
+      <div className="graph-chart">
         <Line options={options} data={graphData} />
+        <div className="body">mm:ss.ms</div>
       </div>
     </div>
   );
 };
 
-export default AnalysisScreen;
+export default AnalysisScreenWrapper;

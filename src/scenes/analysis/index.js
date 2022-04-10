@@ -201,7 +201,13 @@ const FullScreenDialogDownloadButton = () => {
 };
 
 const FullScreenDialogShareButton = () => {
+  const apiUrl = "https://revperformance-dev.ryacom.org/api/run/send?";
+  const params = useParams();
+  const { run_id } = params;
+  const token = getToken();
+
   const [open, setOpen] = React.useState(false);
+  const [email, setEmail] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -209,6 +215,24 @@ const FullScreenDialogShareButton = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleEmailInput = (e) => {
+    const { value } = e.currentTarget;
+    setEmail({
+      value,
+    });
+  };
+
+  const sendRun = () => {
+    let reqUrl = `${apiUrl}run_id=${run_id}&email=${email.value}`;
+
+    fetch(reqUrl, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    }).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -250,9 +274,10 @@ const FullScreenDialogShareButton = () => {
             id="outlined-basic"
             label="Email Address"
             variant="outlined"
+            onChange={handleEmailInput}
           />
         </div>
-        <PrimaryButton text={"Share"} onClick={handleClickOpen} />
+        <PrimaryButton text={"Share"} onClick={sendRun} />
       </Dialog>
     </div>
   );

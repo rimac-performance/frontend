@@ -38,7 +38,9 @@ export const useAnalysisData = (run_id, token) => {
     //   "Authorization",
     //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmExZTkzOTUtNmFlNS00NzVlLTgzMTgtNjg5NzY4MGFkYjE3IiwiZW1haWwiOiJjZHd5ZXI1QGFtYXpvbi5jb20iLCJwaG9uZSI6IjEzMC05NzgtNDM1MyIsImZpcnN0X25hbWUiOiJDb3NldHRlIiwibGFzdF9uYW1lIjoiRHd5ZXIiLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTY0NzkwOTMwN30.A8C0pU3NZNi1J2u2wv0nfVcmaLMI_l-567Ll3UracQw"
     // );
-    myHeaders.append("Authorization", `Bearer ${token}`);
+    if (token) {
+      myHeaders.append("Authorization", `Bearer ${token}`);
+    }
     myHeaders.append("Content-Type", "application/json");
 
     const raw = JSON.stringify({
@@ -91,7 +93,6 @@ export const useAnalysisData = (run_id, token) => {
 };
 
 const cleanData = (data) => {
-  console.log(data);
   let cleanedData;
 
   cleanedData = removeNullDataPoints(data);
@@ -99,7 +100,7 @@ const cleanData = (data) => {
 
   //TODO Replace slice with date objects
 
-  console.log({cleanedData});
+  console.log({ cleanedData });
 
   return cleanedData;
 };

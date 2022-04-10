@@ -10,8 +10,6 @@ import { Dialog } from "../../components/molecules/dialogs";
 import { roles } from "../../utils/roles";
 
 const AdminManagementScreen = () => {
-  //TODO make usersList pretty and meaningful
-
   const token = getToken();
   const apiUrl = "https://rimacperformance-dev.ryacom.org/api/admin";
   const navigate = useNavigate();

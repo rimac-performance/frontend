@@ -14,7 +14,7 @@
   align-content: space-evenly;
   align-items: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   height: 10%;
 }
 
@@ -27,18 +27,18 @@
   align-content: space-evenly;
   align-items: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   height: 10%;
 }
 
 .icon {
   color: white;
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .active {
   color: #e9591c;
-  font-size: 24px;
+  font-size: 36px;
 }
 
 /* Tablet view */

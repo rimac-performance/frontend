@@ -66,6 +66,14 @@
 }
 .upload__info > p {
   margin: 0.5em;
+  color: gray;
+}
+.upload__info__caption {
+  width: 80%;
+  margin: 1.5em auto;
+}
+.upload__info__caption > p {
+  margin: 0.5em;
 }
 .upload__submission > .button__secondary,
 .hidden__edit > .button__primary {

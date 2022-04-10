@@ -9,10 +9,10 @@ import Automobile from "../../assets/image/automobile.png";
 
 const CarsConfirmScreen = () => {
   let params = useParams();
-  console.log(params);
   const token = getToken();
+  console.log(token);
   const navigate = useNavigate();
-  const apiUrl = { Automobile };
+  const apiUrl = "https://rimacperformance-dev.ryacom.org/api/car";
 
   const [car, setCar] = useState({
     vin: params.vin,
@@ -23,11 +23,14 @@ const CarsConfirmScreen = () => {
 
   const addCar = () => {
     console.log("adding car " + car.model + " with vin: " + car.vin);
-
-    const reqUrl = apiUrl;
     const controller = new AbortController();
+    console.log(car.vin);
+    console.log(car.model);
+    console.log(car.year);
+    console.log(car.color);
+    console.log(apiUrl);
 
-    fetch(reqUrl, {
+    fetch(apiUrl, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
@@ -73,10 +76,7 @@ const CarsConfirmScreen = () => {
         <img src={Logo} alt="logo" />
         <p className="title__cars">Register</p>
         <div className="img__model">
-          <img
-            src="https://ichef.bbci.co.uk/news/976/cpsprodpb/156FE/production/_116860878_c_two1.jpg"
-            alt="car"
-          />
+          <img src={Automobile} alt="car" />
         </div>
       </div>
       <div className="confirm__cars">

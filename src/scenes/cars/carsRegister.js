@@ -6,12 +6,8 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import { validate, validateVin } from "../../utils/validate";
-import { getToken } from "../../utils/token";
 
 const CarsRegisterScreen = () => {
-  let params = useParams();
-  console.log(params);
-  const token = getToken();
   const navigate = useNavigate();
 
   const [vin, setVin] = useState("");
@@ -45,10 +41,9 @@ const CarsRegisterScreen = () => {
   };
 
   const register = () => {
-    console.log("adding car " + model.value + " with vin: " + vin.value);
     let flag = true;
 
-    if (validateVin(vin)) {
+    if (validateVin(vin.value)) {
       setVinError(false);
     } else {
       setVinError(true);
@@ -74,6 +69,8 @@ const CarsRegisterScreen = () => {
     }
 
     if (flag) {
+      console.log("adding car " + model.value + " with vin: " + vin.value);
+
       navigate({
         pathname:
           "../carsConfirm/" +

@@ -16,7 +16,7 @@ const ErrorPassword = () => {
           try again, please click the Retry button.
         </p>
         <PrimaryButton
-          text={"RETRY"}
+          text={"Retry"}
           onClick={() => {
             navigate("../changePassword");
           }}

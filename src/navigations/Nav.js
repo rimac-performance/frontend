@@ -67,12 +67,6 @@ const Nav = () => {
               icon={faChartBar}
             />
           </Link>
-          <Link to={"./community/"}>
-            <FontAwesomeIcon
-              className={active(["/community"])}
-              icon={faUsers}
-            />
-          </Link>
           <Link to={"./admin/"}>
             <FontAwesomeIcon className={active(["/admin"])} icon={faUserPen} />
           </Link>
@@ -108,12 +102,6 @@ const Nav = () => {
                 "analysis",
               ])}
               icon={faChartBar}
-            />
-          </Link>
-          <Link to={"./community/"}>
-            <FontAwesomeIcon
-              className={active(["/community"])}
-              icon={faUsers}
             />
           </Link>
           <Link to={"./settings/"}>

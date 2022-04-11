@@ -4,7 +4,6 @@ import {
   faCar,
   faChartBar,
   faGear,
-  faUsers,
   faUserPen,
 } from "@fortawesome/free-solid-svg-icons";
 import "./nav.css";
@@ -18,9 +17,7 @@ const Nav = () => {
   const token = getToken();
   const [adminPermission, setAdminPermission] = useState(false);
 
-  //Step 1. Another way to link somewhere
   const location = useLocation();
-  // console.log(location.pathname)
 
   function active(paths) {
     let flag = false;

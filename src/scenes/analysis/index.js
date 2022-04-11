@@ -326,18 +326,22 @@ const ShowCharts = ({ data, coolant, charts, range }) => {
 const AnalysisScreenWrapper = ({ guest = false }) => {
   const params = useParams();
   const { run_id } = params;
-  const token = getToken();
+  const token = guest ? undefined : getToken();
   const [data, thresholds, loading] = useAnalysisData(run_id, token);
 
   if (loading) return <div></div>;
 
   return (
-    <AnalysisScreen data={data} thresholdData={thresholds} loading={loading} />
+    <AnalysisScreen
+      data={data}
+      thresholdData={thresholds}
+      loading={loading}
+      guest={guest}
+    />
   );
 };
 
-const AnalysisScreen = ({ data, thresholdData, loading }) => {
-
+const AnalysisScreen = ({ data, thresholdData, loading, guest = false }) => {
   const [range, setRange] = useState([0, 20]);
   const navigate = useNavigate();
 

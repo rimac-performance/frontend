@@ -5,9 +5,12 @@ import TextField from "../../components/atoms/text-fields/text-field";
 import { CheckBox } from "../../components/atoms/checkboxes/index";
 import { BackArrow } from "../../components/atoms/arrows";
 import { validate, validatePass } from "../../utils/validate";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 
 const CreateAccount = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -116,6 +119,7 @@ const CreateAccount = () => {
         }),
       }).then((value) => {
         console.log(value);
+        navigate("/");
       });
     }
   }

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import Timer from "../../components/atoms/timer";
 import RevLogo from "../../assets/logo/revPerformanceLogo.svg";
@@ -323,7 +323,7 @@ const ShowCharts = ({ data, coolant, charts, range }) => {
   );
 };
 
-const AnalysisScreenWrapper = () => {
+const AnalysisScreenWrapper = ({ guest = false }) => {
   const params = useParams();
   const { run_id } = params;
   const token = getToken();
@@ -337,7 +337,9 @@ const AnalysisScreenWrapper = () => {
 };
 
 const AnalysisScreen = ({ data, thresholdData, loading }) => {
+
   const [range, setRange] = useState([0, 20]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("checking");
@@ -506,7 +508,7 @@ const AnalysisScreen = ({ data, thresholdData, loading }) => {
 
   return (
     <div className={"container"}>
-      <BackArrow to={"../"} />
+      {!guest && <BackArrow to={"../"} />}
       <div style={{ height: 24 }} />
       <div className="imageContainer">
         <img className="logo" src={RevLogo} alt="Rev Performance" />
@@ -514,14 +516,31 @@ const AnalysisScreen = ({ data, thresholdData, loading }) => {
       <div className="header">
         <h1>ANALYSIS</h1>
       </div>
-      <div className="share-download-wrapper">
-        <div className="download">
-          <FullScreenDialogDownloadButton />
+      {guest ? (
+        <div className="guest__ad">
+          <p>
+            Like what you see?{" "}
+            <span
+              className="guest__link"
+              onClick={() => {
+                navigate("../create");
+              }}
+            >
+              Click here
+            </span>{" "}
+            to create your own Rev account!
+          </p>
         </div>
-        <div className="share">
-          <FullScreenDialogShareButton />
+      ) : (
+        <div className="share-download-wrapper">
+          <div className="download">
+            <FullScreenDialogDownloadButton />
+          </div>
+          <div className="share">
+            <FullScreenDialogShareButton />
+          </div>
         </div>
-      </div>
+      )}
       <div>
         <FullScreenDialog
           charts={charts}

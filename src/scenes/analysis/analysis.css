@@ -1,9 +1,16 @@
-.container {
+.containers {
   height: 100vh;
   overflow-y: auto;
   margin-top: 0;
   margin-left: 0;
   margin-right: 0;
+}
+.title__analysis {
+  text-align: center;
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
 .imageContainer {
@@ -102,21 +109,21 @@ h1 {
 }
 
 @media (min-width: 850px) {
-  .section{
+  .section {
     margin-left: 100px;
     margin-right: 100px;
   }
 }
 
 @media (min-width: 1000px) {
-  .section{
+  .section {
     margin-left: 275px;
     margin-right: 275px;
   }
 }
 
 @media (min-width: 2000px) {
-  .section{
+  .section {
     margin-left: 500px;
     margin-right: 500px;
   }

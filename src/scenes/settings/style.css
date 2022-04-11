@@ -37,11 +37,14 @@
   width: 80%;
   margin: auto;
   max-width: 500px;
+  text-align: center;
 }
 .container__settings > p {
   margin-bottom: 24px;
 }
-
+.container__settings h1 {
+  border: none;
+}
 @media screen and (min-width: 900px) {
   .button__body {
     max-width: 750px;

@@ -9,10 +9,10 @@ import "./style.css";
 const Landing = () => {
   return (
     <>
-      <div className="logo">
-        <img src={Logo}></img>
-      </div>
       <div className="container">
+        <div className="logo">
+          <img src={Logo}></img>
+        </div>
         <Link to={"/login"}>
           <PrimaryButton text={"Log In"}></PrimaryButton>
         </Link>

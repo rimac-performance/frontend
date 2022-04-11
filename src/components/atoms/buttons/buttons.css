@@ -68,6 +68,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline;
+  border: none;
 }
 
 @media screen and (min-width: 900px) {

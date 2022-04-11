@@ -133,38 +133,51 @@ const CreateAccount = () => {
       <BackArrow to={"/"}></BackArrow>
       <img className="logo__create__account" src={Logo}></img>
       <div>
-        <form>
+        <form className="register_account">
           <label className="label__create__account">First Name</label>
           <TextField
             onChange={handleFirstNameInput}
             error={firstNameError}
+            width="100%"
           ></TextField>
           <label className="label__create__account">Last Name</label>
           <TextField
             onChange={handleLastNameInput}
             error={lastNameError}
+            width="100%"
           ></TextField>
           <label className="label__create__account">Email</label>
-          <TextField onChange={handleEmailInput} error={emailError}></TextField>
+          <TextField
+            onChange={handleEmailInput}
+            error={emailError}
+            width="100%"
+          ></TextField>
           <label className="label__create__account">Phone</label>
-          <TextField onChange={handlePhoneInput} error={phoneError}></TextField>
+          <TextField
+            onChange={handlePhoneInput}
+            error={phoneError}
+            width="100%"
+          ></TextField>
           <label className="label__create__account">Password</label>
           <TextField
             errorMsg={`Passwords must be at least 8 characters long, containing at least one letter and one number.`}
             onChange={handlePasswordInput}
             type={"password"}
             error={passwordError}
+            width="100%"
           ></TextField>
           <label className="label__create__account">Confirm Password</label>
           <TextField
             onChange={handlePasswordConfirmInput}
             type={"password"}
             error={passwordConfirmError}
+            width="100%"
           ></TextField>
           {tosIsChecked ? (
             <SecondaryButton
               text={"CREATE ACCOUNT "}
               onClick={create}
+              width="100%"
             ></SecondaryButton>
           ) : (
             <div className="create__account__disabled">
@@ -176,6 +189,7 @@ const CreateAccount = () => {
             name={"checkbox__tos"}
             onChange={enableSubmit}
             checked={tosIsChecked}
+            width="100%"
           ></CheckBox>
         </form>
       </div>

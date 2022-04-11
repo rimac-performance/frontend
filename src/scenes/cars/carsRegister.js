@@ -97,7 +97,7 @@ const CarsRegisterScreen = () => {
         <label>VIN #</label>
 
         <TextField
-          errorMsg={`  The VIN Number must be 17 characters long and cannot include letters
+          errorMsg={`The VIN Number must be 17 characters long and cannot include letters
           O, I, or Q`}
           width="100%"
           onChange={handleVin}

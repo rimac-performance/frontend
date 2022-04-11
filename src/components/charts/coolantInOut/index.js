@@ -35,7 +35,7 @@ const options = {
   },
 };
 
-const CoolantInOut = ({ data, range, label, display }) => {
+const CoolantInOut = ({ data, range, label, display, threshold }) => {
   const filteredData = data;
   // const filteredData = data.filter((item) => {
   //   console.log(
@@ -51,19 +51,25 @@ const CoolantInOut = ({ data, range, label, display }) => {
 
   // console.log(filteredData);
 
+  let thresh = [threshold];
+
+  // threshold: thresholdData["mean_CCU_R_temp_1:CCU_R_batt_coolant_in_temp"]
+
+  filteredData.forEach((i, index) => {
+    thresh[index] = threshold;
+  });
+
+  console.log({ thresh });
+
   const graphData = {
     labels: filteredData.map((item) => moment(item.time).format("mm:ss.SS")),
     datasets: [
-      // {
-      //   //TODO:
-      //   //- Using the api api/sensor/threshold
-      //   //- Label->Advised Engineer Threshold
-      //   //- Make another line for the threshold
-      //   label: "Threshold",
-      //   data: {thresh},
-      //   borderColor: "#E9591CFF",
-      //   backgroundColor: "rgba(233,89,28,0.5)",
-      // },
+      {
+        showLine: true,
+        label: "Advised Threshold",
+        data: thresh,
+        backgroundColor: "rgb(69,98,175)",
+      },
       {
         label: "Coolant In °C",
         data: data.map(

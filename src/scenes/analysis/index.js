@@ -40,7 +40,7 @@ import PDUHVBatterySOC from "../../components/charts/pduHvBatterySoc";
 import PDUHVBatteryVoltageCurrent from "../../components/charts/pduHvBatteryVoltageCurrent";
 import PDUHVBatteryVoltage from "../../components/charts/pduHvBatteryVoltage";
 import Odometer from "../../components/charts/odometer";
-import { useAnalysisData } from "../../services/apiService";
+import { useAnalysisData, useThresholdData } from "../../services/apiService";
 import Mileage from "../../components/charts/mileage";
 import { Chips } from "../../components/atoms/chips";
 import Table from "../../components/table";
@@ -299,6 +299,7 @@ const ShowCharts = ({ data, coolant, charts, range }) => {
           range={range}
           label={coolant.label}
           display={coolant.display}
+          threshold={coolant.threshold}
         />
       )}
 
@@ -315,6 +316,7 @@ const ShowCharts = ({ data, coolant, charts, range }) => {
               data={data}
               range={range}
               graphLabel={chart.graphLabel}
+              threshold={chart.threshold}
             />
           );
         })}
@@ -325,17 +327,27 @@ const ShowCharts = ({ data, coolant, charts, range }) => {
 const AnalysisScreenWrapper = () => {
   const params = useParams();
   const { run_id } = params;
-  const token = getToken();
-  const [data, loading] = useAnalysisData(run_id, token);
+  const token = guest ? undefined : getToken();
+  const [data, thresholds, loading] = useAnalysisData(run_id, token);
 
-  return <AnalysisScreen data={data} loading={loading} />;
+  if (loading) return <div></div>;
+
+  return (
+    <AnalysisScreen
+      data={data}
+      thresholdData={thresholds}
+      loading={loading}
+      guest={guest}
+    />
+  );
 };
 
-const AnalysisScreen = ({ data, loading }) => {
+const AnalysisScreen = ({ data, thresholdData, loading, guest = false }) => {
   const [range, setRange] = useState([0, 20]);
 
   useEffect(() => {
     console.log("checking");
+    console.log("threshold Data", thresholdData);
     if (data)
       setRange([
         moment(data[0].time).minutes() - 1,
@@ -344,124 +356,146 @@ const AnalysisScreen = ({ data, loading }) => {
   }, [data]);
 
   const [tab, setTab] = useState("chart");
+
   const [charts, setCharts] = useState([
-    //   //TODO:
-    //   //- Using the api api/sensor/threshold
-    //   //- Label->Advised Engineer Threshold
-    //   //- Make another line for the threshold
     {
       row: "mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed",
       label: "Odometer - Vehicle Speed",
       graphLabel: "km/h",
       display: true,
+      threshold: thresholdData["mean_SAFETY_PCU_vehicle_ST:PCU_vehicle_speed"],
     },
     {
       row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1",
       label: "Front Right Motor 1 Temp",
       graphLabel: "°C",
       display: true,
+      threshold:
+        thresholdData["mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor1"],
     },
     {
       row: "mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor2",
       label: "Front Right Motor 2 Temp",
       graphLabel: "°C",
       display: true,
+      threshold:
+        thresholdData["mean_HPI_FR_phase_curr_motor_temp:HPI_temp_motor2"],
     },
     {
       row: "mean_HPI_FL_phase_curr_motor_temp:HPI_temp_motor1",
       label: "Front Left Motor 1 Temp",
       graphLabel: "°C",
       display: true,
+      threshold:
+        thresholdData["mean_HPI_FL_phase_curr_motor_temp:HPI_temp_motor1"],
     },
     {
       row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOC",
       label: "PDU HV Battery SOC",
       graphLabel: "%",
       display: true,
+      threshold: thresholdData["mean_PDU_HV_LV_status:PDU_HV_battery_SOC"],
     },
     {
       row: "mean_PDU_HV_LV_status:PDU_HV_battery_SOH",
       label: "PDU HV Battery SOH",
       graphLabel: "%",
       display: true,
+      threshold: thresholdData["mean_PDU_HV_LV_status:PDU_HV_battery_SOH"],
     },
     {
       row: "mean_PDU_HV_battery_performance:PDU_HV_battery_current",
       label: "PDU HV Battery Current",
       graphLabel: "%",
       display: true,
+      threshold:
+        thresholdData["mean_PDU_HV_battery_performance:PDU_HV_battery_current"],
     },
     {
       row: "mean_PDU_HV_battery_performance:PDU_HV_battery_voltage",
       label: "PDU HV Battery Voltage",
       graphLabel: "volts",
       display: true,
+      threshold:
+        thresholdData["mean_PDU_HV_battery_performance:PDU_HV_battery_voltage"],
     },
     {
       row: "mean_SAFETY_PCU_vehicle_ST:PCU_accelerator_pedal",
       label: "PCU Accelerator Pedal",
       graphLabel: "km/h",
       display: true,
+      threshold:
+        thresholdData["mean_SAFETY_PCU_vehicle_ST:PCU_accelerator_pedal"],
     },
     {
       row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT3",
       label: "Front Right HPI Temp IGBT3",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_HPI_FR_inverter_temp:HPI_temp_IGBT3"],
     },
     {
       row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT3",
       label: "Front Left HPI Temp IGBT3",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_HPI_FL_inverter_temp:HPI_temp_IGBT3"],
     },
     {
       row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT2",
       label: "Front Left HPI Temp IGBT2",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_HPI_FL_inverter_temp:HPI_temp_IGBT2"],
     },
     {
       row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT2",
       label: "Front Right HPI Temp IGBT2",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_HPI_FR_inverter_temp:HPI_temp_IGBT2"],
     },
     {
       row: "mean_HPI_FL_inverter_temp:HPI_temp_IGBT1",
       label: "Front Left HPI Temp IGBT1",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_HPI_FL_inverter_temp:HPI_temp_IGBT1"],
     },
     {
       row: "mean_HPI_FR_inverter_temp:HPI_temp_IGBT1",
       label: "Front Right HPI Temp IGBT1",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_HPI_FR_inverter_temp:HPI_temp_IGBT1"],
     },
     {
       row: "mean_CCU_F_temp_1:CCU_F_ambient_temp",
       label: "Ambient Temperature",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_CCU_F_temp_1:CCU_F_ambient_temp"],
     },
     {
       row: "mean_CCU_F_temp_1:CCU_F_interior_temp",
       label: "Interior Temperature",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_CCU_F_temp_1:CCU_F_interior_temp"],
     },
     {
       row: "mean_SAFETY_VCU_vehicle_ST:VCU_vehicle_ST",
       label: "VCU Vehicle ST",
       graphLabel: "°C",
       display: true,
+      threshold: thresholdData["mean_SAFETY_VCU_vehicle_ST:VCU_vehicle_ST"],
     },
   ]);
 
   const [coolant, setCoolant] = useState({
     label: "Coolant In Vs. Out",
     display: true,
+    threshold: thresholdData["mean_CCU_R_temp_1:CCU_R_batt_coolant_in_temp"],
   });
 
   const handleTimerChange = (newValue) => {
@@ -563,7 +597,7 @@ ChartJS.register(
   Legend
 );
 
-const Chart = ({ row, label, data, range, graphLabel }) => {
+const Chart = ({ row, label, data, range, graphLabel, threshold }) => {
   const filteredData = data;
   // const filteredData = data.filter((item) => {
   //   console.log(
@@ -577,9 +611,23 @@ const Chart = ({ row, label, data, range, graphLabel }) => {
   //   return itemTime > range[0] && itemTime < range[1];
   // });
 
+  let thresh = [threshold];
+
+  filteredData.forEach((i, index) => {
+    thresh[index] = threshold;
+  });
+
+  console.log({ thresh });
+
   const graphData = {
     labels: filteredData.map((item) => moment(item.time).format("mm:ss.SS")),
     datasets: [
+      {
+        label: "Advised Threshold",
+        showLine: true,
+        data: thresh,
+        backgroundColor: "rgb(69,98,175)",
+      },
       {
         label: graphLabel,
         data: data.map((item) => item[row]),

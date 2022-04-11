@@ -31,6 +31,7 @@ export const exampleRequest = () => {
 export const useAnalysisData = (run_id, token) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState();
+  const [thresholds, setThresholds] = useState();
 
   useEffect(() => {
     const myHeaders = new Headers();
@@ -77,20 +78,65 @@ export const useAnalysisData = (run_id, token) => {
       redirect: "follow",
     };
 
-    fetch(
+    const dataResult = fetch(
       "https://rimacperformance-dev.ryacom.org/api/run/view",
       requestOptions
     )
       .then((response) => response.json())
+      .catch(console.error);
+
+    const thresholdResult = fetch(
+      "https://rimacperformance-dev.ryacom.org/api/sensor/threshold",
+      { method: "GET", headers: myHeaders }
+    )
+      .then((response) => response.json())
+      .catch(console.error);
+
+    Promise.all([dataResult, thresholdResult]).then(async (values) => {
+      console.log({ values });
+      await setData(cleanData(values[0]));
+      await setThresholds(betterThresholds(values[1]));
+
+      setLoading(false);
+    });
+  }, []);
+
+  return [data, thresholds, loading];
+};
+
+export const useThresholdData = (token) => {
+  const [thresholdData, setData] = useState();
+
+  useEffect(() => {
+    const myHeaders = new Headers();
+    // myHeaders.append(
+    //   "Authorization",
+    //   "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMmExZTkzOTUtNmFlNS00NzVlLTgzMTgtNjg5NzY4MGFkYjE3IiwiZW1haWwiOiJjZHd5ZXI1QGFtYXpvbi5jb20iLCJwaG9uZSI6IjEzMC05NzgtNDM1MyIsImZpcnN0X25hbWUiOiJDb3NldHRlIiwibGFzdF9uYW1lIjoiRHd5ZXIiLCJ1c2VyX3JvbGUiOjIsImlhdCI6MTY0NzkwOTMwN30.A8C0pU3NZNi1J2u2wv0nfVcmaLMI_l-567Ll3UracQw"
+    // );
+    if (token) {
+      myHeaders.append("Authorization", `Bearer ${token}`);
+    }
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow",
+    };
+
+    fetch(
+      "https://rimacperformance-dev.ryacom.org/api/sensor/threshold",
+      requestOptions
+    )
+      .then((response) => response.json())
       .then(async (result) => {
-        //console.log("result", result);
-        await setData(cleanData(result));
-        setLoading(false);
+        console.log("result", result);
+        console.log("threshold", thresholdData);
+        await setData(result);
       })
       .catch((error) => console.error("error", error));
   }, []);
 
-  return [data, loading];
+  return [thresholdData];
 };
 
 const cleanData = (data) => {
@@ -118,16 +164,12 @@ const removeNullDataPoints = (data) => {
   });
 };
 
-const removeMillisecondDataPoints = (data) => {
-  let cleanedData = [data[0]];
-  let currentItemMinSec = data[0].time.slice(11, 16);
+const betterThresholds = (data) => {
+  let better = {};
 
   data.map((item) => {
-    if (item.time.slice(11, 16) !== currentItemMinSec) {
-      cleanedData.push(item);
-      currentItemMinSec = item.time.slice(11, 16);
-    }
+    better[item.name] = item.threshold;
   });
 
-  return cleanedData;
+  return better;
 };

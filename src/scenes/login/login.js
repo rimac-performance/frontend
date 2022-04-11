@@ -4,8 +4,7 @@ import { useState } from "react";
 import TextField from "../../components/atoms/text-fields/text-field";
 import { BackArrow } from "../../components/atoms/arrows";
 import "./style.css";
-import { useNavigate, BrowserRouter, Routes, Route } from "react-router-dom";
-import Nav from "../../navigations/Nav";
+import { useNavigate } from "react-router-dom";
 import { setToken } from "../../utils/token";
 import jwt_decode from "jwt-decode";
 

@@ -2,7 +2,7 @@ import "./runs.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import AutomobileInfo from "../../components/atoms/automobile-info/automobile-info";
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { PrimaryButton } from "../../components/atoms/buttons";
 import { getToken } from "../../utils/token";
@@ -66,8 +66,6 @@ const RunsScreen = () => {
       .catch((err) => {
         if (err.name === "AbortError") {
           console.log("successfully aborted fetch");
-        } else {
-          //setError(err)
         }
       });
     return () => {

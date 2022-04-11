@@ -147,45 +147,33 @@ const AdminNewUserScreen = () => {
     <div className="screen__admin">
       <BackArrow to={"../admin"}></BackArrow>
       <img className="logo__create__account" src={Logo}></img>
-      <form className="register_account">
+      <form>
         <label className="label__create__account">First Name</label>
         <TextField
           onChange={handleFirstNameInput}
           error={firstNameError}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Last Name</label>
         <TextField
           onChange={handleLastNameInput}
           error={lastNameError}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Email</label>
-        <TextField
-          onChange={handleEmailInput}
-          error={emailError}
-          width="100%"
-        ></TextField>
+        <TextField onChange={handleEmailInput} error={emailError}></TextField>
         <label className="label__create__account">Phone</label>
-        <TextField
-          onChange={handlePhoneInput}
-          error={phoneError}
-          width="100%"
-        ></TextField>
+        <TextField onChange={handlePhoneInput} error={phoneError}></TextField>
         <label className="label__create__account">Password</label>
         <TextField
           errorMsg={`Passwords must be at least 8 characters long, containing at least one letter and one number.`}
           onChange={handlePasswordInput}
           type={"password"}
           error={passwordError}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Confirm Password</label>
         <TextField
           onChange={handlePasswordConfirmInput}
           type={"password"}
           error={passwordConfirmError}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Permission Level</label>
         <TextField
@@ -193,7 +181,6 @@ const AdminNewUserScreen = () => {
           onChange={handlePermissionInput}
           placeholder={"1, 2, or 3"}
           error={permissionError}
-          width="100%"
         ></TextField>
         <SecondaryButton
           text={"CREATE ACCOUNT "}

@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import Timer from "../../components/atoms/timer";
 import RevLogo from "../../assets/logo/revPerformanceLogo.svg";
-import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import "./analysis.css";
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
@@ -324,12 +323,13 @@ const ShowCharts = ({ data, coolant, charts, range }) => {
   );
 };
 
-const AnalysisScreenWrapper = () => {
+const AnalysisScreenWrapper = ({ guest = false }) => {
   const params = useParams();
   const { run_id } = params;
   const token = guest ? undefined : getToken();
   const [data, thresholds, loading] = useAnalysisData(run_id, token);
 
+  return <AnalysisScreen data={data} loading={loading} guest={guest} />;
   if (loading) return <div></div>;
 
   return (
@@ -344,10 +344,10 @@ const AnalysisScreenWrapper = () => {
 
 const AnalysisScreen = ({ data, thresholdData, loading, guest = false }) => {
   const [range, setRange] = useState([0, 20]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log("checking");
-    console.log("threshold Data", thresholdData);
     if (data)
       setRange([
         moment(data[0].time).minutes() - 1,
@@ -511,8 +511,8 @@ const AnalysisScreen = ({ data, thresholdData, loading, guest = false }) => {
     );
 
   return (
-    <div className={"containers"}>
-      <BackArrow to={"../"} />
+    <div className={"container"}>
+      {!guest && <BackArrow to={"../"} />}
       <div style={{ height: 24 }} />
       {/* <div className="imageContainer">
         <img className="logo" src={RevLogo} alt="Rev Performance" />
@@ -525,15 +525,31 @@ const AnalysisScreen = ({ data, thresholdData, loading, guest = false }) => {
         <img src={Logo} alt="logo" />
         <p className="title__community">ANALYSIS</p>
       </div>
-
-      <div className="share-download-wrapper">
-        <div className="download">
-          <FullScreenDialogDownloadButton />
+      {guest ? (
+        <div className="guest__ad">
+          <p>
+            Like what you see?{" "}
+            <span
+              className="guest__link"
+              onClick={() => {
+                navigate("../create");
+              }}
+            >
+              Click here
+            </span>{" "}
+            to create your own Rev account!
+          </p>
         </div>
-        <div className="share">
-          <FullScreenDialogShareButton />
+      ) : (
+        <div className="share-download-wrapper">
+          <div className="download">
+            <FullScreenDialogDownloadButton />
+          </div>
+          <div className="share">
+            <FullScreenDialogShareButton />
+          </div>
         </div>
-      </div>
+      )}
       <div>
         <FullScreenDialog
           charts={charts}

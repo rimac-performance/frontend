@@ -1,9 +1,6 @@
-.container {
+.logo {
   display: block;
   margin: auto;
   text-align: center;
-  padding-top: 100px;
-}
-.logo {
-  padding-bottom: 100px;
+  margin-top: 25vh;
 }

@@ -1,32 +1,3 @@
-.screen__community {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 90%;
-  overflow: scroll;
-}
-.screen__community > .button__primary {
-  position: absolute;
-  bottom: 16px;
-  left: 0;
-  right: 0;
-}
-.header__community {
-  width: 50%;
-  max-width: 250px;
-  margin: 0 auto 16px auto;
-}
-.header__community > img {
-  width: 100%;
-}
-.title__community {
-  text-align: center;
-  font-size: x-large;
-  font-weight: bold;
-  margin-top: 0;
-  margin-bottom: 12px;
-}
 .caption {
   width: 85%;
   max-width: 400px;

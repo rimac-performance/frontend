@@ -165,57 +165,45 @@ const AdminEditUserScreen = () => {
     <div className="screen__admin">
       <BackArrow to={"../admin"}></BackArrow>
       <img className="logo__create__account" src={Logo}></img>
-      <form className="register_account">
+      <form>
         <label className="label__create__account">First Name</label>
         <TextField
           onChange={handleFirstNameInput}
           error={firstNameError}
           value={firstName.value}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Last Name</label>
         <TextField
           onChange={handleLastNameInput}
           error={lastNameError}
           value={lastName.value}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Email</label>
         <TextField
           onChange={handleEmailInput}
           error={emailError}
           value={email.value}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Phone</label>
         <TextField
           onChange={handlePhoneInput}
           error={phoneError}
           value={phone.value}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Password</label>
-        <TextField
-          errorMsg={`Passwords must be at least 8 characters long, containing at least one letter and one number.`}
-          onChange={handlePasswordInput}
-          type={"password"}
-          width="100%"
-        ></TextField>
+        <TextField onChange={handlePasswordInput} type={"password"}></TextField>
         <label className="label__create__account">Confirm Password</label>
         <TextField
           onChange={handlePasswordConfirmInput}
           type={"password"}
           error={passwordConfirmError}
-          width="100%"
         ></TextField>
         <label className="label__create__account">Permission Level</label>
         <TextField
-          errorMsg={`Permission Levels are as follows: 1 - Car Owner, 2 - Engineer, 3 - System Administrator.`}
           onChange={handlePermissionInput}
           placeholder={"1, 2, or 3"}
           error={permissionError}
           value={permission.value}
-          width="100%"
         ></TextField>
         <SecondaryButton
           text={"Update Account"}

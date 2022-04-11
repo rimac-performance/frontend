@@ -51,11 +51,10 @@ const Login = () => {
   return (
     <>
       <BackArrow to={"/"}></BackArrow>
-
+      <div className="logo">
+        <img src={Logo}></img>
+      </div>
       <div className="container">
-        <div className="logo">
-          <img src={Logo}></img>
-        </div>
         <form onSubmit={login}>
           <TextField
             onChange={handleEmailInput}

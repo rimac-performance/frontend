@@ -329,7 +329,6 @@ const AnalysisScreenWrapper = ({ guest = false }) => {
   const token = guest ? undefined : getToken();
   const [data, thresholds, loading] = useAnalysisData(run_id, token);
 
-  return <AnalysisScreen data={data} loading={loading} guest={guest} />;
   if (loading) return <div></div>;
 
   return (
@@ -514,16 +513,11 @@ const AnalysisScreen = ({ data, thresholdData, loading, guest = false }) => {
     <div className={"container"}>
       {!guest && <BackArrow to={"../"} />}
       <div style={{ height: 24 }} />
-      {/* <div className="imageContainer">
+      <div className="imageContainer">
         <img className="logo" src={RevLogo} alt="Rev Performance" />
       </div>
       <div className="header">
         <h1>ANALYSIS</h1>
-      </div> */}
-
-      <div className="header__community">
-        <img src={Logo} alt="logo" />
-        <p className="title__community">ANALYSIS</p>
       </div>
       {guest ? (
         <div className="guest__ad">

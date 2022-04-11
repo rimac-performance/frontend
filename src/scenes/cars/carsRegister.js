@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import { validate, validateVin, validateYear } from "../../utils/validate";
-import { getToken } from "../../utils/token";
 
 const CarsRegisterScreen = () => {
   const navigate = useNavigate();

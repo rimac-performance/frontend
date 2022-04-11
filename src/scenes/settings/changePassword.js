@@ -4,16 +4,21 @@ import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import { PrimaryButton } from "../../components/atoms/buttons";
 import TextField from "../../components/atoms/text-fields/text-field";
 import { useState } from "react";
+import { getToken } from "../../utils/token";
+import { validate, validatePass } from "../../utils/validate";
+import { useNavigate } from "react-router-dom";
 
 const ChangePassword_setting = () => {
-  const [password, setPassword] = useState("");
+  const token = getToken();
+  const navigate = useNavigate();
+  const apiUrl = "https://rimacperformance-dev.ryacom.org/api/user/password";
 
-  const handleOldPasswordInput = (e) => {
-    const { value } = e.currentTarget;
-    setPassword({
-      value,
-    });
-  };
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordConfirmError, setPasswordConfirmError] = useState(false);
+
   const handleNewPasswordInput = (e) => {
     const { value } = e.currentTarget;
     setPassword({
@@ -21,8 +26,45 @@ const ChangePassword_setting = () => {
     });
   };
 
+  const handleConfirmPasswordInput = (e) => {
+    const { value } = e.currentTarget;
+    setPasswordConfirm({
+      value,
+    });
+  };
+
   const changePassword = () => {
-    console.log(password);
+    let flag = true;
+
+    if (validate(password)) {
+      setPasswordError(false);
+    } else {
+      setPasswordError(true);
+      flag = false;
+    }
+    if (validatePass(password.value, passwordConfirm.value)) {
+      setPasswordConfirmError(false);
+    } else {
+      setPasswordConfirmError(true);
+      flag = false;
+    }
+
+    if (flag) {
+      fetch(apiUrl, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          pswd: password.value,
+        }),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          navigate("../settings/");
+        });
+    }
   };
 
   return (
@@ -40,18 +82,15 @@ const ChangePassword_setting = () => {
         </p>
         <TextField
           type={"password"}
-          placeholder={"Old Password"}
-          onChange={handleOldPasswordInput}
-        ></TextField>
-        <TextField
-          type={"password"}
           placeholder={"New Password"}
           onChange={handleNewPasswordInput}
+          error={passwordError}
         ></TextField>
         <TextField
           type={"password"}
-          placeholder={"Comfirm Password"}
-          onChange={handleNewPasswordInput}
+          placeholder={"Confirm Password"}
+          onChange={handleConfirmPasswordInput}
+          error={passwordConfirmError}
         ></TextField>
         <PrimaryButton text={"Change Password"} onClick={changePassword}>
           {" "}

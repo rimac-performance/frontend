@@ -1,3 +1,19 @@
+# Project organization
+
+Yarn handles all project dependencies through the yarn.lock file and the node_modules directory. Project src code is all located in the src directory.
+
+The assets directory stores all images used.
+
+The components directory houses all the custom components built by the frontend team to be reused throughout the app.
+
+The navigations directory contains the project's navbar and controls movement between pages.
+
+The scenes directory is where the bulk of the code resides. Here we build every individual screen and each internal directory uses its own styles.
+
+The services and utils directories are used to help the devlopers by factoring out some of the repetitive code. See their README's to learn more.
+
+App.js stores every route within the system, and index.js starts the project by displaying App.js
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

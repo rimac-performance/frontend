@@ -1,7 +1,7 @@
 import "./cars.css";
 import Logo from "../../assets/logo/revPerformanceLogo.svg";
 import { PrimaryButton } from "../../components/atoms/buttons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { BackArrow } from "../../components/atoms/arrows";
 import { getToken } from "../../utils/token";

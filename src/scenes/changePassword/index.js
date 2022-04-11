@@ -39,7 +39,6 @@ const ChangePassword = () => {
           navigate("../errorPassword");
           break;
         default:
-        //pop up error message
       }
     });
   }
